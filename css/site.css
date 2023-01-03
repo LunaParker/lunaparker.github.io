@@ -19,6 +19,7 @@
     --so-lead-paragraph-size: 1.1rem;
     --so-lead-paragraph-line-height: 1.4;
     --so-section-spacing: 2rem;
+    --so-image-spacing: 100px;
 }
 
 @media(min-width: 768px) {
@@ -33,6 +34,10 @@
 
 html, body {
     height: 100%;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -70,6 +75,36 @@ body.so-has-fixed-navbar {
 
 .so-lead-paragraph:last-child {
     margin-bottom: 0;
+}
+
+.so-button-container {
+    display: inline-block;
+    position: relative;
+}
+
+.so-button-container::before {
+    content: '';
+    background: var(--so-main-gradient);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+.so-button-container:hover::before {
+    opacity: 1;
+}
+
+.so-button-container .so-button {
+    position: relative;
+}
+
+.so-button-container .so-button:hover {
+    background-color: transparent;
+    color: var(--so-light);
 }
 
 .so-button {
@@ -210,6 +245,7 @@ body.so-has-fixed-navbar {
 @media(min-width: 768px) {
     .so-hero {
         height: 100%;
+        min-height: 700px;
         padding-bottom: var(--so-feature-card-offset);
         display: flex;
         flex-direction: column;
@@ -344,7 +380,7 @@ body.so-has-fixed-navbar {
 
 @media(min-width: 768px) {
     .so-about-image-container {
-        padding-left: 100px;
+        padding-left: var(--so-image-spacing);
         padding-top: 50px;
     }
 }

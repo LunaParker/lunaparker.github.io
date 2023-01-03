@@ -14,6 +14,8 @@
     --so-button-padding: 6px 8px;
     --so-button-weight: 400;
     --so-card-padding: 30px;
+    --so-hero-font-size: 1.2rem;
+    --so-hero-font-spacing: 1.2;
     --so-feature-icon-size: 80px;
     --so-main-heading-size: 1.4rem;
     --so-lead-paragraph-size: 1.1rem;
@@ -29,6 +31,7 @@
         --so-main-heading-size: 32px;
         --so-lead-paragraph-size: 20px;
         --so-section-spacing: 128px;
+        --so-hero-font-size: 24px;
     }
 }
 
@@ -297,14 +300,13 @@ body {
 }
 
 .so-hero__paragraph {
-    font-size: 1.1rem;
-    line-height: 1.2;
+    font-size: var(--so-hero-font-size);
+    line-height: var(--so-hero-font-spacing);
     margin-bottom: 1rem;
 }
 
 @media(min-width: 768px) {
     .so-hero__paragraph {
-        font-size: 24px;
         max-width: 500px;
         margin-bottom: 52px;
     }
@@ -528,4 +530,27 @@ body {
 
 .so-project__content p:last-child {
     margin-bottom: 0;
+}
+
+.so-contact-section {
+    background: linear-gradient(to right, #005c97, #363795);
+    color: #fff;
+    padding: 2rem 0;
+}
+
+@media(min-width: 768px) {
+    .so-contact-section {
+        padding: 128px 0;
+    }
+}
+
+@media(min-width: 768px) {
+    .so-contact-section__heading {
+        padding-right: var(--so-image-spacing);
+    }
+}
+
+.so-contact-section__intro-paragraph {
+    font-size: var(--so-hero-font-size);
+    line-height: var(--so-hero-font-spacing);
 }

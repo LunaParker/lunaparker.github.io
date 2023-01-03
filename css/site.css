@@ -46,10 +46,6 @@ body {
     line-height: 1;
 }
 
-body.so-has-fixed-navbar {
-    padding-top: var(--so-navbar-height);
-}
-
 .so-main-heading {
     font-family: var(--so-heading-font);
     font-size: var(--so-main-heading-size);
@@ -131,6 +127,11 @@ body.so-has-fixed-navbar {
     top: 0;
     left: 0;
     z-index: 10;
+    transition: background-color .3s ease;
+}
+
+.so-navbar--transparent {
+    background-color: transparent;
 }
 
 .so-navbar__main-row {
@@ -233,13 +234,27 @@ body.so-has-fixed-navbar {
     opacity: 1;
 }
 
+.so-navbar--transparent .so-navbar__main-column--links > li.so-navbar__contact-button-container:hover::before {
+    opacity: 0;
+}
+
+.so-navbar--transparent .so-navbar__main-column--links > li > a.so-navbar__contact-button:hover {
+    background-color: var(--so-dark);
+}
+
 .so-main-section {
     margin-top: var(--so-section-spacing);
 }
 
 .so-hero {
-    background: var(--so-main-gradient);
     color: var(--so-light);
+    padding-top: var(--so-navbar-height);
+    position: relative;
+    background-image: url('../images/hero_owl.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 @media(min-width: 768px) {
@@ -251,6 +266,20 @@ body.so-has-fixed-navbar {
         flex-direction: column;
         justify-content: center;
     }
+}
+
+.so-hero__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--so-main-gradient);
+    opacity: 0.9;
+}
+
+.so-hero__content {
+    position: relative;
 }
 
 .so-hero__title {
@@ -290,6 +319,10 @@ body.so-has-fixed-navbar {
     background-color: var(--so-dark);
     color: var(--so-light);
     border-color: var(--so-dark);
+}
+
+.so-feature-cards {
+    z-index: 1;
 }
 
 @media(min-width: 768px) {

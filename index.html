@@ -9,7 +9,7 @@
     <title>Shy Owl Studios - Web Solutions Studio</title>
 </head>
 <body class="so-has-fixed-navbar">
-<nav class="so-navbar">
+<nav class="so-navbar so-navbar--transparent" id="navbar">
     <div class="so-navbar__main-row">
         <div class="so-navbar__main-column so-navbar__main-column--logo">
             <div class="so-navbar__logo">
@@ -35,6 +35,7 @@
     </div>
 </nav>
 <section class="so-hero">
+    <div class="so-hero__overlay" aria-hidden="true"></div>
     <div class="so-hero__content">
         <div class="so-hero__container container">
             <h1 class="so-hero__title">
@@ -110,7 +111,7 @@
 </section>
 <section class="so-about-section so-main-section" id="about">
     <div class="container">
-        <div class="columns">
+        <div class="columns is-multiline">
             <div class="column is-12 is-6-fullhd">
                 <div class="so-about-text-container">
                     <h2 class="so-main-heading so-main-text-gradient">
@@ -118,8 +119,9 @@
                     </h2>
                     <div class="so-about-content">
                         <p class="so-lead-paragraph">
-                            Shy Owl Studios is a partner to all sorts of organizations looking
-                            to solve their digital challenges.
+                            Based in Ontario, Canada, Shy Owl Studios is a partner
+                            to organizations all around the world looking to solve
+                            their digital challenges.
                         </p>
                         <p class="so-lead-paragraph">
                             <b>We're discerning and perceptive</b>: we work with you to find the best web
@@ -150,7 +152,7 @@
 <div id="projects" aria-hidden="true"></div>
 <section class="so-project-section so-project-section--right so-main-section">
     <div class="container">
-        <div class="columns">
+        <div class="columns is-multiline">
             <div class="column is-12 is-6-fullhd">
                 <div class="so-project__image-container">
                     <a href="https://eyolf.ca" target="_blank">
@@ -206,10 +208,10 @@
                             verticality and dynamicism.
                         </p>
                         <p>
-                            Additionally, we built them a custom inventory portal,
-                            and invoicing platform, which streamlines their business
-                            processes and provides an excellent experience to their
-                            employees and customers.
+                            Additionally, we built them a custom inventory portal, using
+                            Laravel, and a customized invoicing platform built on InvoiceNinja,
+                            both of which streamline their business processes and provide an
+                            excellent experience to their employees and customers.
                         </p>
                     </div>
                     <div class="so-button-container">
@@ -222,5 +224,140 @@
         </div>
     </div>
 </section>
+<section class="so-project-section so-project-section--left so-main-section">
+    <div class="container">
+        <div class="columns is-multiline">
+            <div class="column is-12 is-6-fullhd">
+                <div class="so-project__text-container">
+                    <h2 class="so-project__title">
+                        <a href="https://newblsc.ca" target="_blank">
+                            Belwood Lake Sailing Club
+                        </a>
+                    </h2>
+                    <ul class="so-project__chip-list so-project__chip-list--technologies">
+                        <li class="so-project__chip-item so-project__chip-item--introduction">
+                            Technologies:
+                        </li>
+                        <li class="so-project__chip-item">
+                            <span class="so-project__chip">
+                                WordPress
+                            </span>
+                        </li>
+                        <li class="so-project__chip-item">
+                            <span class="so-project__chip">
+                                Laravel
+                            </span>
+                        </li>
+                        <li class="so-project__chip-item">
+                            <span class="so-project__chip">
+                                Cloudflare
+                            </span>
+                        </li>
+                    </ul>
+                    <div class="so-project__content">
+                        <p>
+                            Belwood Lake Sailing Club (BLSC) is a member-run sailing
+                            organization based in Belwood, Ontario.
+                        </p>
+                        <p>
+                            Looking to overhaul their online presence, we designed
+                            a brand new member portal for BLSC, with functions for
+                            members to renew memberships, view and register for upcoming
+                            events, and see the latest news from the club.
+                        </p>
+                        <p>
+                            We used Laravel to build a secure, scalable foundation
+                            for the portal, which allows club administrators complete
+                            control over their members' experiences and communications,
+                            and the information they need.
+                        </p>
+                    </div>
+                    <div class="so-button-container">
+                        <a class="so-button so-button--dark" href="https://newblsc.ca" target="_blank">
+                            View site
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-12 is-6-fullhd">
+                <div class="so-project__image-container">
+                    <a href="https://newblsc.ca" target="_blank">
+                        <img src="images/projects/blsc.jpg" alt="Screenshot of Eyolf website">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="so-project-section so-project-section--right so-main-section">
+    <div class="container">
+        <div class="columns is-multiline">
+            <div class="column is-12 is-6-fullhd">
+                <div class="so-project__image-container">
+                    <a href="https://jarvisryan.com" target="_blank">
+                        <img src="images/projects/jarvisryan.jpg" alt="Screenshot of Eyolf website">
+                    </a>
+                </div>
+            </div>
+            <div class="column is-12 is-6-fullhd">
+                <div class="so-project__text-container">
+                    <h2 class="so-project__title">
+                        <a href="https://jarvisryan.com" target="_blank">
+                            Jarvis Ryan Associates
+                        </a>
+                    </h2>
+                    <ul class="so-project__chip-list so-project__chip-list--technologies">
+                        <li class="so-project__chip-item so-project__chip-item--introduction">
+                            Technologies:
+                        </li>
+                        <li class="so-project__chip-item">
+                            <span class="so-project__chip">
+                                Laravel
+                            </span>
+                        </li>
+                        <li class="so-project__chip-item">
+                            <span class="so-project__chip">
+                                Microsoft Server
+                            </span>
+                        </li>
+                        <li class="so-project__chip-item">
+                            <span class="so-project__chip">
+                                IIS
+                            </span>
+                        </li>
+                    </ul>
+                    <div class="so-project__content">
+                        <p>
+                            Jarvis Ryan Associates is an accounting firm based in
+                            Mississauga, Ontario, which provides reliable and insightful
+                            accountancy services for both individuals and organizations.
+                        </p>
+                        <p>
+                            We redesigned their public-facing website to provide their
+                            most essential information front and centre. Using their
+                            brand's typography and stylings to our advantage, we made
+                            a website which makes it easy for prospective clients to
+                            find what they're looking for.
+                        </p>
+                        <p>
+                            Additionally, we built a custom-written Client Cloud
+                            portal, based on Laravel. The Client Cloud allows their clients
+                            to access their tax documents, and to upload large
+                            files to the office securely. The Client Cloud directly
+                            interfaces with JRA's existing infrastructure, allowing
+                            their office to instantly access uploaded files.
+                        </p>
+                    </div>
+                    <div class="so-button-container">
+                        <a class="so-button so-button--dark" href="https://jarvisryan.com" target="_blank">
+                            View site
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="js/site.js"></script>
 </body>
 </html>

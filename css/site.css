@@ -281,23 +281,24 @@ body {
 
 .so-hero {
     color: var(--so-light);
-    padding-top: var(--so-navbar-height);
+    padding: var(--so-navbar-height) var(--so-card-padding) 0;
     position: relative;
     background-image: url('../images/hero_owl.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 @media(min-width: 1024px) {
     .so-hero {
         height: 100%;
         min-height: 700px;
-        padding-bottom: var(--so-feature-card-offset);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        padding: var(--so-navbar-height) 0 var(--so-feature-card-offset);
     }
 }
 

@@ -620,12 +620,12 @@ body {
     margin-bottom: 0;
 }
 
-.so-contact-field {
+.so-contact-field, .so-contact-form-button-container {
     margin-bottom: 1rem;
 }
 
 @media(min-width: 1024px) {
-    .so-contact-field {
+    .so-contact-field, .so-contact-form-button-container {
         margin-bottom: 32px;
     }
 }
@@ -727,6 +727,23 @@ body {
     margin-right: 10px;
 }
 
+.so-contact-form-privacy-disclaimer {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.so-contact-form-privacy-disclaimer p {
+    margin-bottom: 1em;
+}
+
+.so-contact-form-privacy-disclaimer p:last-child {
+    margin-bottom: 0;
+}
+
+.so-contact-form-privacy-disclaimer p a {
+    color: inherit;
+    text-decoration: underline;
+}
+
 .so-footer {
     padding: var(--so-navbar-padding);
     background-color: var(--so-dark);
@@ -766,7 +783,7 @@ body {
     color: var(--so-light);
     font-family: var(--so-button-font);
     transition: opacity .3s ease;
-    opacity: 0.9;
+    opacity: 0.85;
 }
 
 .so-footer__link-item a:hover {

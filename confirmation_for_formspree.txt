@@ -1,9 +1,0 @@
-Hi there,
-My name is Luna Parker and I'm the owner of ShyOwlStudios.com, one of the domains associated with the email address luna@shyowlstudios.com which is the sole user on an account registered on Formspree.io (free tier) associated with the aforementioned email.
-  
-This message hopefully serves as a form of verification that I am who I claim I am to the team at Formspree.io, to which I am writing as of Friday, September 13th, 2024 to request the removal of my second-factor authenticator (of type Google Authenticator/TOTP that was stored in a now-deleted iCloud Passwords item).
-
-Please let me know if you need any other information or validation to assist with my request.
-
-Thank you,
-Luna Parker

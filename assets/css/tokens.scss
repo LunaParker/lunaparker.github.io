@@ -1,0 +1,168 @@
+/* M3 Expressive tokens — OKLCH tonal palette, generated from source color */
+:root {
+  /* Accent color — drives M3 primary/secondary/tertiary tonal palette.
+     Mutable via Tweaks → "Accent color". Surfaces stay pure neutral so
+     color and gradients are reserved for emphasis only. */
+  --accent-h: 195;
+  --accent-c: 0.14;
+
+  /* M3 tonal palette (light surface roles) */
+  --primary: oklch(0.50 var(--accent-c) var(--accent-h));
+  --on-primary: oklch(0.99 0 0);
+  /* Text-safe variant of the accent — same hue, always light enough for AA
+     on its own surface. Use this for accent-colored TEXT; use --primary for
+     fills/buttons where the surface does the contrast work. */
+  --primary-text: oklch(0.50 var(--accent-c) var(--accent-h));
+  --primary-container: oklch(0.92 0.05 var(--accent-h));
+  --on-primary-container: oklch(0.22 0.09 var(--accent-h));
+
+  --secondary: oklch(0.50 0.10 calc(var(--accent-h) + 60));
+  --on-secondary: oklch(0.99 0 0);
+  --secondary-container: oklch(0.92 0.04 calc(var(--accent-h) + 60));
+  --on-secondary-container: oklch(0.22 0.07 calc(var(--accent-h) + 60));
+
+  --tertiary: oklch(0.55 0.11 calc(var(--accent-h) - 50));
+  --on-tertiary: oklch(0.99 0 0);
+  --tertiary-container: oklch(0.92 0.045 calc(var(--accent-h) - 50));
+  --on-tertiary-container: oklch(0.24 0.09 calc(var(--accent-h) - 50));
+
+  --error: oklch(0.56 0.19 27);
+  --on-error: oklch(0.99 0 0);
+
+  /* Neutral surfaces — pure monochrome, never tinted by source hue.
+     Emphasis comes from accents + brand gradient only. */
+  --surface: oklch(1 0 0);
+  --surface-dim: oklch(0.93 0 0);
+  --surface-bright: oklch(1 0 0);
+  --surface-container-lowest: oklch(1 0 0);
+  --surface-container-low: oklch(0.975 0 0);
+  --surface-container: oklch(0.955 0 0);
+  --surface-container-high: oklch(0.93 0 0);
+  --surface-container-highest: oklch(0.90 0 0);
+
+  --on-surface: oklch(0.14 0 0);
+  --on-surface-variant: oklch(0.40 0 0);
+  --outline: oklch(0.55 0 0);
+  --outline-variant: oklch(0.88 0 0);
+
+  /* Brand gradient — the Shy Owl signature */
+  --brand-gradient: linear-gradient(90deg, #8A2387 0%, #E94057 50%, #F27121 100%);
+  --brand-gradient-v: linear-gradient(180deg, #8A2387 0%, #E94057 50%, #F27121 100%);
+  --brand-gradient-135: linear-gradient(135deg, #8A2387 0%, #E94057 50%, #F27121 100%);
+
+  /* M3 Shape scale */
+  --shape-xs: 4px;
+  --shape-sm: 8px;
+  --shape-md: 12px;
+  --shape-lg: 16px;
+  --shape-xl: 28px;
+  --shape-2xl: 36px;
+  --shape-full: 9999px;
+
+  /* M3 Spring easings (approximated as linear() curves) */
+  --spring-fast: linear(
+    0, 0.009, 0.035 2.1%, 0.141, 0.281 6.7%, 0.723 12.9%, 0.938 16.7%, 1.017,
+    1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.144 30.3%, 1.058 34.8%,
+    1.001 38.9%, 0.991, 0.983, 0.977, 0.974 46%, 0.974, 0.979, 0.988 52.2%,
+    1.011 57%, 1.017, 1.018, 1.017, 1.013 63.2%, 1.005 73.4%, 0.999 80.7%, 0.997 94.3%, 1
+  );
+  --spring-standard: linear(
+    0, 0.006, 0.024, 0.054, 0.094, 0.144, 0.205, 0.273, 0.35, 0.433, 0.521,
+    0.613, 0.707, 0.802, 0.895 50%, 0.98, 1.054, 1.116 64.5%, 1.142, 1.157,
+    1.162, 1.158 73.5%, 1.127 77%, 1.089, 1.053, 1.024, 1.003, 0.99 89%, 0.985,
+    0.984, 0.989 94.5%, 0.996, 1
+  );
+  --spring-gentle: cubic-bezier(0.2, 0, 0, 1);
+  --spring-emphasized: cubic-bezier(0.05, 0.7, 0.1, 1);
+
+  /* Motion intensity multiplier — set by Tweaks */
+  --motion: 1;
+  --dur-short: calc(180ms * var(--motion));
+  --dur-med: calc(360ms * var(--motion));
+  --dur-long: calc(600ms * var(--motion));
+  --dur-xl: calc(900ms * var(--motion));
+
+  /* Type */
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Roboto Flex", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --primary: oklch(0.55 calc(var(--accent-c) + 0.06) var(--accent-h));
+  --on-primary: oklch(0.99 0 0);
+  --primary-text: oklch(0.86 var(--accent-c) var(--accent-h));
+  --primary-container: oklch(0.35 0.12 var(--accent-h));
+  --on-primary-container: oklch(0.92 0.06 var(--accent-h));
+
+  --secondary: oklch(0.82 0.08 calc(var(--accent-h) + 60));
+  --on-secondary: oklch(0.22 0.08 calc(var(--accent-h) + 60));
+  --secondary-container: oklch(0.35 0.08 calc(var(--accent-h) + 60));
+  --on-secondary-container: oklch(0.92 0.04 calc(var(--accent-h) + 60));
+
+  --tertiary: oklch(0.82 0.09 calc(var(--accent-h) - 50));
+  --on-tertiary: oklch(0.24 0.10 calc(var(--accent-h) - 50));
+  --tertiary-container: oklch(0.37 0.10 calc(var(--accent-h) - 50));
+  --on-tertiary-container: oklch(0.93 0.05 calc(var(--accent-h) - 50));
+
+  --error: oklch(0.78 0.16 27);
+  --on-error: oklch(0.22 0.14 27);
+
+  --surface: oklch(0.11 0 0);
+  --surface-dim: oklch(0.08 0 0);
+  --surface-bright: oklch(0.20 0 0);
+  --surface-container-lowest: oklch(0.06 0 0);
+  --surface-container-low: oklch(0.13 0 0);
+  --surface-container: oklch(0.16 0 0);
+  --surface-container-high: oklch(0.20 0 0);
+  --surface-container-highest: oklch(0.25 0 0);
+
+  --on-surface: oklch(0.93 0 0);
+  --on-surface-variant: oklch(0.74 0 0);
+  --outline: oklch(0.58 0 0);
+  --outline-variant: oklch(0.28 0 0);
+
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --primary: oklch(0.55 calc(var(--accent-c) + 0.06) var(--accent-h));
+    --on-primary: oklch(0.99 0 0);
+    --primary-text: oklch(0.86 var(--accent-c) var(--accent-h));
+    --primary-container: oklch(0.35 0.12 var(--accent-h));
+    --on-primary-container: oklch(0.92 0.06 var(--accent-h));
+
+    --secondary: oklch(0.82 0.08 calc(var(--accent-h) + 60));
+    --on-secondary: oklch(0.22 0.08 calc(var(--accent-h) + 60));
+    --secondary-container: oklch(0.35 0.08 calc(var(--accent-h) + 60));
+    --on-secondary-container: oklch(0.92 0.04 calc(var(--accent-h) + 60));
+
+    --tertiary: oklch(0.82 0.09 calc(var(--accent-h) - 50));
+    --on-tertiary: oklch(0.24 0.10 calc(var(--accent-h) - 50));
+    --tertiary-container: oklch(0.37 0.10 calc(var(--accent-h) - 50));
+    --on-tertiary-container: oklch(0.93 0.05 calc(var(--accent-h) - 50));
+
+    --surface: oklch(0.11 0 0);
+    --surface-dim: oklch(0.08 0 0);
+    --surface-bright: oklch(0.20 0 0);
+    --surface-container-lowest: oklch(0.06 0 0);
+    --surface-container-low: oklch(0.13 0 0);
+    --surface-container: oklch(0.16 0 0);
+    --surface-container-high: oklch(0.20 0 0);
+    --surface-container-highest: oklch(0.25 0 0);
+
+    --on-surface: oklch(0.93 0 0);
+    --on-surface-variant: oklch(0.74 0 0);
+    --outline: oklch(0.58 0 0);
+    --outline-variant: oklch(0.28 0 0);
+
+    color-scheme: dark;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --motion: 0.01; }
+}

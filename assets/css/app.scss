@@ -7,15 +7,37 @@
 }
 
 /* View Transitions custom animations */
-@keyframes vt-fade-in { from { opacity: 0; } to { opacity: 1; } }
-@keyframes vt-fade-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes vt-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes vt-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: calc(500ms * var(--motion, 1));
   animation-timing-function: var(--spring-emphasized, cubic-bezier(0.05, 0.7, 0.1, 1));
 }
-::view-transition-old(root) { animation-name: vt-fade-out; }
-::view-transition-new(root) { animation-name: vt-fade-in; }
+
+::view-transition-old(root) {
+  animation-name: vt-fade-out;
+}
+
+::view-transition-new(root) {
+  animation-name: vt-fade-in;
+}
 
 /* Morphing project cards */
 [style*="view-transition-name: project-"]::view-transition-group,
@@ -25,7 +47,16 @@
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); opacity: 0.5; }
-  70% { transform: scale(2.4); opacity: 0; }
-  100% { transform: scale(2.4); opacity: 0; }
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  70% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
 }

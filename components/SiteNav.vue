@@ -102,10 +102,11 @@ function onNavClick(e: MouseEvent, id: string) {
 
       <div :style="{ display: 'flex', alignItems: 'center', gap: '10px' }">
         <a
-          href="#"
+          href="/Luna_Parker.pdf"
+          target="_blank"
+          rel="noopener"
           class="btn btn-outlined hide-on-mobile"
           :style="{ padding: '8px 16px', fontSize: '14px', whiteSpace: 'nowrap', flexShrink: 0 }"
-          @click.prevent
         >
           <UiIcon name="download" :size="16" /> Resume
         </a>

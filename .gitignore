@@ -33,3 +33,6 @@ Thumbs.db
 
 # Editor — JetBrains user state lives in .idea/.gitignore
 # (shared project config in .idea/ is committed)
+
+# Icon generator font cache (re-fetched on demand)
+scripts/.cache

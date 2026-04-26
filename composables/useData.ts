@@ -14,6 +14,7 @@ export interface Luna {
   availability: string
   tagline: string
   bio: string
+  about: string[]
 }
 
 export interface WhatIDo {
@@ -110,7 +111,12 @@ const DATA: PortfolioData = {
     current: 'shyowlstudios.com',
     availability: 'Open to Fall 2026 co-op',
     tagline: 'Developer, designer, and problem solver.',
-    bio: 'Full-stack web developer with 8+ years of experience building tailored digital solutions for businesses of all sizes. Currently finishing an Honours Bachelor of Computer Science with a Security Specialization at Conestoga College.',
+    bio: 'Full-stack web developer with 8+ years of experience (mostly through my own consultancy, Shy Owl Studios). Currently finishing an Honours Bachelor of Computer Science with a Security Specialisation at Conestoga College.',
+    about: [
+      "I'm a full-stack developer; I've been building for the web since high school. Through my own consultancy, <b>Shy Owl Studios</b>, I've delivered dozens of websites and web applications for clients ranging from local businesses to nation-wide brands.",
+      "I specialise in Laravel and WordPress (and, in practice, whatever else the problem calls for). After all, the right tool is rarely the trendiest one. I pair the technical work with strong client relations, project management, and a genuine commitment to helping organisations thrive.",
+      "I'm currently pursuing an Honours Bachelor of Computer Science with a Security Specialisation at Conestoga, where I've deepened my understanding of low-level programming, secure systems design, and collaborative software development. I started my postsecondary studies at the University of Toronto (studying CS and philosophy); that year still shapes how I reason about complex problems.",
+    ],
   },
 
   whatIDo: [
@@ -231,7 +237,7 @@ const DATA: PortfolioData = {
         { label: 'Invoicing platform', body: 'Customized InvoiceNinja deployment integrated into existing workflow.' },
         { label: 'Systems integration', body: 'All tools connected to improve operational efficiency across the business.' },
       ],
-      why: 'A great example of approaching client work holistically — not just building a website, but understanding the business and building connected systems that make the whole operation run better.',
+      why: "A great example of approaching client work holistically: not just building a website, but understanding the business and building connected systems that make the whole operation run better. After all, a beautiful storefront doesn't help much if the team behind it is still tracking inventory in spreadsheets.",
     },
     {
       id: 'jarvis-ryan',
@@ -251,7 +257,7 @@ const DATA: PortfolioData = {
         { label: 'Enterprise integration', body: 'Direct integration with existing Microsoft Server / IIS infrastructure.' },
         { label: 'Privacy-grade security', body: 'Authentication and file handling designed for financial document exchange.' },
       ],
-      why: 'Showcases working within existing enterprise infrastructure while building modern, secure Laravel applications. A real-world example of software that solves a specific business problem.',
+      why: 'Demonstrates working within existing enterprise infrastructure (Microsoft Server, IIS, the whole stack their IT team was already committed to) while building modern, secure Laravel applications on top. A real-world example of software that solves a specific business problem rather than chasing the latest framework.',
     },
     {
       id: 'blsc',
@@ -271,7 +277,7 @@ const DATA: PortfolioData = {
         { label: 'Laravel backend', body: 'Secure, scalable foundation for member features.' },
         { label: 'Admin tools', body: 'Club controls for member experience and communications.' },
       ],
-      why: 'A community-driven organization where the software has to be trustworthy, approachable, and operable by volunteers.',
+      why: 'A community-driven organisation where the software has to be trustworthy, approachable, and operable by volunteers. As such, the design choices were as much about onboarding the next club admin as they were about the members themselves.',
     },
     {
       id: 'brightspace-mcp',
@@ -290,7 +296,7 @@ const DATA: PortfolioData = {
         { label: 'Published to npm', body: 'One-line install: npx brightspace-mcp-server@latest.' },
         { label: 'Built for my workflow', body: 'I built it for myself as a student, then published for others.' },
       ],
-      why: 'Demonstrates engagement with cutting-edge AI tooling and the Model Context Protocol. A practical utility I built, dogfooded, and shipped.',
+      why: 'Demonstrates engagement with the Model Context Protocol (one of the more interesting developments in AI tooling lately) and a willingness to scratch my own itch in public. After all, the best tools are usually built by the people who needed them first.',
     },
     {
       id: 'swift-weather',
@@ -308,7 +314,7 @@ const DATA: PortfolioData = {
         { label: 'Native iOS', body: 'Built end-to-end in Swift with SwiftUI.' },
         { label: 'Canadian weather data', body: 'Real API integration for forecast data.' },
       ],
-      why: 'Shows breadth beyond web — comfort with native mobile development, SwiftUI, and API integration.',
+      why: "Shows breadth beyond web: comfort with native mobile development, SwiftUI, and API integration. A small project, but a deliberate one; proof that I'll learn an entire ecosystem (Xcode, Swift Package Manager, the lot) when a problem calls for it.",
     },
   ],
 

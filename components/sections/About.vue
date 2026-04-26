@@ -18,14 +18,11 @@ const data = useData()
         :style="{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.1fr) minmax(0, 0.9fr)', gap: 'clamp(24px, 4vw, 72px)', alignItems: 'start' }"
       >
         <UiReveal>
-          <p class="body-lg" :style="{ fontSize: '1.25rem', lineHeight: 1.55, color: 'var(--on-surface)', marginBottom: '20px' }">
-            I'm a full-stack developer who's been building for the web since high school. Through my own consultancy, <b>Shy Owl Studios</b>, I've delivered dozens of websites and web applications for clients ranging from local businesses to nation-wide brands.
-          </p>
-          <p class="body-lg" :style="{ color: 'var(--on-surface-variant)', marginBottom: '20px' }">
-            I specialize in Laravel, WordPress, and whatever else the problem calls for. I combine technical skill with strong client relations, project management, and a genuine commitment to helping organizations thrive.
-          </p>
+          <p class="body-lg" :style="{ fontSize: '1.25rem', lineHeight: 1.55, color: 'var(--on-surface)', marginBottom: '20px' }" v-html="data.luna.about[0]"/>
+          <p class="body-lg" :style="{ color: 'var(--on-surface-variant)', marginBottom: '20px' }" v-html="data.luna.about[1]"/>
           <p class="body-lg" :style="{ color: 'var(--on-surface-variant)' }">
-            Currently pursuing an Honours Bachelor of Computer Science with a Security Specialization at Conestoga — where I've deepened my understanding of low-level programming, secure systems design, and collaborative software development. I originally began my postsecondary studies at the University of Toronto, studying CS and philosophy — an experience that still shapes how I reason about complex problems. <UiAvailabilityPill compact />
+            <span v-html="data.luna.about[2]"/>
+            <UiAvailabilityPill compact />
           </p>
         </UiReveal>
 

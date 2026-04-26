@@ -4,10 +4,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Orientation
 
-This repo has **two cooperating deployments**:
+This repo has **two cooperating deployments**, both on Cloudflare:
 
-1. **Static Nuxt 3 portfolio** at the repo root → built with `nuxt generate`, deployed to GitHub Pages, served at `shyowlstudios.com` (and intended `lunaparker.dev`).
-2. **Cloudflare Worker** at `worker/` (`shyowl-contact`) → handles the contact form. Verifies a Turnstile CAPTCHA, then forwards submissions to a private Discord webhook. Routed at `shyowlstudios.com/api/contact*`.
+1. **Static Nuxt 3 portfolio** at the repo root → built with `nuxt generate`, deployed to Cloudflare Pages (project `lunaparker-portfolio`), served at `shyowlstudios.com` (and intended `lunaparker.dev`).
+2. **Cloudflare Worker** at `worker/` (`shyowl-contact`) → handles the contact form. Verifies a Turnstile CAPTCHA, then forwards submissions to a private Discord webhook. Routed at `shyowlstudios.com/api/contact*`. Worker routes take precedence over Pages, so they coexist on the same hostname.
 
 `README.md` covers the Nuxt setup, build, deploy, and design system in depth. **Don't duplicate it; consult it.** This file documents the rest.
 
@@ -76,8 +76,8 @@ Drop the secret into `worker/.dev.vars` (template at `worker/.dev.vars.example`)
 
 ## Deployment topology
 
-- **Pages**: GitHub Pages serves `.output/public/` from the `master` branch's deploy artifact (via the GH Actions workflow described in README).
-- **DNS**: `shyowlstudios.com` and `lunaparker.dev` are both Cloudflare zones. Cloudflare proxies the apex → GitHub Pages, then peels off `/api/contact*` and routes it to the Worker before it ever hits Pages.
+- **Pages**: Cloudflare Pages serves `.output/public/` from the `master` branch via `wrangler pages deploy` in the GH Actions workflow described in README. Project name is `lunaparker-portfolio`. GitHub repo needs `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` secrets for the Action to authenticate.
+- **DNS**: `shyowlstudios.com` and `lunaparker.dev` are both Cloudflare zones. Custom domains are bound to the Pages project via the Cloudflare dashboard (**Pages → lunaparker-portfolio → Custom domains**). The Worker route `shyowlstudios.com/api/contact*` takes precedence over Pages on the same hostname, so the contact form keeps working unchanged.
 - **Worker** deploys are wholly independent of the site deploy — `wrangler deploy` from `worker/` is enough.
 - The `public/` dir contains a legacy `privacy.html` + its CSS deps that are copied verbatim by Nuxt; don't break those paths.
 

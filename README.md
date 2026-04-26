@@ -1,6 +1,6 @@
 # lunaparker.github.io
 
-Personal developer + designer portfolio for Luna Parker. Built with Nuxt 3 + TypeScript + SCSS. Deploys to GitHub Pages on push to `master` and serves at `lunaparker.com` / `shyowlstudios.com` via CNAME.
+Personal developer + designer portfolio for Luna Parker. Built with Nuxt 3 + TypeScript + SCSS. Deploys to Cloudflare Pages on push to `master` and serves at `shyowlstudios.com` (and intended `lunaparker.dev`).
 
 ## Stack
 
@@ -24,7 +24,7 @@ Edit any file under `components/`, `pages/`, `composables/`, or `assets/css/` an
 
 ## Production build
 
-The site is shipped as static HTML (no Node server at runtime) so it works on GitHub Pages.
+The site is shipped as static HTML (no Node server at runtime).
 
 ```bash
 npm run generate     # writes .output/public/ — the deployable static bundle
@@ -35,13 +35,19 @@ Output is in `.output/public/`. Both `index.html` and `writing/*.html` are pre-r
 
 ## Deploy
 
-GitHub Actions handles deploy on push to `master`:
+GitHub Actions handles deploy on push to `master`, shipping to **Cloudflare Pages** (project: `lunaparker-portfolio`):
 
-- `.github/workflows/deploy.yml` — runs `npm ci && npx nuxi generate`, uploads `.output/public/` as a Pages artifact, deploys via `actions/deploy-pages`.
-- `CNAME` at the repo root pins the Pages site to the custom domain.
-- First-time setup: in the repo's **Settings → Pages**, set *Source: GitHub Actions*.
+- `.github/workflows/deploy.yml` — runs `npm ci && npx nuxi generate`, then `wrangler pages deploy .output/public` via `cloudflare/wrangler-action`.
+- Custom domain (`shyowlstudios.com`) is bound to the Pages project in the Cloudflare dashboard. The Worker route `shyowlstudios.com/api/contact*` takes precedence over Pages, so the contact form keeps working unchanged.
 
-Manual deploy: trigger the workflow from the Actions tab (it has `workflow_dispatch`).
+First-time setup:
+
+1. Create the Pages project: `cd /tmp && npx wrangler pages project create lunaparker-portfolio --production-branch=master` (or via the Cloudflare dashboard).
+2. Generate a Cloudflare API token with **Account → Cloudflare Pages → Edit** scope and grab your account ID.
+3. Add `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` as GitHub repo secrets (**Settings → Secrets and variables → Actions**).
+4. After the first deploy, attach `shyowlstudios.com` (and `www`) to the Pages project under **Pages → lunaparker-portfolio → Custom domains**. Cloudflare will swap the existing DNS records automatically since the zone is on the same account.
+
+Manual deploy: trigger the workflow from the Actions tab (it has `workflow_dispatch`), or run `npx wrangler pages deploy .output/public --project-name=lunaparker-portfolio` locally after `npm run generate`.
 
 ## Project layout
 

@@ -56,6 +56,33 @@ export default defineNuxtConfig({
           name: 'description',
           content: "Full-stack web developer and designer with 8+ years' experience. Honours BCS student at Conestoga — available for Fall 2026 co-op.",
         },
+        { name: 'theme-color', content: '#8A2387' },
+        // Open Graph
+        { property: 'og:type', content: 'website' },
+        { property: 'og:site_name', content: 'Luna Parker' },
+        { property: 'og:title', content: 'Luna Parker — Developer & Designer' },
+        {
+          property: 'og:description',
+          content: "Full-stack web developer and designer with 8+ years' experience. Honours BCS student at Conestoga — available for Fall 2026 co-op.",
+        },
+        { property: 'og:image', content: 'https://shyowlstudios.com/og-image.png' },
+        { property: 'og:image:width', content: '1200' },
+        { property: 'og:image:height', content: '630' },
+        { property: 'og:url', content: 'https://shyowlstudios.com/' },
+        // Twitter
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: 'Luna Parker — Developer & Designer' },
+        {
+          name: 'twitter:description',
+          content: "Full-stack web developer and designer with 8+ years' experience.",
+        },
+        { name: 'twitter:image', content: 'https://shyowlstudios.com/og-image.png' },
+      ],
+      link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico', sizes: 'any' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+        { rel: 'manifest', href: '/site.webmanifest' },
       ],
     },
   },
@@ -77,7 +104,6 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'github-pages',
     prerender: {
       // Skip /writing routes unless the flag is explicitly enabled at build time.
       // Keeps the deployed bundle clean of placeholder blog content.

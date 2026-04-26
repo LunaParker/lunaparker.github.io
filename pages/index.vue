@@ -6,6 +6,9 @@ import ProjectsSection from '~/components/sections/Projects.vue'
 import WritingSection from '~/components/sections/Writing.vue'
 import SkillsSection from '~/components/sections/Skills.vue'
 import ContactSection from '~/components/sections/Contact.vue'
+
+const config = useRuntimeConfig()
+const writingEnabled = Boolean(config.public.writingEnabled)
 </script>
 
 <template>
@@ -14,7 +17,7 @@ import ContactSection from '~/components/sections/Contact.vue'
     <AboutSection />
     <ExperienceSection />
     <ProjectsSection />
-    <WritingSection />
+    <WritingSection v-if="writingEnabled" />
     <SkillsSection />
     <ContactSection />
   </div>

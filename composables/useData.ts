@@ -127,7 +127,7 @@ const DATA: PortfolioData = {
       org: 'Shy Owl Studios',
       period: 'Apr 2018 — Present',
       type: 'Freelance',
-      location: 'Fergus, ON (Remote)',
+      location: 'Ontario (Remote)',
       blurb: 'My own consultancy and web solutions firm. Work on contract for agencies and directly with clients.',
       bullets: [
         'Deliver tailored digital solutions for businesses of all sizes — Laravel, WordPress, Shopify, Magento.',
@@ -178,7 +178,7 @@ const DATA: PortfolioData = {
       org: 'Intelligent Computer Systems',
       period: 'Apr 2018 — 2024',
       type: 'Contract',
-      location: 'Fergus, ON (Hybrid)',
+      location: 'Ontario (Hybrid)',
       blurb: 'Contract web designer and developer for a local IT firm, building sites and apps for their clients.',
       bullets: [],
       stack: ['WordPress', 'Laravel', 'PHP', 'SCSS'],

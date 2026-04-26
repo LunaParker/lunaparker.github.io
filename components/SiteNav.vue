@@ -1,17 +1,23 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
 const scrolled = ref(false)
 const menuOpen = ref(false)
 
-const items = [
-  { id: 'about', label: 'About' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'writing', label: 'Writing' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'contact', label: 'Contact' },
-]
+const config = useRuntimeConfig()
+const writingEnabled = Boolean(config.public.writingEnabled)
+
+const items = computed(() => {
+  const base = [
+    { id: 'about', label: 'About' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'writing', label: 'Writing' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'contact', label: 'Contact' },
+  ]
+  return writingEnabled ? base : base.filter(i => i.id !== 'writing')
+})
 
 const route = useRoute()
 

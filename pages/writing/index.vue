@@ -3,8 +3,20 @@ import { onMounted } from 'vue'
 import { useData } from '~/composables/useData'
 
 const data = useData()
+const config = useRuntimeConfig()
+const siteUrl = String(config.public.siteUrl ?? 'https://shyowlstudios.com')
 
 definePageMeta({ viewTransition: true })
+
+useHead({
+  title: 'Writing — Luna Parker',
+})
+useSeoMeta({
+  description: 'Essays, tutorials, and opinionated takes on Laravel, security, AI tooling, and being a senior dev and undergrad at the same time.',
+  ogTitle: 'Writing — Luna Parker',
+  ogDescription: 'Essays, tutorials, and opinionated takes on Laravel, security, AI tooling, and being a senior dev and undergrad at the same time.',
+  ogUrl: `${siteUrl}/writing`,
+})
 
 onMounted(() => {
   window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })

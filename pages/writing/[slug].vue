@@ -5,6 +5,8 @@ import { useData } from '~/composables/useData'
 const route = useRoute()
 const router = useRouter()
 const data = useData()
+const config = useRuntimeConfig()
+const siteUrl = String(config.public.siteUrl ?? 'https://shyowlstudios.com')
 
 definePageMeta({ viewTransition: true })
 
@@ -15,6 +17,24 @@ if (!post.value) {
 }
 
 const more = computed(() => data.value.blog.filter(p => p.id !== post.value!.id).slice(0, 2))
+
+const postUrl = computed(() => `${siteUrl}/writing/${post.value!.id}`)
+
+useHead({
+  title: () => `${post.value!.title} — Luna Parker`,
+})
+useSeoMeta({
+  description: () => post.value!.excerpt,
+  ogType: 'article',
+  ogTitle: () => post.value!.title,
+  ogDescription: () => post.value!.excerpt,
+  ogUrl: () => postUrl.value,
+  articlePublishedTime: () => post.value!.date,
+  articleAuthor: ['Luna Parker'],
+  articleTag: () => [post.value!.tag],
+  twitterTitle: () => post.value!.title,
+  twitterDescription: () => post.value!.excerpt,
+})
 
 function formatDate(iso: string) {
   const d = new Date(iso)

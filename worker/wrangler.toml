@@ -1,0 +1,16 @@
+name = "shyowl-contact"
+main = "src/index.ts"
+compatibility_date = "2025-04-01"
+
+# Public, non-secret config. Comma-separated list of origins allowed to POST.
+[vars]
+ALLOWED_ORIGINS = "https://shyowlstudios.com,https://www.shyowlstudios.com,https://lunaparker.dev,https://www.lunaparker.dev,https://lunaparker.github.io,http://localhost:3000"
+
+# Set secrets via:
+#   wrangler secret put TURNSTILE_SECRET
+#   wrangler secret put DISCORD_WEBHOOK_URL
+
+# Route binding: same-origin contact endpoint on the apex domain.
+[[routes]]
+pattern = "shyowlstudios.com/api/contact*"
+zone_name = "shyowlstudios.com"

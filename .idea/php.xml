@@ -7,9 +7,7 @@
     <option name="transferred" value="true" />
   </component>
   <component name="PHPCodeSnifferOptionsConfiguration">
-    <option name="transferred" value="true" />
-  </component>
-  <component name="PhpStanOptionsConfiguration">
+    <option name="highlightLevel" value="WARNING" />
     <option name="transferred" value="true" />
   </component>
 </project>

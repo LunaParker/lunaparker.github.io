@@ -29,8 +29,7 @@ onMounted(() => {
       </div>
 
       <h1 class="title">
-        <span class="gradient">Privacy</span>
-        <span :style="{ fontStyle: 'italic', fontWeight: 300 }"> policy.</span>
+        <span class="gradient">Privacy Policy</span>
       </h1>
 
       <div class="prose">
@@ -237,14 +236,15 @@ onMounted(() => {
   }
 
   li {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 14px;
+    position: relative;
+    padding-left: 19px;
     color: var(--on-surface-variant);
 
     &::before {
       content: '';
-      margin-top: 10px;
+      position: absolute;
+      left: 0;
+      top: 0.7em;
       width: 5px;
       height: 5px;
       border-radius: 50%;

@@ -82,7 +82,7 @@ Drop the secret into `worker/.dev.vars` (template at `worker/.dev.vars.example`)
 - **Pages**: Cloudflare Pages serves `.output/public/` from the `master` branch via `wrangler pages deploy` in the GH Actions workflow described in README. Project name is `lunaparker-portfolio`. GitHub repo needs `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` secrets for the Action to authenticate.
 - **DNS**: `shyowlstudios.com` and `lunaparker.dev` are both Cloudflare zones. Custom domains are bound to the Pages project via the Cloudflare dashboard (**Pages → lunaparker-portfolio → Custom domains**). The Worker route `shyowlstudios.com/api/contact*` takes precedence over Pages on the same hostname, so the contact form keeps working unchanged.
 - **Worker** deploys are wholly independent of the site deploy — `wrangler deploy` from `worker/` is enough.
-- The `public/` dir contains a legacy `privacy.html` + its CSS deps that are copied verbatim by Nuxt; don't break those paths.
+- The privacy policy lives at the Nuxt page `pages/privacy.vue` (route `/privacy`).
 
 ## Known thin spots
 

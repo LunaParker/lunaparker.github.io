@@ -26,8 +26,9 @@
           <a href="https://github.com/lunaparker" target="_blank" rel="noreferrer">GitHub</a>
           <a href="https://linkedin.com/in/luna-parker" target="_blank" rel="noreferrer">LinkedIn</a>
           <a href="/Luna_Parker.pdf" target="_blank" rel="noopener">Resume</a>
+          <NuxtLink to="/privacy">Privacy</NuxtLink>
           <span :style="{ display: 'inline-flex', alignItems: 'center', gap: '6px' }">
-            Made with <UiIcon name="heart" :size="13" :style="{ color: '#E94057' }" /> in 🍁 Canada
+            Made with ❤️ in 🍁 Canada
           </span>
         </div>
       </div>

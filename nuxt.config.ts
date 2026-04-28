@@ -92,7 +92,7 @@ export default defineNuxtConfig({
       // Override at build time with NUXT_PUBLIC_TURNSTILE_SITE_KEY and NUXT_PUBLIC_CONTACT_ENDPOINT.
       // Default endpoint is absolute so the form works from any deployed origin
       // (shyowlstudios.com, lunaparker.dev, lunaparker.github.io).
-      turnstileSiteKey: '0x4AAAAAADD0v3nrGL0gqLEF',
+      turnstileSiteKey: '0x4AAAAAADD0v3nrGLOgqLEF',
       contactEndpoint: 'https://shyowlstudios.com/api/contact',
       // Gate the Writing/blog section and /writing routes. Off until real
       // posts exist; flip via NUXT_PUBLIC_WRITING_ENABLED=true.

@@ -62,7 +62,7 @@ Contact.vue ──POST JSON──▶  shyowlstudios.com/api/contact  ──▶  
 
 | Variable | Where set | Notes |
 |---|---|---|
-| `runtimeConfig.public.turnstileSiteKey` | `nuxt.config.ts` | Public site key, baked at build. Currently `0x4AAAAAADD0v3nrGL0gqLEF`. Override per-build with `NUXT_PUBLIC_TURNSTILE_SITE_KEY`. |
+| `runtimeConfig.public.turnstileSiteKey` | `nuxt.config.ts` | Public site key, baked at build. Currently `0x4AAAAAADD0v3nrGLOgqLEF`. Override per-build with `NUXT_PUBLIC_TURNSTILE_SITE_KEY`. |
 | `runtimeConfig.public.contactEndpoint` | `nuxt.config.ts` | Defaults to `https://shyowlstudios.com/api/contact` (absolute, so it works from any deployed host). Override with `NUXT_PUBLIC_CONTACT_ENDPOINT`. |
 | `runtimeConfig.public.writingEnabled` | `nuxt.config.ts` | `false` by default — hides the Writing section + nav item, and prevents `/writing*` from being statically generated. Set `NUXT_PUBLIC_WRITING_ENABLED=true` to re-enable when real posts exist. |
 | `ALLOWED_ORIGINS` | `worker/wrangler.toml` `[vars]` | Comma-separated CORS allowlist. Currently: `shyowlstudios.com`, `www.shyowlstudios.com`, `lunaparker.dev`, `www.lunaparker.dev`, `lunaparker.github.io`, `localhost:3000`. |

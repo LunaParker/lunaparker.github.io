@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
-import { useData } from '~/composables/useData'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 
-const data = useData()
 const config = useRuntimeConfig()
 const turnstileSiteKey = String(config.public.turnstileSiteKey ?? '')
 const contactEndpoint = String(config.public.contactEndpoint ?? '/api/contact')
@@ -126,12 +124,12 @@ async function onSubmit(e: Event) {
   }
 }
 
-const rows = computed(() => [
-  { icon: 'mail' as const, label: 'Email', val: data.value.luna.email, href: `mailto:${data.value.luna.email}` },
-  { icon: 'pin' as const, label: 'Location', val: data.value.luna.location, href: null as string | null },
-  { icon: 'linkedin' as const, label: 'LinkedIn', val: data.value.luna.linkedin, href: `https://${data.value.luna.linkedin}` },
-  { icon: 'github' as const, label: 'GitHub', val: data.value.luna.github, href: `https://${data.value.luna.github}` },
-])
+const rows: { icon: 'mail' | 'pin' | 'linkedin' | 'github', label: string, val: string, href: string | null }[] = [
+  { icon: 'mail', label: 'Email', val: 'luna@shyowlstudios.com', href: 'mailto:luna@shyowlstudios.com' },
+  { icon: 'pin', label: 'Location', val: 'Ontario, Canada', href: null },
+  { icon: 'linkedin', label: 'LinkedIn', val: 'linkedin.com/in/luna-parker', href: 'https://linkedin.com/in/luna-parker' },
+  { icon: 'github', label: 'GitHub', val: 'github.com/lunaparker', href: 'https://github.com/lunaparker' },
+]
 </script>
 
 <template>

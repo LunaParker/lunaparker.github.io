@@ -3,25 +3,6 @@ import type { DeepReadonly, Ref } from 'vue'
 
 export type AccentKey = 'primary' | 'secondary' | 'tertiary'
 
-export interface Luna {
-  name: string
-  pronouns: string
-  location: string
-  email: string
-  linkedin: string
-  github: string
-  current: string
-  availability: string
-  tagline: string
-  bio: string
-  about: string[]
-}
-
-export interface WhatIDo {
-  verb: string
-  body: string
-}
-
 export interface Experience {
   id: string
   role: string
@@ -83,49 +64,15 @@ export interface Skills {
   [category: string]: string[]
 }
 
-export interface Service {
-  title: string
-  body: string
-  icon: string
-}
-
 export interface PortfolioData {
-  luna: Luna
-  whatIDo: WhatIDo[]
   experience: Experience[]
   education: Education[]
   projects: Project[]
   blog: BlogPost[]
   skills: Skills
-  services: Service[]
 }
 
 const DATA: PortfolioData = {
-  luna: {
-    name: 'Luna Parker',
-    pronouns: 'she/her',
-    location: 'Ontario, Canada',
-    email: 'luna@shyowlstudios.com',
-    linkedin: 'linkedin.com/in/luna-parker',
-    github: 'github.com/lunaparker',
-    current: 'shyowlstudios.com',
-    availability: 'Open to Fall 2026 co-op',
-    tagline: 'Developer, designer, and problem solver.',
-    bio: 'Full-stack web developer with 8+ years of experience (mostly through my own consultancy, Shy Owl Studios). Currently finishing an Honours Bachelor of Computer Science with a Security Specialisation at Conestoga College.',
-    about: [
-      "I'm a full-stack developer; I've been building for the web since high school. Through my own consultancy, <b>Shy Owl Studios</b>, I've delivered dozens of websites and web applications for clients ranging from local businesses to nation-wide brands.",
-      "I specialise in Laravel and WordPress (and, in practice, whatever else the problem calls for). After all, the right tool is rarely the trendiest one. I pair the technical work with strong client relations, project management, and a genuine commitment to helping organisations thrive.",
-      "I'm currently pursuing an Honours Bachelor of Computer Science with a Security Specialisation at Conestoga, where I've deepened my understanding of low-level programming, secure systems design, and collaborative software development. I started my postsecondary studies at the University of Toronto (studying CS and philosophy); that year still shapes how I reason about complex problems.",
-    ],
-  },
-
-  whatIDo: [
-    { verb: 'Build', body: 'High-performance websites and web applications using modern frameworks and battle-tested platforms.' },
-    { verb: 'Design', body: "User-friendly interfaces that align with an organization's brand and help them accomplish their goals." },
-    { verb: 'Solve', body: 'Custom software — from inventory systems to secure client portals — that makes businesses more productive.' },
-    { verb: 'Consult', body: 'Direct collaboration with clients to identify requirements, recommend stacks, and manage timelines.' },
-  ],
-
   experience: [
     {
       id: 'shy-owl',
@@ -377,15 +324,6 @@ const DATA: PortfolioData = {
     Tools: ['Git', 'Docker', 'Figma', 'Cloudflare', 'Microsoft Server / IIS', 'InvoiceNinja', 'CI/CD'],
     Practices: ['Full-stack Development', 'UX/UI Design', 'Project Management', 'TDD', 'Agile/Scrum', 'API Integration', 'Database Design', 'Information Security', 'Client Relations', 'Technical Writing'],
   },
-
-  services: [
-    { title: 'Web Design', body: 'User-centred design that aligns with your brand and business goals.', icon: 'webDesign' },
-    { title: 'Web Development', body: 'Full-stack using Laravel, WordPress, Vue.js, and more.', icon: 'webDev' },
-    { title: 'Custom Software', body: "Bespoke applications tailored to your organization's workflows.", icon: 'custom' },
-    { title: 'IT Consulting', body: 'Technology recommendations, project planning, stack guidance.', icon: 'consult' },
-    { title: 'WordPress Solutions', body: 'Custom themes, plugins, WooCommerce stores, ongoing maintenance.', icon: 'wordpress' },
-    { title: 'Database Development', body: 'Schema design, optimization, and secure data handling.', icon: 'database' },
-  ],
 }
 
 const _data = ref(DATA)

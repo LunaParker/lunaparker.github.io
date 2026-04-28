@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { useData } from '~/composables/useData'
-
-const data = useData()
 </script>
 
 <template>
@@ -26,12 +23,11 @@ const data = useData()
           © 2026 Luna Parker
         </div>
         <div :style="{ display: 'flex', gap: '18px', fontSize: '13px', color: 'var(--on-surface-variant)', alignItems: 'center', flexWrap: 'wrap' }">
-          <a :href="`https://${data.luna.github}`" target="_blank" rel="noreferrer">GitHub</a>
-          <a :href="`https://${data.luna.linkedin}`" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://github.com/lunaparker" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://linkedin.com/in/luna-parker" target="_blank" rel="noreferrer">LinkedIn</a>
           <a href="/Luna_Parker.pdf" target="_blank" rel="noopener">Resume</a>
           <span :style="{ display: 'inline-flex', alignItems: 'center', gap: '6px' }">
-            Made with <UiIcon name="heart" :size="13" :style="{ color: '#E94057' }" /> in
-            <UiIcon name="maple" :size="14" :style="{ color: '#FF0000' }" /> Canada
+            Made with <UiIcon name="heart" :size="13" :style="{ color: '#E94057' }" /> in 🍁 Canada
           </span>
         </div>
       </div>

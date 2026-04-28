@@ -29,11 +29,11 @@ useSeoMeta({
 const personLd = computed(() => ({
   '@context': 'https://schema.org',
   '@type': 'Person',
-  'name': data.value.luna.name,
+  'name': 'Luna Parker',
   'jobTitle': 'Software Developer & Designer',
-  'description': data.value.luna.bio,
+  'description': 'Full-stack web developer with 8+ years of experience (mostly through my own consultancy, Shy Owl Studios). Currently finishing an Honours Bachelor of Computer Science with a Security Specialisation at Conestoga College.',
   'url': siteUrl,
-  'email': `mailto:${data.value.luna.email}`,
+  'email': 'mailto:luna@shyowlstudios.com',
   'address': {
     '@type': 'PostalAddress',
     'addressRegion': 'Ontario',
@@ -44,8 +44,8 @@ const personLd = computed(() => ({
     'name': e.school,
   })),
   'sameAs': [
-    `https://${data.value.luna.linkedin}`,
-    `https://${data.value.luna.github}`,
+    'https://linkedin.com/in/luna-parker',
+    'https://github.com/lunaparker',
   ],
   'worksFor': {
     '@type': 'Organization',

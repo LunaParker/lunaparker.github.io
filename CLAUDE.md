@@ -36,15 +36,18 @@ npx wrangler tail        # stream live Worker logs
 
 There are no tests in this repo.
 
-## Content is data-driven
+## Where content lives
 
-`composables/useData.ts` is the **single source of truth** for everything Luna-shaped: bio, experience, education, projects, blog posts, skills, services. Section components in `components/sections/` are thin wrappers that call `useData()` and render.
+The split is by shape, not by topic:
 
-**To change copy, edit `useData.ts` — not the components.** A common mistake is to grep for a phrase, find it inside a Vue template, and edit it there; the actual content usually lives in `useData.ts` and is bound through props.
+- **`composables/useData.ts`** holds list-shaped data that grows over time: `experience`, `education`, `projects`, `blog`, `skills`. Section components consume it via `useData()`.
+- **Static identity copy lives directly in the component that renders it.** Bio, about paragraphs, email, LinkedIn, GitHub, location, the four "what I do" cards, the services grid in Skills.vue — all inline as local `const`s or template literals. Don't grep `useData.ts` looking for them; they're next to the JSX.
+
+Rule of thumb: if you'd add a new entry to a list (another job, another project, another blog post), it belongs in `useData.ts`. If it's a one-off fact about Luna or a fixed bit of marketing copy, it belongs inline in the component.
 
 Notes:
-- The `services` array is defined but **intentionally not rendered** anywhere — it's a relic from the old agency framing kept around in case it's wanted again. Don't wire it up without checking.
 - The `blog` array currently holds **placeholder posts**, not real essays. The Writing section + nav item are gated behind `runtimeConfig.public.writingEnabled` (default `false`). Flip via `NUXT_PUBLIC_WRITING_ENABLED=true`. With the flag off, nothing links to `/writing`, so the static generator doesn't crawl those routes — direct visits to `/writing` on the deployed site 404. In dev (`npm run dev`) the routes remain reachable for previewing drafts.
+- The services grid in `Skills.vue` is local to that file. It's a relic of the old agency framing but is currently rendered; remove it there if you want it gone.
 
 ## Contact form infrastructure
 
@@ -87,11 +90,11 @@ These are real follow-ups, not pretend ones — flag them if relevant to the wor
 
 - **"Resume" buttons in `components/SiteNav.vue` and `components/SiteFooter.vue` are dead** (`href="#"` with `@click.prevent`). A real PDF needs to be dropped in `public/` and the hrefs updated.
 - **The Writing section ships placeholder content** and is currently disabled via `writingEnabled = false`. Replace `useData.ts.blog` with real posts and flip the flag when ready.
-- **`useData.ts` content drifts out of sync with the actual resume/LinkedIn occasionally.** Treat it as the canonical site truth, but expect periodic reconciliation passes.
+- **`useData.ts` (experience, education, projects) drifts out of sync with the actual resume/LinkedIn occasionally.** Treat it as the canonical site truth, but expect periodic reconciliation passes.
 
 ## Conventions
 
 - Don't add new `*.md` files unless the user asks. CLAUDE.md and README.md are the only ones.
-- Site copy → `useData.ts`. Component templates should bind values, not hardcode them.
+- List-shaped data → `useData.ts`. Static identity / one-off copy → inline in the consuming component.
 - Secrets never enter the repo. Use `wrangler secret put` for Worker secrets; Nuxt `runtimeConfig.public.*` is **public** by definition (baked into the static bundle).
 - The Worker's `.dev.vars` is gitignored (`worker/.gitignore`) — keep it that way.

@@ -11,6 +11,15 @@ function chipVariant(i: number): 'primary' | 'tonal' | 'default' {
   if (i === 1) return 'tonal'
   return 'default'
 }
+
+const services = [
+  { title: 'Web Design', body: 'User-centred design that aligns with your brand and business goals.', icon: 'webDesign' },
+  { title: 'Web Development', body: 'Full-stack using Laravel, WordPress, Vue.js, and more.', icon: 'webDev' },
+  { title: 'Custom Software', body: "Bespoke applications tailored to your organization's workflows.", icon: 'custom' },
+  { title: 'IT Consulting', body: 'Technology recommendations, project planning, stack guidance.', icon: 'consult' },
+  { title: 'WordPress Solutions', body: 'Custom themes, plugins, WooCommerce stores, ongoing maintenance.', icon: 'wordpress' },
+  { title: 'Database Development', body: 'Schema design, optimization, and secure data handling.', icon: 'database' },
+]
 </script>
 
 <template>
@@ -51,7 +60,7 @@ function chipVariant(i: number): 'primary' | 'tonal' | 'default' {
         </div>
         <div class="services-grid" :style="{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }">
           <UiReveal
-            v-for="(svc, i) in data.services"
+            v-for="(svc, i) in services"
             :key="svc.title"
             :delay="i * 50"
           >

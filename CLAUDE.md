@@ -88,7 +88,6 @@ Drop the secret into `worker/.dev.vars` (template at `worker/.dev.vars.example`)
 
 These are real follow-ups, not pretend ones — flag them if relevant to the work:
 
-- **"Resume" buttons in `components/SiteNav.vue` and `components/SiteFooter.vue` are dead** (`href="#"` with `@click.prevent`). A real PDF needs to be dropped in `public/` and the hrefs updated.
 - **The Writing section ships placeholder content** and is currently disabled via `writingEnabled = false`. Replace `useData.ts.blog` with real posts and flip the flag when ready.
 - **`useData.ts` (experience, education, projects) drifts out of sync with the actual resume/LinkedIn occasionally.** Treat it as the canonical site truth, but expect periodic reconciliation passes.
 

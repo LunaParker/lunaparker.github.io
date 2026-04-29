@@ -29,7 +29,7 @@
           </div>
         </div>
 
-        <div class="stagger" :style="{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'flex-end' }">
+        <div class="stagger" :style="{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'flex-end', marginLeft: 'auto' }">
           <UiAvailabilityPill />
           <div class="mono" :style="{ fontSize: '12px', color: 'var(--on-surface-variant)' }">Ontario, Canada</div>
           <div class="mono" :style="{ fontSize: '12px', color: 'var(--on-surface-variant)' }">Remote · EST</div>

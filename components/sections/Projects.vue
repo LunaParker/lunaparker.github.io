@@ -38,7 +38,7 @@ const data = useData()
 </template>
 
 <style scoped lang="scss">
-@media (max-width: 960px) {
+@media (min-width: 601px) and (max-width: 960px) {
   .bento-grid {
     grid-template-columns: repeat(4, 1fr) !important;
     grid-auto-rows: 220px !important;

@@ -123,132 +123,111 @@ function onNavClick(e: MouseEvent, id: string) {
   </header>
 </template>
 
-<style scoped lang="scss">
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 40;
-  padding: 18px 0;
-  background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border-bottom: 1px solid transparent;
-  transition:
-    padding var(--dur-med) var(--spring-gentle),
-    background-color var(--dur-med) var(--spring-gentle),
-    backdrop-filter var(--dur-med);
-}
+<style scoped lang="stylus">
+.nav
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  z-index: 40
+  padding: 18px 0
+  background: transparent
+  backdrop-filter: none
+  -webkit-backdrop-filter: none
+  border-bottom: 1px solid transparent
+  transition: padding var(--dur-med) var(--spring-gentle), background-color var(--dur-med) var(--spring-gentle), backdrop-filter var(--dur-med)
 
-.nav--scrolled {
-  padding: 10px 0;
-  background: color-mix(in oklch, var(--surface) 78%, transparent);
-  backdrop-filter: saturate(1.3) blur(14px);
-  -webkit-backdrop-filter: saturate(1.3) blur(14px);
-  border-bottom: 1px solid var(--outline-variant);
-}
+.nav--scrolled
+  padding: 10px 0
+  background: unquote("color-mix(in oklch, var(--surface) 78%, transparent)")
+  backdrop-filter: saturate(1.3) blur(14px)
+  -webkit-backdrop-filter: saturate(1.3) blur(14px)
+  border-bottom: 1px solid var(--outline-variant)
 
-.nav__container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-}
+.nav__container
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: 24px
 
-.nav__brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-}
+.nav__brand
+  display: inline-flex
+  align-items: center
+  gap: 12px
 
-.nav__brand-text {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 17px;
-  letter-spacing: -0.02em;
-  color: var(--on-surface);
-}
+.nav__brand-text
+  font-family: var(--font-display)
+  font-weight: 800
+  font-size: 17px
+  letter-spacing: -0.02em
+  color: var(--on-surface)
 
-.nav__menu {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 4px;
-}
+.nav__menu
+  list-style: none
+  padding: 0
+  margin: 0
+  display: flex
+  gap: 4px
 
-.nav__link {
-  display: inline-block;
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--on-surface-variant);
-  transition:
-    background-color var(--dur-short) var(--spring-gentle),
-    color var(--dur-short) var(--spring-gentle);
-}
+.nav__link
+  display: inline-block
+  padding: 8px 14px
+  border-radius: 999px
+  font-size: 14px
+  font-weight: 500
+  color: var(--on-surface-variant)
+  transition: background-color var(--dur-short) var(--spring-gentle), color var(--dur-short) var(--spring-gentle)
 
-.nav__link:hover {
-  background: var(--surface-container-high);
-  color: var(--on-surface);
-}
+.nav__link:hover
+  background: var(--surface-container-high)
+  color: var(--on-surface)
 
-.nav__cta-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+.nav__cta-row
+  display: flex
+  align-items: center
+  gap: 10px
 
-.nav__cta {
-  padding: 8px 16px;
-  font-size: 14px;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
+.nav__cta
+  padding: 8px 16px
+  font-size: 14px
+  white-space: nowrap
+  flex-shrink: 0
 
-.nav__mobile-toggle {
-  display: none;
-  background: transparent;
-  border: 0;
-  padding: 8px;
-  cursor: pointer;
-  color: var(--on-surface);
-}
+.nav__mobile-toggle
+  display: none
+  background: transparent
+  border: 0
+  padding: 8px
+  cursor: pointer
+  color: var(--on-surface)
 
-.nav__mobile-panel {
-  position: absolute;
-  top: 100%;
-  left: 16px;
-  right: 16px;
-  margin-top: 8px;
-  background: var(--surface-container-high);
-  border: 1px solid var(--outline-variant);
-  border-radius: 20px;
-  padding: 12px;
-}
+.nav__mobile-panel
+  position: absolute
+  top: 100%
+  left: 16px
+  right: 16px
+  margin-top: 8px
+  background: var(--surface-container-high)
+  border: 1px solid var(--outline-variant)
+  border-radius: 20px
+  padding: 12px
 
-.nav__mobile-menu {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 2px;
-}
+.nav__mobile-menu
+  list-style: none
+  padding: 0
+  margin: 0
+  display: grid
+  gap: 2px
 
-.nav__mobile-link {
-  display: block;
-  padding: 12px 14px;
-  border-radius: 12px;
-  color: var(--on-surface);
-}
+.nav__mobile-link
+  display: block
+  padding: 12px 14px
+  border-radius: 12px
+  color: var(--on-surface)
 
-@media (max-width: 860px) {
-  .nav__mobile-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
+@media (max-width: 860px)
+  .nav__mobile-toggle
+    display: inline-flex
+    align-items: center
+    justify-content: center
 </style>

@@ -25,51 +25,44 @@
   </footer>
 </template>
 
-<style scoped lang="scss">
-.footer {
-  padding: 60px 0 40px;
-  border-top: 1px solid var(--outline-variant);
-  margin-top: 40px;
-}
+<style scoped lang="stylus">
+.footer
+  padding: 60px 0 40px
+  border-top: 1px solid var(--outline-variant)
+  margin-top: 40px
 
-.footer__container {
-  display: grid;
-  gap: 40px;
-}
+.footer__container
+  display: grid
+  gap: 40px
 
-.footer__wordmark {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 10vw, 10rem);
-  font-weight: 800;
-  letter-spacing: -0.06em;
-  line-height: 0.85;
-}
+.footer__wordmark
+  font-family: var(--font-display)
+  font-size: clamp(3rem, 10vw, 10rem)
+  font-weight: 800
+  letter-spacing: -0.06em
+  line-height: 0.85
 
-.footer__bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 16px;
-  flex-wrap: wrap;
-}
+.footer__bottom
+  display: flex
+  justify-content: space-between
+  align-items: flex-end
+  gap: 16px
+  flex-wrap: wrap
 
-.footer__copyright {
-  font-size: 12px;
-  color: var(--on-surface-variant);
-}
+.footer__copyright
+  font-size: 12px
+  color: var(--on-surface-variant)
 
-.footer__links {
-  display: flex;
-  gap: 18px;
-  font-size: 13px;
-  color: var(--on-surface-variant);
-  align-items: center;
-  flex-wrap: wrap;
-}
+.footer__links
+  display: flex
+  gap: 18px
+  font-size: 13px
+  color: var(--on-surface-variant)
+  align-items: center
+  flex-wrap: wrap
 
-.footer__credit {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
+.footer__credit
+  display: inline-flex
+  align-items: center
+  gap: 6px
 </style>

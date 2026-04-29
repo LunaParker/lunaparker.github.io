@@ -135,15 +135,14 @@ async function goHome() {
   </NuxtLayout>
 </template>
 
-<style scoped lang="scss">
-.error-jumplink {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--on-surface-variant);
-  text-decoration: none;
-  transition: color var(--dur-short) var(--spring-gentle);
-}
-.error-jumplink:hover {
-  color: var(--primary-text);
-}
+<style scoped lang="stylus">
+.error-jumplink
+  font-size: 14px
+  font-weight: 500
+  color: var(--on-surface-variant)
+  text-decoration: none
+  transition: color var(--dur-short) var(--spring-gentle)
+
+.error-jumplink:hover
+  color: var(--primary-text)
 </style>

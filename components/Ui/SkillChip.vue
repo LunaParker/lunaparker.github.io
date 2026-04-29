@@ -140,10 +140,15 @@ const isGithub = (url: string) => /github\.com/i.test(url)
   </span>
 </template>
 
-<style scoped lang="scss">
-@keyframes tip-in {
-  from { opacity: 0; transform: translateY(-4px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.skill-chip-link:hover { background: var(--surface-container); }
+<style scoped lang="stylus">
+@keyframes tip-in
+  from
+    opacity: 0
+    transform: translateY(-4px)
+  to
+    opacity: 1
+    transform: translateY(0)
+
+.skill-chip-link:hover
+  background: var(--surface-container)
 </style>

@@ -37,26 +37,21 @@ const rest = computed(() => data.value.blog.slice(1))
   </section>
 </template>
 
-<style scoped lang="scss">
-.writing {
-  position: relative;
-}
+<style scoped lang="stylus">
+.writing
+  position: relative
 
-.writing__grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: 18px;
-}
+.writing__grid
+  display: grid
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr)
+  gap: 18px
 
-.writing__list {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  gap: 18px;
-}
+.writing__list
+  display: grid
+  grid-template-rows: 1fr 1fr
+  gap: 18px
 
-@media (max-width: 860px) {
-  .writing__grid {
-    grid-template-columns: 1fr;
-  }
-}
+@media (max-width: 860px)
+  .writing__grid
+    grid-template-columns: 1fr
 </style>

@@ -1,12 +1,12 @@
 # lunaparker.github.io
 
-Personal developer + designer portfolio for Luna Parker. Built with Nuxt 3 + TypeScript + SCSS. Deploys to Cloudflare Pages on push to `master` and serves at `shyowlstudios.com` (and intended `lunaparker.dev`).
+Personal developer + designer portfolio for Luna Parker. Built with Nuxt 3 + TypeScript + Stylus. Deploys to Cloudflare Pages on push to `master` and serves at `shyowlstudios.com` (and intended `lunaparker.dev`).
 
 ## Stack
 
 - **Nuxt 3** (Vue 3, Vite) — file-based routing, SSG for static hosting
 - **TypeScript** — strict, `.nuxt/tsconfig.json` auto-generated
-- **SCSS** (`sass-embedded`) for all styles
+- **Stylus** (idiomatic indented syntax) for all styles
 - **@nuxt/fonts** — Plus Jakarta Sans, Roboto Flex, JetBrains Mono from Google Fonts
 - **@nuxt/eslint** — flat config at `eslint.config.mjs`
 
@@ -69,9 +69,9 @@ components/
 composables/useData.ts  # single readonly DATA source — Luna's bio, projects, blog, skills, services
 
 assets/css/
-  tokens.scss           # M3 OKLCH token system (verbatim from the design prototype)
-  base.scss             # reset, type scale, button/chip/card primitives
-  app.scss              # View-Transitions CSS + finalized accent override (indigo)
+  tokens.styl           # M3 OKLCH token system (verbatim from the design prototype)
+  base.styl             # reset, type scale, button/chip/card primitives
+  app.styl              # View-Transitions CSS + finalized accent override (indigo)
 
 public/
   privacy.html          # legacy privacy page (served at /privacy.html)

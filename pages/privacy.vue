@@ -183,84 +183,81 @@ onMounted(() => {
   </article>
 </template>
 
-<style scoped lang="scss">
-.title {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 7vw, 6rem);
-  font-weight: 800;
-  letter-spacing: -0.045em;
-  line-height: 0.92;
-  margin: 0 0 48px;
-}
-.gradient {
-  background: var(--brand-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
+<style scoped lang="stylus">
+.title
+  font-family: var(--font-display)
+  font-size: clamp(2.5rem, 7vw, 6rem)
+  font-weight: 800
+  letter-spacing: -0.045em
+  line-height: 0.92
+  margin: 0 0 48px
 
-.prose {
-  font-size: 1.075rem;
-  line-height: 1.7;
-  color: var(--on-surface);
+.gradient
+  background: var(--brand-gradient)
+  -webkit-background-clip: text
+  background-clip: text
+  color: transparent
 
-  p {
-    margin: 0 0 20px;
-    color: var(--on-surface-variant);
-  }
+.prose
+  font-size: 1.075rem
+  line-height: 1.7
+  color: var(--on-surface)
 
-  h2 {
-    font-family: var(--font-display);
-    font-size: clamp(1.5rem, 3vw, 2.25rem);
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    margin: 56px 0 18px;
-    color: var(--on-surface);
-  }
+  p
+    margin: 0 0 20px
+    color: var(--on-surface-variant)
 
-  h3 {
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    font-weight: 700;
-    letter-spacing: -0.015em;
-    margin: 32px 0 12px;
-    color: var(--primary-text);
-  }
+  h2
+    font-family: var(--font-display)
+    font-size: clamp(1.5rem, 3vw, 2.25rem)
+    font-weight: 700
+    letter-spacing: -0.025em
+    margin: 56px 0 18px
+    color: var(--on-surface)
 
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 24px;
-    display: grid;
-    gap: 14px;
-  }
+  h3
+    font-family: var(--font-display)
+    font-size: 1.2rem
+    font-weight: 700
+    letter-spacing: -0.015em
+    margin: 32px 0 12px
+    color: var(--primary-text)
 
-  li {
-    position: relative;
-    padding-left: 19px;
-    color: var(--on-surface-variant);
+  ul
+    list-style: none
+    padding: 0
+    margin: 0 0 24px
+    display: grid
+    gap: 14px
 
-    &::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.7em;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--primary);
-    }
-  }
+  li
+    position: relative
+    padding-left: 19px
+    color: var(--on-surface-variant)
 
-  b { color: var(--on-surface); font-weight: 600; }
-  i { color: var(--on-surface); }
+    &::before
+      content: ''
+      position: absolute
+      left: 0
+      top: 0.7em
+      width: 5px
+      height: 5px
+      border-radius: 50%
+      background: var(--primary)
 
-  a {
-    color: var(--primary);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    transition: opacity var(--dur-short);
-  }
-  a:hover { opacity: 0.75; }
-}
+  b
+    color: var(--on-surface)
+    font-weight: 600
+
+  i
+    color: var(--on-surface)
+
+  a
+    color: var(--primary)
+    text-decoration: underline
+    text-underline-offset: 3px
+    transition: opacity var(--dur-short)
+
+  a:hover
+    opacity: 0.75
 </style>

@@ -233,97 +233,81 @@ async function onSubmit(e: Event) {
   </section>
 </template>
 
-<style scoped lang="scss">
-.contact {
-  position: relative;
-}
+<style scoped lang="stylus">
+.contact
+  position: relative
 
-.contact__grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-  gap: clamp(24px, 4vw, 72px);
-  align-items: start;
-}
+.contact__grid
+  display: grid
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr)
+  gap: clamp(24px, 4vw, 72px)
+  align-items: start
 
-.contact__rows {
-  display: grid;
-  gap: 4px;
-}
+.contact__rows
+  display: grid
+  gap: 4px
 
-.contact__row {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 20px;
-  padding: 20px 4px;
-  border-bottom: 1px solid var(--outline-variant);
-  transition: padding var(--dur-short) var(--spring-gentle);
-  cursor: default;
-  color: inherit;
-  text-decoration: none;
-}
+.contact__row
+  display: grid
+  grid-template-columns: auto 1fr auto
+  align-items: center
+  gap: 20px
+  padding: 20px 4px
+  border-bottom: 1px solid var(--outline-variant)
+  transition: padding var(--dur-short) var(--spring-gentle)
+  cursor: default
+  color: inherit
+  text-decoration: none
 
-.contact__row--linked {
-  cursor: pointer;
-}
+.contact__row--linked
+  cursor: pointer
 
-.contact__row--linked:hover {
-  padding-left: 14px;
-}
+.contact__row--linked:hover
+  padding-left: 14px
 
-.contact__row-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  background: var(--surface-container);
-  color: var(--on-surface);
-  display: grid;
-  place-items: center;
-}
+.contact__row-icon
+  width: 44px
+  height: 44px
+  border-radius: 14px
+  background: var(--surface-container)
+  color: var(--on-surface)
+  display: grid
+  place-items: center
 
-.contact__row-label {
-  color: var(--on-surface-variant);
-  margin-bottom: 4px;
-}
+.contact__row-label
+  color: var(--on-surface-variant)
+  margin-bottom: 4px
 
-.contact__row-value {
-  font-weight: 500;
-}
+.contact__row-value
+  font-weight: 500
 
-.contact__form {
-  padding: clamp(24px, 3vw, 40px);
-  border-radius: 28px;
-  background: var(--surface-container);
-  display: grid;
-  gap: 18px;
-}
+.contact__form
+  padding: clamp(24px, 3vw, 40px)
+  border-radius: 28px
+  background: var(--surface-container)
+  display: grid
+  gap: 18px
 
-.contact__turnstile {
-  min-height: 65px;
-}
+.contact__turnstile
+  min-height: 65px
 
-.contact__error {
-  margin: 0;
-  font-size: 0.9rem;
-  color: var(--error, #b3261e);
-}
+.contact__error
+  margin: 0
+  font-size: 0.9rem
+  color: var(--error, #b3261e)
 
-.contact__form-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 14px;
-  margin-top: 6px;
-}
+.contact__form-footer
+  display: flex
+  justify-content: space-between
+  align-items: center
+  gap: 14px
+  margin-top: 6px
 
-.contact__form-footer-meta {
-  font-size: 11px;
-  color: var(--on-surface-variant);
-}
+.contact__form-footer-meta
+  font-size: 11px
+  color: var(--on-surface-variant)
 
-@media (max-width: 860px) {
-  .contact__grid {
-    grid-template-columns: 1fr;
-  }
-}
+@media (max-width: 860px)
+  .contact__grid
+    grid-template-columns: 1fr
 </style>

@@ -98,87 +98,71 @@ function chipVariant(i: number): 'primary' | 'tonal' | 'default' {
   </section>
 </template>
 
-<style scoped lang="scss">
-.skills__title-emphasis {
-  font-style: italic;
-  font-weight: 300;
-}
+<style scoped lang="stylus">
+.skills__title-emphasis
+  font-style: italic
+  font-weight: 300
 
-.skills__categories {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
-}
+.skills__categories
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))
+  gap: 16px
 
-.skills__category {
-  padding: 26px;
-  border-radius: 24px;
-  background: var(--surface-container);
-  height: 100%;
-}
+.skills__category
+  padding: 26px
+  border-radius: 24px
+  background: var(--surface-container)
+  height: 100%
 
-.skills__category-label {
-  color: var(--on-surface-variant);
-  margin-bottom: 20px;
-}
+.skills__category-label
+  color: var(--on-surface-variant)
+  margin-bottom: 20px
 
-.skills__chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
+.skills__chips
+  display: flex
+  flex-wrap: wrap
+  gap: 6px
 
-.skills__services {
-  margin-top: 72px;
-}
+.skills__services
+  margin-top: 72px
 
-.skills__services-kicker {
-  color: var(--on-surface-variant);
-  margin-bottom: 24px;
-}
+.skills__services-kicker
+  color: var(--on-surface-variant)
+  margin-bottom: 24px
 
-.skills__services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
+.skills__services-grid
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  gap: 16px
 
-.skills__service-card {
-  padding: 26px 28px;
-  border-radius: 24px;
-  background: var(--surface-container-low);
-  border: 1px solid var(--outline-variant);
-  height: 100%;
-}
+.skills__service-card
+  padding: 26px 28px
+  border-radius: 24px
+  background: var(--surface-container-low)
+  border: 1px solid var(--outline-variant)
+  height: 100%
 
-.skills__service-card-icon {
-  color: var(--on-surface);
-  margin-bottom: 18px;
-}
+.skills__service-card-icon
+  color: var(--on-surface)
+  margin-bottom: 18px
 
-.skills__service-card-title {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: -0.015em;
-  margin-bottom: 10px;
-}
+.skills__service-card-title
+  font-family: var(--font-display)
+  font-size: 1.15rem
+  font-weight: 700
+  letter-spacing: -0.015em
+  margin-bottom: 10px
 
-.skills__service-card-body {
-  color: var(--on-surface-variant);
-  font-size: 0.95rem;
-  margin: 0;
-}
+.skills__service-card-body
+  color: var(--on-surface-variant)
+  font-size: 0.95rem
+  margin: 0
 
-@media (max-width: 860px) {
-  .skills__services-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+@media (max-width: 860px)
+  .skills__services-grid
+    grid-template-columns: repeat(2, 1fr)
 
-@media (max-width: 560px) {
-  .skills__services-grid {
-    grid-template-columns: 1fr;
-  }
-}
+@media (max-width: 560px)
+  .skills__services-grid
+    grid-template-columns: 1fr
 </style>

@@ -49,81 +49,65 @@
   </section>
 </template>
 
-<style scoped lang="scss">
-.about {
-  position: relative;
-}
+<style scoped lang="stylus">
+.about
+  position: relative
 
-.about__title-emphasis {
-  font-style: italic;
-  font-weight: 300;
-}
+.about__title-emphasis
+  font-style: italic
+  font-weight: 300
 
-.about__grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  gap: clamp(24px, 4vw, 72px);
-  align-items: start;
-}
+.about__grid
+  display: grid
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr)
+  gap: clamp(24px, 4vw, 72px)
+  align-items: start
 
-.about__bio {
-  margin-bottom: 20px;
-}
+.about__bio
+  margin-bottom: 20px
 
-.about__bio--lede {
-  font-size: 1.25rem;
-  line-height: 1.55;
-  color: var(--on-surface);
-}
+.about__bio--lede
+  font-size: 1.25rem
+  line-height: 1.55
+  color: var(--on-surface)
 
-.about__bio--muted {
-  color: var(--on-surface-variant);
-}
+.about__bio--muted
+  color: var(--on-surface-variant)
 
-.about__bio:last-child {
-  margin-bottom: 0;
-}
+.about__bio:last-child
+  margin-bottom: 0
 
-.about__what-i-do-list {
-  display: grid;
-  gap: 12px;
-}
+.about__what-i-do-list
+  display: grid
+  gap: 12px
 
-.about__what-i-do-card {
-  padding: 22px 24px;
-  background: var(--surface-container);
-  border-radius: 20px;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 20px;
-  align-items: baseline;
-  transition:
-    background-color var(--dur-short) var(--spring-gentle),
-    transform var(--dur-short) var(--spring-fast);
-}
+.about__what-i-do-card
+  padding: 22px 24px
+  background: var(--surface-container)
+  border-radius: 20px
+  display: grid
+  grid-template-columns: auto 1fr
+  gap: 20px
+  align-items: baseline
+  transition: background-color var(--dur-short) var(--spring-gentle), transform var(--dur-short) var(--spring-fast)
 
-.about__what-i-do-card:hover {
-  background: var(--surface-container-high);
-  transform: translateX(4px);
-}
+.about__what-i-do-card:hover
+  background: var(--surface-container-high)
+  transform: translateX(4px)
 
-.about__what-i-do-card-verb {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: var(--primary-text);
-  min-width: 100px;
-}
+.about__what-i-do-card-verb
+  font-family: var(--font-display)
+  font-size: 1.5rem
+  font-weight: 800
+  letter-spacing: -0.03em
+  color: var(--primary-text)
+  min-width: 100px
 
-.about__what-i-do-card-body {
-  color: var(--on-surface-variant);
-  margin: 0;
-}
+.about__what-i-do-card-body
+  color: var(--on-surface-variant)
+  margin: 0
 
-@media (max-width: 860px) {
-  .about__grid {
-    grid-template-columns: 1fr;
-  }
-}
+@media (max-width: 860px)
+  .about__grid
+    grid-template-columns: 1fr
 </style>

@@ -11,15 +11,6 @@ function chipVariant(i: number): 'primary' | 'tonal' | 'default' {
   if (i === 1) return 'tonal'
   return 'default'
 }
-
-const services = [
-  { title: 'Web Design', body: 'User-centred design that aligns with your brand and business goals.', icon: 'webDesign' },
-  { title: 'Web Development', body: 'Full-stack using Laravel, WordPress, Vue.js, and more.', icon: 'webDev' },
-  { title: 'Custom Software', body: "Bespoke applications tailored to your organization's workflows.", icon: 'custom' },
-  { title: 'IT Consulting', body: 'Technology recommendations, project planning, stack guidance.', icon: 'consult' },
-  { title: 'WordPress Solutions', body: 'Custom themes, plugins, WooCommerce stores, ongoing maintenance.', icon: 'wordpress' },
-  { title: 'Database Development', body: 'Schema design, optimization, and secure data handling.', icon: 'database' },
-]
 </script>
 
 <template>
@@ -59,26 +50,46 @@ const services = [
           <span>Services · through Shy Owl Studios</span>
         </div>
         <div class="services-grid" :style="{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }">
-          <UiReveal
-            v-for="(svc, i) in services"
-            :key="svc.title"
-            :delay="i * 50"
-          >
-            <div
-:style="{
-              padding: '26px 28px',
-              borderRadius: '24px',
-              background: 'var(--surface-container-low)',
-              border: '1px solid var(--outline-variant)',
-              height: '100%',
-            }">
-              <div :style="{ color: 'var(--on-surface)', marginBottom: '18px' }">
-                <UiIcon :name="(svc.icon as any)" :size="28" :stroke="1.6" />
-              </div>
-              <div :style="{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', fontWeight: 700, letterSpacing: '-0.015em', marginBottom: '10px' }">
-                {{ svc.title }}
-              </div>
-              <p :style="{ color: 'var(--on-surface-variant)', fontSize: '0.95rem', margin: 0 }">{{ svc.body }}</p>
+          <UiReveal :delay="0">
+            <div class="service-card">
+              <div class="service-card__icon"><UiIcon name="webDesign" :size="28" :stroke="1.6" /></div>
+              <div class="service-card__title">Web Design</div>
+              <p class="service-card__body">User-centred design that aligns with your brand and business goals.</p>
+            </div>
+          </UiReveal>
+          <UiReveal :delay="50">
+            <div class="service-card">
+              <div class="service-card__icon"><UiIcon name="webDev" :size="28" :stroke="1.6" /></div>
+              <div class="service-card__title">Web Development</div>
+              <p class="service-card__body">Full-stack using Laravel, WordPress, Vue.js, and more.</p>
+            </div>
+          </UiReveal>
+          <UiReveal :delay="100">
+            <div class="service-card">
+              <div class="service-card__icon"><UiIcon name="custom" :size="28" :stroke="1.6" /></div>
+              <div class="service-card__title">Custom Software</div>
+              <p class="service-card__body">Bespoke applications tailored to your organization's workflows.</p>
+            </div>
+          </UiReveal>
+          <UiReveal :delay="150">
+            <div class="service-card">
+              <div class="service-card__icon"><UiIcon name="consult" :size="28" :stroke="1.6" /></div>
+              <div class="service-card__title">IT Consulting</div>
+              <p class="service-card__body">Technology recommendations, project planning, stack guidance.</p>
+            </div>
+          </UiReveal>
+          <UiReveal :delay="200">
+            <div class="service-card">
+              <div class="service-card__icon"><UiIcon name="wordpress" :size="28" :stroke="1.6" /></div>
+              <div class="service-card__title">WordPress Solutions</div>
+              <p class="service-card__body">Custom themes, plugins, WooCommerce stores, ongoing maintenance.</p>
+            </div>
+          </UiReveal>
+          <UiReveal :delay="250">
+            <div class="service-card">
+              <div class="service-card__icon"><UiIcon name="database" :size="28" :stroke="1.6" /></div>
+              <div class="service-card__title">Database Development</div>
+              <p class="service-card__body">Schema design, optimization, and secure data handling.</p>
             </div>
           </UiReveal>
         </div>
@@ -88,6 +99,30 @@ const services = [
 </template>
 
 <style scoped lang="scss">
+.service-card {
+  padding: 26px 28px;
+  border-radius: 24px;
+  background: var(--surface-container-low);
+  border: 1px solid var(--outline-variant);
+  height: 100%;
+}
+.service-card__icon {
+  color: var(--on-surface);
+  margin-bottom: 18px;
+}
+.service-card__title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin-bottom: 10px;
+}
+.service-card__body {
+  color: var(--on-surface-variant);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
 @media (max-width: 860px) {
   .services-grid { grid-template-columns: repeat(2, 1fr) !important; }
 }

@@ -124,12 +124,6 @@ async function onSubmit(e: Event) {
   }
 }
 
-const rows: { icon: 'mail' | 'pin' | 'linkedin' | 'github', label: string, val: string, href: string | null }[] = [
-  { icon: 'mail', label: 'Email', val: 'luna@shyowlstudios.com', href: 'mailto:luna@shyowlstudios.com' },
-  { icon: 'pin', label: 'Location', val: 'Ontario, Canada', href: null },
-  { icon: 'linkedin', label: 'LinkedIn', val: 'linkedin.com/in/luna-parker', href: 'https://linkedin.com/in/luna-parker' },
-  { icon: 'github', label: 'GitHub', val: 'github.com/lunaparker', href: 'https://github.com/lunaparker' },
-]
 </script>
 
 <template>
@@ -155,32 +149,52 @@ const rows: { icon: 'mail' | 'pin' | 'linkedin' | 'github', label: string, val: 
         <div>
           <div :style="{ display: 'grid', gap: '4px' }">
             <a
-              v-for="row in rows"
-              :key="row.label"
-              :href="row.href || '#'"
-              :target="row.href?.startsWith('http') ? '_blank' : undefined"
-              rel="noreferrer"
-              class="contact-row"
-              :class="{ 'has-link': !!row.href }"
-              @click="!row.href && $event.preventDefault()"
+              href="mailto:luna@shyowlstudios.com"
+              class="contact-row has-link"
             >
-              <div
-:style="{
-                width: '44px',
-                height: '44px',
-                borderRadius: '14px',
-                background: 'var(--surface-container)',
-                color: 'var(--on-surface)',
-                display: 'grid',
-                placeItems: 'center',
-              }">
-                <UiIcon :name="row.icon" :size="20" />
-              </div>
+              <div class="contact-row__icon"><UiIcon name="mail" :size="20" /></div>
               <div>
-                <div class="label" :style="{ color: 'var(--on-surface-variant)', marginBottom: '4px' }">{{ row.label }}</div>
-                <div :style="{ fontWeight: 500 }">{{ row.val }}</div>
+                <div class="label" :style="{ color: 'var(--on-surface-variant)', marginBottom: '4px' }">Email</div>
+                <div :style="{ fontWeight: 500 }">luna@shyowlstudios.com</div>
               </div>
-              <UiIcon v-if="row.href" name="arrowUpRight" :size="18" />
+              <UiIcon name="arrowUpRight" :size="18" />
+            </a>
+            <a
+              href="#"
+              class="contact-row"
+              @click="$event.preventDefault()"
+            >
+              <div class="contact-row__icon"><UiIcon name="pin" :size="20" /></div>
+              <div>
+                <div class="label" :style="{ color: 'var(--on-surface-variant)', marginBottom: '4px' }">Location</div>
+                <div :style="{ fontWeight: 500 }">Ontario, Canada</div>
+              </div>
+            </a>
+            <a
+              href="https://linkedin.com/in/luna-parker"
+              target="_blank"
+              rel="noreferrer"
+              class="contact-row has-link"
+            >
+              <div class="contact-row__icon"><UiIcon name="linkedin" :size="20" /></div>
+              <div>
+                <div class="label" :style="{ color: 'var(--on-surface-variant)', marginBottom: '4px' }">LinkedIn</div>
+                <div :style="{ fontWeight: 500 }">linkedin.com/in/luna-parker</div>
+              </div>
+              <UiIcon name="arrowUpRight" :size="18" />
+            </a>
+            <a
+              href="https://github.com/lunaparker"
+              target="_blank"
+              rel="noreferrer"
+              class="contact-row has-link"
+            >
+              <div class="contact-row__icon"><UiIcon name="github" :size="20" /></div>
+              <div>
+                <div class="label" :style="{ color: 'var(--on-surface-variant)', marginBottom: '4px' }">GitHub</div>
+                <div :style="{ fontWeight: 500 }">github.com/lunaparker</div>
+              </div>
+              <UiIcon name="arrowUpRight" :size="18" />
             </a>
           </div>
         </div>
@@ -247,6 +261,15 @@ const rows: { icon: 'mail' | 'pin' | 'linkedin' | 'github', label: string, val: 
 }
 .contact-row.has-link { cursor: pointer; }
 .contact-row.has-link:hover { padding-left: 14px; }
+.contact-row__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: var(--surface-container);
+  color: var(--on-surface);
+  display: grid;
+  place-items: center;
+}
 
 .turnstile-widget {
   min-height: 65px;

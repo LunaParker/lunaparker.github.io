@@ -55,43 +55,24 @@ function onNavClick(e: MouseEvent, id: string) {
 
 <template>
   <header
-    :class="['nav', { scrolled }]"
-    :style="{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      zIndex: 40,
-      padding: scrolled ? '10px 0' : '18px 0',
-      transition: 'padding var(--dur-med) var(--spring-gentle), background-color var(--dur-med) var(--spring-gentle), backdrop-filter var(--dur-med)',
-      background: scrolled ? 'color-mix(in oklch, var(--surface) 78%, transparent)' : 'transparent',
-      backdropFilter: scrolled ? 'saturate(1.3) blur(14px)' : 'none',
-      WebkitBackdropFilter: scrolled ? 'saturate(1.3) blur(14px)' : 'none',
-      borderBottom: scrolled ? '1px solid var(--outline-variant)' : '1px solid transparent',
-    }"
+    class="nav"
+    :class="{ 'nav--scrolled': scrolled }"
   >
-    <div class="container" :style="{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '24px' }">
+    <div class="container nav__container">
       <a
         href="#top"
-        :style="{ display: 'inline-flex', alignItems: 'center', gap: '12px' }"
+        class="nav__brand"
         @click="onNavClick($event, 'top')"
       >
-        <span
-:style="{
-          fontFamily: 'var(--font-display)',
-          fontWeight: 800,
-          fontSize: '17px',
-          letterSpacing: '-0.02em',
-          color: 'var(--on-surface)',
-        }">Luna Parker</span>
+        <span class="nav__brand-text">Luna Parker</span>
       </a>
 
-      <nav class="hide-on-mobile" aria-label="Primary">
-        <ul :style="{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', gap: '4px' }">
+      <nav class="nav__primary hide-on-mobile" aria-label="Primary">
+        <ul class="nav__menu">
           <li v-for="it in items" :key="it.id">
             <a
               :href="`#${it.id}`"
-              class="nav-link"
+              class="nav__link"
               @click="onNavClick($event, it.id)"
             >
               {{ it.label }}
@@ -100,35 +81,25 @@ function onNavClick(e: MouseEvent, id: string) {
         </ul>
       </nav>
 
-      <div :style="{ display: 'flex', alignItems: 'center', gap: '10px' }">
+      <div class="nav__cta-row">
         <a
           href="/Luna_Parker.pdf"
           target="_blank"
           rel="noopener"
-          class="btn btn-outlined hide-on-mobile"
-          :style="{ padding: '8px 16px', fontSize: '14px', whiteSpace: 'nowrap', flexShrink: 0 }"
+          class="btn btn-outlined nav__cta hide-on-mobile"
         >
           <UiIcon name="download" :size="16" /> Resume
         </a>
         <a
           href="#contact"
-          class="btn btn-filled"
-          :style="{ padding: '8px 16px', fontSize: '14px', whiteSpace: 'nowrap', flexShrink: 0 }"
+          class="btn btn-filled nav__cta"
           @click="onNavClick($event, 'contact')"
         >
           Get in touch <UiIcon name="arrow" :size="16" />
         </a>
         <button
-          class="mobile-menu-toggle"
+          class="nav__mobile-toggle"
           aria-label="Menu"
-          :style="{
-            display: 'none',
-            background: 'transparent',
-            border: 0,
-            padding: '8px',
-            cursor: 'pointer',
-            color: 'var(--on-surface)',
-          }"
           @click="menuOpen = !menuOpen"
         >
           <UiIcon name="menu" :size="22" />
@@ -136,25 +107,12 @@ function onNavClick(e: MouseEvent, id: string) {
       </div>
     </div>
 
-    <div
-      v-if="menuOpen"
-      :style="{
-        position: 'absolute',
-        top: '100%',
-        left: '16px',
-        right: '16px',
-        marginTop: '8px',
-        background: 'var(--surface-container-high)',
-        border: '1px solid var(--outline-variant)',
-        borderRadius: '20px',
-        padding: '12px',
-      }"
-    >
-      <ul :style="{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '2px' }">
+    <div v-if="menuOpen" class="nav__mobile-panel">
+      <ul class="nav__mobile-menu">
         <li v-for="it in items" :key="it.id">
           <a
             :href="`#${it.id}`"
-            :style="{ display: 'block', padding: '12px 14px', borderRadius: '12px', color: 'var(--on-surface)' }"
+            class="nav__mobile-link"
             @click="onNavClick($event, it.id)"
           >
             {{ it.label }}
@@ -166,7 +124,61 @@ function onNavClick(e: MouseEvent, id: string) {
 </template>
 
 <style scoped lang="scss">
-.nav-link {
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  padding: 18px 0;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  transition:
+    padding var(--dur-med) var(--spring-gentle),
+    background-color var(--dur-med) var(--spring-gentle),
+    backdrop-filter var(--dur-med);
+}
+
+.nav--scrolled {
+  padding: 10px 0;
+  background: color-mix(in oklch, var(--surface) 78%, transparent);
+  backdrop-filter: saturate(1.3) blur(14px);
+  -webkit-backdrop-filter: saturate(1.3) blur(14px);
+  border-bottom: 1px solid var(--outline-variant);
+}
+
+.nav__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav__brand-text {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 17px;
+  letter-spacing: -0.02em;
+  color: var(--on-surface);
+}
+
+.nav__menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 4px;
+}
+
+.nav__link {
   display: inline-block;
   padding: 8px 14px;
   border-radius: 999px;
@@ -177,14 +189,64 @@ function onNavClick(e: MouseEvent, id: string) {
     background-color var(--dur-short) var(--spring-gentle),
     color var(--dur-short) var(--spring-gentle);
 }
-.nav-link:hover {
+
+.nav__link:hover {
   background: var(--surface-container-high);
   color: var(--on-surface);
 }
 
+.nav__cta-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav__cta {
+  padding: 8px 16px;
+  font-size: 14px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.nav__mobile-toggle {
+  display: none;
+  background: transparent;
+  border: 0;
+  padding: 8px;
+  cursor: pointer;
+  color: var(--on-surface);
+}
+
+.nav__mobile-panel {
+  position: absolute;
+  top: 100%;
+  left: 16px;
+  right: 16px;
+  margin-top: 8px;
+  background: var(--surface-container-high);
+  border: 1px solid var(--outline-variant);
+  border-radius: 20px;
+  padding: 12px;
+}
+
+.nav__mobile-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.nav__mobile-link {
+  display: block;
+  padding: 12px 14px;
+  border-radius: 12px;
+  color: var(--on-surface);
+}
+
 @media (max-width: 860px) {
-  .mobile-menu-toggle {
-    display: inline-flex !important;
+  .nav__mobile-toggle {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
   }

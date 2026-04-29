@@ -14,26 +14,26 @@ function chipVariant(i: number): 'primary' | 'tonal' | 'default' {
 </script>
 
 <template>
-  <section id="skills" class="section">
+  <section id="skills" class="section skills">
     <div class="container">
       <UiSectionHeader
         kicker="05 — Skills"
         sub="Languages, frameworks, tools, and practices I use in production. Hover any tech to see where I've used it."
       >
         <template #title>
-          The <span :style="{ fontStyle: 'italic', fontWeight: 300 }">toolkit.</span>
+          The <span class="skills__title-emphasis">toolkit.</span>
         </template>
       </UiSectionHeader>
 
-      <div :style="{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }">
+      <div class="skills__categories">
         <UiReveal
           v-for="([cat, items], i) in cats"
           :key="cat"
           :delay="i * 60"
         >
-          <div :style="{ padding: '26px', borderRadius: '24px', background: 'var(--surface-container)', height: '100%' }">
-            <div class="label" :style="{ color: 'var(--on-surface-variant)', marginBottom: '20px' }">{{ cat }}</div>
-            <div :style="{ display: 'flex', flexWrap: 'wrap', gap: '6px' }">
+          <div class="skills__category">
+            <div class="label skills__category-label">{{ cat }}</div>
+            <div class="skills__chips">
               <UiSkillChip
                 v-for="s in items"
                 :key="s"
@@ -45,51 +45,51 @@ function chipVariant(i: number): 'primary' | 'tonal' | 'default' {
         </UiReveal>
       </div>
 
-      <div :style="{ marginTop: '72px' }">
-        <div class="label section-kicker" :style="{ color: 'var(--on-surface-variant)', marginBottom: '24px' }">
+      <div class="skills__services">
+        <div class="label section-kicker skills__services-kicker">
           <span>Services · through Shy Owl Studios</span>
         </div>
-        <div class="services-grid" :style="{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }">
+        <div class="skills__services-grid">
           <UiReveal :delay="0">
-            <div class="service-card">
-              <div class="service-card__icon"><UiIcon name="webDesign" :size="28" :stroke="1.6" /></div>
-              <div class="service-card__title">Web Design</div>
-              <p class="service-card__body">User-centred design that aligns with your brand and business goals.</p>
+            <div class="skills__service-card">
+              <div class="skills__service-card-icon"><UiIcon name="webDesign" :size="28" :stroke="1.6" /></div>
+              <div class="skills__service-card-title">Web Design</div>
+              <p class="skills__service-card-body">User-centred design that aligns with your brand and business goals.</p>
             </div>
           </UiReveal>
           <UiReveal :delay="50">
-            <div class="service-card">
-              <div class="service-card__icon"><UiIcon name="webDev" :size="28" :stroke="1.6" /></div>
-              <div class="service-card__title">Web Development</div>
-              <p class="service-card__body">Full-stack using Laravel, WordPress, Vue.js, and more.</p>
+            <div class="skills__service-card">
+              <div class="skills__service-card-icon"><UiIcon name="webDev" :size="28" :stroke="1.6" /></div>
+              <div class="skills__service-card-title">Web Development</div>
+              <p class="skills__service-card-body">Full-stack using Laravel, WordPress, Vue.js, and more.</p>
             </div>
           </UiReveal>
           <UiReveal :delay="100">
-            <div class="service-card">
-              <div class="service-card__icon"><UiIcon name="custom" :size="28" :stroke="1.6" /></div>
-              <div class="service-card__title">Custom Software</div>
-              <p class="service-card__body">Bespoke applications tailored to your organization's workflows.</p>
+            <div class="skills__service-card">
+              <div class="skills__service-card-icon"><UiIcon name="custom" :size="28" :stroke="1.6" /></div>
+              <div class="skills__service-card-title">Custom Software</div>
+              <p class="skills__service-card-body">Bespoke applications tailored to your organization's workflows.</p>
             </div>
           </UiReveal>
           <UiReveal :delay="150">
-            <div class="service-card">
-              <div class="service-card__icon"><UiIcon name="consult" :size="28" :stroke="1.6" /></div>
-              <div class="service-card__title">IT Consulting</div>
-              <p class="service-card__body">Technology recommendations, project planning, stack guidance.</p>
+            <div class="skills__service-card">
+              <div class="skills__service-card-icon"><UiIcon name="consult" :size="28" :stroke="1.6" /></div>
+              <div class="skills__service-card-title">IT Consulting</div>
+              <p class="skills__service-card-body">Technology recommendations, project planning, stack guidance.</p>
             </div>
           </UiReveal>
           <UiReveal :delay="200">
-            <div class="service-card">
-              <div class="service-card__icon"><UiIcon name="wordpress" :size="28" :stroke="1.6" /></div>
-              <div class="service-card__title">WordPress Solutions</div>
-              <p class="service-card__body">Custom themes, plugins, WooCommerce stores, ongoing maintenance.</p>
+            <div class="skills__service-card">
+              <div class="skills__service-card-icon"><UiIcon name="wordpress" :size="28" :stroke="1.6" /></div>
+              <div class="skills__service-card-title">WordPress Solutions</div>
+              <p class="skills__service-card-body">Custom themes, plugins, WooCommerce stores, ongoing maintenance.</p>
             </div>
           </UiReveal>
           <UiReveal :delay="250">
-            <div class="service-card">
-              <div class="service-card__icon"><UiIcon name="database" :size="28" :stroke="1.6" /></div>
-              <div class="service-card__title">Database Development</div>
-              <p class="service-card__body">Schema design, optimization, and secure data handling.</p>
+            <div class="skills__service-card">
+              <div class="skills__service-card-icon"><UiIcon name="database" :size="28" :stroke="1.6" /></div>
+              <div class="skills__service-card-title">Database Development</div>
+              <p class="skills__service-card-body">Schema design, optimization, and secure data handling.</p>
             </div>
           </UiReveal>
         </div>
@@ -99,34 +99,86 @@ function chipVariant(i: number): 'primary' | 'tonal' | 'default' {
 </template>
 
 <style scoped lang="scss">
-.service-card {
+.skills__title-emphasis {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.skills__categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.skills__category {
+  padding: 26px;
+  border-radius: 24px;
+  background: var(--surface-container);
+  height: 100%;
+}
+
+.skills__category-label {
+  color: var(--on-surface-variant);
+  margin-bottom: 20px;
+}
+
+.skills__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skills__services {
+  margin-top: 72px;
+}
+
+.skills__services-kicker {
+  color: var(--on-surface-variant);
+  margin-bottom: 24px;
+}
+
+.skills__services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.skills__service-card {
   padding: 26px 28px;
   border-radius: 24px;
   background: var(--surface-container-low);
   border: 1px solid var(--outline-variant);
   height: 100%;
 }
-.service-card__icon {
+
+.skills__service-card-icon {
   color: var(--on-surface);
   margin-bottom: 18px;
 }
-.service-card__title {
+
+.skills__service-card-title {
   font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: -0.015em;
   margin-bottom: 10px;
 }
-.service-card__body {
+
+.skills__service-card-body {
   color: var(--on-surface-variant);
   font-size: 0.95rem;
   margin: 0;
 }
 
 @media (max-width: 860px) {
-  .services-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .skills__services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
+
 @media (max-width: 560px) {
-  .services-grid { grid-template-columns: 1fr !important; }
+  .skills__services-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

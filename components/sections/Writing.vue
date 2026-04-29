@@ -9,7 +9,7 @@ const rest = computed(() => data.value.blog.slice(1))
 </script>
 
 <template>
-  <section id="writing" class="section" :style="{ position: 'relative' }">
+  <section id="writing" class="section writing">
     <div class="container">
       <UiSectionHeader
         kicker="04 — Field notes"
@@ -23,9 +23,9 @@ const rest = computed(() => data.value.blog.slice(1))
         </template>
       </UiSectionHeader>
 
-      <div class="writing-grid" :style="{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.4fr) minmax(0, 1fr)', gap: '18px' }">
+      <div class="writing__grid">
         <BlogCard v-if="featured" :post="featured" variant="featured" />
-        <div :style="{ display: 'grid', gridTemplateRows: '1fr 1fr', gap: '18px' }">
+        <div class="writing__list">
           <BlogCard
             v-for="p in rest.slice(0, 2)"
             :key="p.id"
@@ -38,7 +38,25 @@ const rest = computed(() => data.value.blog.slice(1))
 </template>
 
 <style scoped lang="scss">
+.writing {
+  position: relative;
+}
+
+.writing__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 18px;
+}
+
+.writing__list {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 18px;
+}
+
 @media (max-width: 860px) {
-  .writing-grid { grid-template-columns: 1fr !important; }
+  .writing__grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

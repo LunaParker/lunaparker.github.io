@@ -32,7 +32,7 @@
 
       <div class="hero__footer">
         <div class="label hero__footer-cue">Scroll to explore</div>
-        <div class="mono hero__footer-meta">PORTFOLIO v4 · EST. 2026</div>
+        <div class="mono hero__footer-meta">PORTFOLIO v4 · EST. 2026 · <a href="https://github.com/LunaParker/lunaparker.github.io" target="_blank" rel="noreferrer">SOURCE CODE</a></div>
       </div>
     </div>
   </section>
@@ -124,4 +124,13 @@
 .hero__footer-meta
   font-size: 12px
   color: var(--on-surface-variant)
+
+.hero__footer-meta a
+  color: inherit
+  text-decoration: underline
+  text-underline-offset: 3px
+  transition: color var(--dur-short)
+
+.hero__footer-meta a:hover
+  color: var(--on-surface)
 </style>

@@ -211,6 +211,18 @@ const DATA: PortfolioData = {
       accent: 'secondary',
     },
     {
+      id: 'macos-permission-report',
+      name: 'macOS Privacy Permission Audit',
+      tagline: 'Audits TCC grants, flags ghost entries',
+      client: 'Open Source',
+      role: 'Developer',
+      year: '2026',
+      url: 'github.com/lunaparker/macos-permission-report',
+      stack: ['Python', 'Jinja2', 'macOS'],
+      size: 'square',
+      accent: 'primary',
+    },
+    {
       id: 'obsidian-default-handler',
       name: 'macOS Obsidian Default Handler',
       tagline: 'Open any .md file in Obsidian, vault or not',

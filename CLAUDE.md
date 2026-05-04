@@ -6,8 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This repo has **two cooperating deployments**, both on Cloudflare:
 
-1. **Static Nuxt 3 portfolio** at the repo root → built with `nuxt generate`, deployed to Cloudflare Pages (project `lunaparker-portfolio`), served at `shyowlstudios.com` (and intended `lunaparker.dev`).
-2. **Cloudflare Worker** at `worker/` (`shyowl-contact`) → handles the contact form. Verifies a Turnstile CAPTCHA, then forwards submissions to a private Discord webhook. Routed at `shyowlstudios.com/api/contact*`. Worker routes take precedence over Pages, so they coexist on the same hostname.
+1. **Static Nuxt 3 portfolio** at the repo root → built with `nuxt generate`, deployed to Cloudflare Pages (project `lunaparker-portfolio`), served at `lunaparker.dev`.
+2. **Cloudflare Worker** at `worker/` (`shyowl-contact`) → handles the contact form. Verifies a Turnstile CAPTCHA, then forwards submissions to a private Discord webhook. Routed at `lunaparker.dev/api/contact*`. Worker routes take precedence over Pages, so they coexist on the same hostname.
 
 `README.md` covers the Nuxt setup, build, deploy, and design system in depth. **Don't duplicate it; consult it.** This file documents the rest.
 
@@ -52,7 +52,7 @@ Notes:
 ## Contact form infrastructure
 
 ```
-Contact.vue ──POST JSON──▶  shyowlstudios.com/api/contact  ──▶  shyowl-contact Worker
+Contact.vue ──POST JSON──▶  lunaparker.dev/api/contact  ──▶  shyowl-contact Worker
    │                                                             │
    └─ Turnstile widget                                            ├─ verify Turnstile token
       (managed/visible mode)                                      └─ forward to Discord webhook
@@ -63,12 +63,12 @@ Contact.vue ──POST JSON──▶  shyowlstudios.com/api/contact  ──▶  
 | Variable | Where set | Notes |
 |---|---|---|
 | `runtimeConfig.public.turnstileSiteKey` | `nuxt.config.ts` | Public site key, baked at build. Currently `0x4AAAAAADD0v3nrGLOgqLEF`. Override per-build with `NUXT_PUBLIC_TURNSTILE_SITE_KEY`. |
-| `runtimeConfig.public.contactEndpoint` | `nuxt.config.ts` | Defaults to `https://shyowlstudios.com/api/contact` (absolute, so it works from any deployed host). Override with `NUXT_PUBLIC_CONTACT_ENDPOINT`. |
+| `runtimeConfig.public.contactEndpoint` | `nuxt.config.ts` | Defaults to `https://lunaparker.dev/api/contact` (absolute, so it works from any deployed host). Override with `NUXT_PUBLIC_CONTACT_ENDPOINT`. |
 | `runtimeConfig.public.writingEnabled` | `nuxt.config.ts` | `false` by default — hides the Writing section + nav item, and prevents `/writing*` from being statically generated. Set `NUXT_PUBLIC_WRITING_ENABLED=true` to re-enable when real posts exist. |
-| `ALLOWED_ORIGINS` | `worker/wrangler.toml` `[vars]` | Comma-separated CORS allowlist. Currently: `shyowlstudios.com`, `www.shyowlstudios.com`, `lunaparker.dev`, `www.lunaparker.dev`, `lunaparker.github.io`, `localhost:3000`. |
+| `ALLOWED_ORIGINS` | `worker/wrangler.toml` `[vars]` | Comma-separated CORS allowlist. Currently: `lunaparker.dev`, `www.lunaparker.dev`, `lunaparker.github.io`, `localhost:3000`. |
 | `TURNSTILE_SECRET` | Worker secret (`wrangler secret put`) | Cloudflare Turnstile secret key. Never committed. |
 | `DISCORD_WEBHOOK_URL` | Worker secret (`wrangler secret put`) | Discord channel webhook (private channel `#website-contact-form`). Never committed. |
-| Route binding `shyowlstudios.com/api/contact*` | `worker/wrangler.toml` `[[routes]]` + Cloudflare dashboard | Both must agree. |
+| Route binding `lunaparker.dev/api/contact*` | `worker/wrangler.toml` `[[routes]]` + Cloudflare dashboard | Both must agree. |
 
 **Local dev for the form:** Cloudflare ships test keys that always pass:
 
@@ -80,7 +80,7 @@ Drop the secret into `worker/.dev.vars` (template at `worker/.dev.vars.example`)
 ## Deployment topology
 
 - **Pages**: Cloudflare Pages serves `.output/public/` from the `master` branch via `wrangler pages deploy` in the GH Actions workflow described in README. Project name is `lunaparker-portfolio`. GitHub repo needs `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` secrets for the Action to authenticate.
-- **DNS**: `shyowlstudios.com` and `lunaparker.dev` are both Cloudflare zones. Custom domains are bound to the Pages project via the Cloudflare dashboard (**Pages → lunaparker-portfolio → Custom domains**). The Worker route `shyowlstudios.com/api/contact*` takes precedence over Pages on the same hostname, so the contact form keeps working unchanged.
+- **DNS**: `lunaparker.dev` is the Cloudflare zone. The custom domain is bound to the Pages project via the Cloudflare dashboard (**Pages → lunaparker-portfolio → Custom domains**). The Worker route `lunaparker.dev/api/contact*` takes precedence over Pages on the same hostname, so the contact form keeps working unchanged.
 - **Worker** deploys are wholly independent of the site deploy — `wrangler deploy` from `worker/` is enough.
 - The privacy policy lives at the Nuxt page `pages/privacy.vue` (route `/privacy`).
 

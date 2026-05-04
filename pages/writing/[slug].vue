@@ -6,7 +6,7 @@ const route = useRoute()
 const router = useRouter()
 const data = useData()
 const config = useRuntimeConfig()
-const siteUrl = String(config.public.siteUrl ?? 'https://shyowlstudios.com')
+const siteUrl = String(config.public.siteUrl ?? 'https://lunaparker.dev')
 
 definePageMeta({ viewTransition: true })
 

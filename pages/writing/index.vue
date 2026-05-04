@@ -4,7 +4,7 @@ import { useData } from '~/composables/useData'
 
 const data = useData()
 const config = useRuntimeConfig()
-const siteUrl = String(config.public.siteUrl ?? 'https://shyowlstudios.com')
+const siteUrl = String(config.public.siteUrl ?? 'https://lunaparker.dev')
 
 definePageMeta({ viewTransition: true })
 

@@ -2,7 +2,7 @@
 import { onMounted } from 'vue'
 
 const config = useRuntimeConfig()
-const siteUrl = String(config.public.siteUrl ?? 'https://shyowlstudios.com')
+const siteUrl = String(config.public.siteUrl ?? 'https://lunaparker.dev')
 
 definePageMeta({ viewTransition: true })
 
@@ -10,9 +10,9 @@ useHead({
   title: 'Privacy Policy — Luna Parker',
 })
 useSeoMeta({
-  description: 'Privacy policy for lunaparker.dev and shyowlstudios.com — what data we collect, who processes it, and how to reach us.',
+  description: 'Privacy policy for lunaparker.dev — what data we collect, who processes it, and how to reach us.',
   ogTitle: 'Privacy Policy — Luna Parker',
-  ogDescription: 'Privacy policy for lunaparker.dev and shyowlstudios.com.',
+  ogDescription: 'Privacy policy for lunaparker.dev.',
   ogUrl: `${siteUrl}/privacy`,
 })
 
@@ -41,8 +41,7 @@ onMounted(() => {
         </p>
         <p>
           This site is operated by Luna Parker, trading as Shy Owl Studios. All references to "us", "we", and/or
-          "the site" refer to this operation. The site is reachable at both <b>shyowlstudios.com</b> and
-          <b>lunaparker.dev</b>; this policy applies to both.
+          "the site" refer to this operation. The site is reachable at <b>lunaparker.dev</b>.
         </p>
         <p>
           This page serves to inform you of our policies regarding the collection, use, and very limited disclosure

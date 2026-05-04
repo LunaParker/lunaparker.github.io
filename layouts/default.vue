@@ -6,7 +6,7 @@ const route = useRoute()
 const config = useRuntimeConfig()
 const data = useData()
 
-const siteUrl = String(config.public.siteUrl ?? 'https://shyowlstudios.com')
+const siteUrl = String(config.public.siteUrl ?? 'https://lunaparker.dev')
 const canonical = computed(() => `${siteUrl}${route.path === '/' ? '' : route.path.replace(/\/$/, '')}`)
 
 const ogImage = `${siteUrl}/og-image.png`
@@ -33,7 +33,7 @@ const personLd = computed(() => ({
   'jobTitle': 'Software Developer & Designer',
   'description': 'Full-stack web developer with 8+ years of experience (mostly through my own consultancy, Shy Owl Studios). Currently finishing an Honours Bachelor of Computer Science with a Security Specialisation at Conestoga College.',
   'url': siteUrl,
-  'email': 'mailto:luna@shyowlstudios.com',
+  'email': 'mailto:luna@lunaparker.dev',
   'address': {
     '@type': 'PostalAddress',
     'addressRegion': 'Ontario',
@@ -50,7 +50,7 @@ const personLd = computed(() => ({
   'worksFor': {
     '@type': 'Organization',
     'name': 'Shy Owl Studios',
-    'url': 'https://shyowlstudios.com',
+    'url': 'https://lunaparker.dev',
   },
   'knowsAbout': [
     ...data.value.skills.Languages,

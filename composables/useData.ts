@@ -13,14 +13,12 @@ export interface Experience {
   blurb: string
   bullets: string[]
   stack: string[]
-  accent: AccentKey
 }
 
 export interface Education {
   school: string
   degree: string
   period: string
-  location: string
   specialization?: string
   gpa?: string
   status?: string
@@ -28,11 +26,6 @@ export interface Education {
 }
 
 export type ProjectSize = 'featured' | 'wide' | 'tall' | 'square'
-
-export interface ProjectHighlight {
-  label: string
-  body: string
-}
 
 export interface Project {
   id: string
@@ -45,9 +38,6 @@ export interface Project {
   stack: string[]
   size: ProjectSize
   accent: AccentKey
-  summary: string
-  highlights: ProjectHighlight[]
-  why: string
 }
 
 export interface BlogPost {
@@ -89,7 +79,6 @@ const DATA: PortfolioData = {
         'Run CMS training sessions and fulfill agency contracts (e.g. Intelligent Computer Systems).',
       ],
       stack: ['Laravel', 'WordPress', 'WooCommerce', 'Vue.js', 'PHP', 'SCSS', 'MySQL', 'Cloudflare'],
-      accent: 'primary',
     },
     {
       id: 'digital-chaos',
@@ -106,7 +95,6 @@ const DATA: PortfolioData = {
         'Collaborated with PMs and external design firms on estimates and tech stack recommendations.',
       ],
       stack: ['Laravel', 'WordPress', 'Vue.js', 'PHP', 'SCSS', 'MySQL', 'Git', 'Docker'],
-      accent: 'tertiary',
     },
     {
       id: 'ocas',
@@ -123,7 +111,6 @@ const DATA: PortfolioData = {
         'Worked with CI/CD pipelines to catch regressions before production.',
       ],
       stack: ['ASP.NET Core', 'C#', 'Agile/Scrum', 'CI/CD'],
-      accent: 'secondary',
     },
     {
       id: 'ics',
@@ -135,7 +122,6 @@ const DATA: PortfolioData = {
       blurb: 'Contract web designer and developer for a local IT firm, building sites and apps for their clients.',
       bullets: [],
       stack: ['WordPress', 'Laravel', 'PHP', 'SCSS'],
-      accent: 'primary',
     },
   ],
 
@@ -144,7 +130,6 @@ const DATA: PortfolioData = {
       school: 'Conestoga College',
       degree: 'Honours Bachelor of Computer Science',
       period: 'Sep 2022 — Expected 2027',
-      location: 'Waterloo, ON',
       specialization: 'Security',
       gpa: '3.59',
       status: 'One co-op term remaining — Fall 2026',
@@ -158,7 +143,6 @@ const DATA: PortfolioData = {
       school: 'University of Toronto',
       degree: 'Computer Science',
       period: 'Sep 2021 — Apr 2022',
-      location: 'Toronto, ON',
       notes: [
         'Completed first-year Computer Science (CSC111) and philosophy before transferring to Conestoga.',
       ],
@@ -177,14 +161,6 @@ const DATA: PortfolioData = {
       stack: ['WordPress', 'WooCommerce', 'InvoiceNinja', 'Laravel', 'Cloudflare'],
       size: 'featured',
       accent: 'primary',
-      summary: "EYOLF makes climbing gear for professionals. I designed and built their web presence around vertical, dynamic brand elements that highlight the company's achievements — and connected it to custom business tools behind the scenes.",
-      highlights: [
-        { label: 'Public e-commerce site', body: 'Brand-focused design emphasizing verticality and achievement.' },
-        { label: 'Inventory portal', body: 'Custom Laravel tool to streamline internal business processes.' },
-        { label: 'Invoicing platform', body: 'Customized InvoiceNinja deployment integrated into existing workflow.' },
-        { label: 'Systems integration', body: 'All tools connected to improve operational efficiency across the business.' },
-      ],
-      why: "A great example of approaching client work holistically: not just building a website, but understanding the business and building connected systems that make the whole operation run better. After all, a beautiful storefront doesn't help much if the team behind it is still tracking inventory in spreadsheets.",
     },
     {
       id: 'jarvis-ryan',
@@ -197,14 +173,6 @@ const DATA: PortfolioData = {
       stack: ['Laravel', 'PHP', 'Microsoft Server', 'IIS'],
       size: 'wide',
       accent: 'tertiary',
-      summary: "I redesigned Jarvis Ryan's public-facing website and built \"Client Cloud\" — a secure custom portal where clients access tax documents, upload large files, and communicate with the firm.",
-      highlights: [
-        { label: 'Website redesign', body: 'Essential info front and centre; integrated brand typography and styling.' },
-        { label: 'Client Cloud portal', body: 'Laravel app for tax docs, large file upload, client–firm communication.' },
-        { label: 'Enterprise integration', body: 'Direct integration with existing Microsoft Server / IIS infrastructure.' },
-        { label: 'Privacy-grade security', body: 'Authentication and file handling designed for financial document exchange.' },
-      ],
-      why: 'Demonstrates working within existing enterprise infrastructure (Microsoft Server, IIS, the whole stack their IT team was already committed to) while building modern, secure Laravel applications on top. A real-world example of software that solves a specific business problem rather than chasing the latest framework.',
     },
     {
       id: 'blsc',
@@ -217,14 +185,6 @@ const DATA: PortfolioData = {
       stack: ['WordPress', 'Laravel', 'Cloudflare'],
       size: 'tall',
       accent: 'secondary',
-      summary: 'BLSC is a member-run sailing organization based in Belwood, Ontario. I delivered a full brand overhaul and a new online presence with an integrated member portal.',
-      highlights: [
-        { label: 'Brand overhaul', body: 'Refreshed visual identity and new website design.' },
-        { label: 'Member portal', body: 'Membership renewal, event viewing and registration, and club news.' },
-        { label: 'Laravel backend', body: 'Secure, scalable foundation for member features.' },
-        { label: 'Admin tools', body: 'Club controls for member experience and communications.' },
-      ],
-      why: 'A community-driven organisation where the software has to be trustworthy, approachable, and operable by volunteers. As such, the design choices were as much about onboarding the next club admin as they were about the members themselves.',
     },
     {
       id: 'brightspace-mcp',
@@ -237,13 +197,6 @@ const DATA: PortfolioData = {
       stack: ['TypeScript', 'Node.js', 'MCP'],
       size: 'square',
       accent: 'tertiary',
-      summary: 'An MCP server that integrates Brightspace/D2L (a learning management system used by universities) with AI tools including Claude, ChatGPT, Cursor, and Windsurf. Published on npm as npx brightspace-mcp-server@latest.',
-      highlights: [
-        { label: 'Protocol-native', body: 'Full MCP implementation compatible with every major MCP client.' },
-        { label: 'Published to npm', body: 'One-line install: npx brightspace-mcp-server@latest.' },
-        { label: 'Built for my workflow', body: 'I built it for myself as a student, then published for others.' },
-      ],
-      why: 'Demonstrates engagement with the Model Context Protocol (one of the more interesting developments in AI tooling lately) and a willingness to scratch my own itch in public. After all, the best tools are usually built by the people who needed them first.',
     },
     {
       id: 'claude-menu-bar',
@@ -256,14 +209,6 @@ const DATA: PortfolioData = {
       stack: ['Swift', 'SwiftUI', 'macOS'],
       size: 'tall',
       accent: 'secondary',
-      summary: "A native macOS menu bar app that mirrors Claude Desktop's usage quotas — Current Session, Weekly Limit, and Sonnet — without having to open Claude Desktop or run a CLI. Reuses the OAuth token Claude Code already wrote to the login keychain, so there's no second sign-in.",
-      highlights: [
-        { label: 'Three live quota bars', body: 'Same data Claude Desktop shows, refreshed every few minutes in the background.' },
-        { label: 'Zero re-auth', body: 'Reads credentials Claude Code stored in the login keychain — no API key, no second sign-in.' },
-        { label: 'Modern Swift', body: 'SwiftUI, MenuBarExtra, and the Observation framework for macOS 26+.' },
-        { label: 'Threshold notifications', body: '50 / 75 / 90% session alerts with session-window rotation handling.' },
-      ],
-      why: 'A small but complete macOS app that turned into a real engineering exercise — sandboxing trade-offs, keychain ACLs, rate-limit cooldowns, and a few SwiftUI patterns I had not needed before. Shipped because someone else might want the same glance-at-the-menu-bar workflow.',
     },
     {
       id: 'obsidian-default-handler',
@@ -276,13 +221,6 @@ const DATA: PortfolioData = {
       stack: ['AppleScript', 'Python', 'macOS'],
       size: 'square',
       accent: 'tertiary',
-      summary: 'An AppleScript droplet plus Python helper that makes Obsidian the real default Markdown handler on macOS. If a .md file lives outside any registered vault, the helper safely registers its parent folder as a vault on the fly — then opens the file.',
-      highlights: [
-        { label: 'Real default handler', body: 'Routes every .md anywhere on disk into Obsidian, not just files already inside vaults.' },
-        { label: 'On-the-fly vaults', body: 'Patches obsidian.json (with backup) when the file is outside any known vault.' },
-        { label: 'Plain macOS plumbing', body: 'Compiled droplet, ad-hoc signed, registers cleanly with LaunchServices.' },
-      ],
-      why: 'A two-evening fix to a five-year annoyance, written so it is reproducible and diffable rather than baked into an Automator workflow. Solving small problems properly is its own kind of judgment.',
     },
     {
       id: 'swift-weather',
@@ -295,67 +233,10 @@ const DATA: PortfolioData = {
       stack: ['Swift', 'SwiftUI'],
       size: 'square',
       accent: 'primary',
-      summary: 'A SwiftUI weather app displaying Canadian weather data, built as a proof of concept for native iOS development.',
-      highlights: [
-        { label: 'Native iOS', body: 'Built end-to-end in Swift with SwiftUI.' },
-        { label: 'Canadian weather data', body: 'Real API integration for forecast data.' },
-      ],
-      why: "Shows breadth beyond web: comfort with native mobile development, SwiftUI, and API integration. A small project, but a deliberate one; proof that I'll learn an entire ecosystem (Xcode, Swift Package Manager, the lot) when a problem calls for it.",
     },
   ],
 
-  blog: [
-    {
-      id: 'laravel-vs-nextjs-2026',
-      title: 'Why I still reach for Laravel in the age of everything-Next',
-      date: '2026-03-18',
-      readingTime: '7 min',
-      tag: 'Opinion',
-      excerpt: 'The JavaScript-everywhere framework monoculture is real. Here\'s why a "boring" PHP framework keeps winning me client projects.',
-      body: [
-        "Every month there's a new JavaScript meta-framework promising to replace everything. Every month I ship production Laravel code for clients who need their site to be online in 10 years, not migrated in 18 months.",
-        "This isn't a tirade against modern JS — I love Vue and Nuxt, which power this very portfolio. But boring, stable tools have real value. Laravel gives me conventions, a mature ecosystem, and a community of developers who can still read the code after I hand it off.",
-        "When I consult with a small business about their website, I'm not choosing a framework for me. I'm choosing a framework for the developer who might inherit it in three years when I'm no longer around. Laravel wins that argument more often than not.",
-      ],
-    },
-    {
-      id: 'mcp-servers-for-students',
-      title: 'Building an MCP server as a student — a one-weekend project',
-      date: '2026-02-02',
-      readingTime: '5 min',
-      tag: 'Tutorial',
-      excerpt: 'I needed Claude to talk to my learning management system. So I built a tool that lets it. Here\'s how the Model Context Protocol made it stupid-simple.',
-      body: [
-        "I'm a student. I live inside Brightspace. My assignments, my rubrics, my grades — all of it.",
-        "I also live inside Claude. So the obvious question: why is my AI assistant blind to the thing I spend most of my academic life in?",
-        'The answer, as of last year, is "it doesn\'t have to be." MCP — the Model Context Protocol — gave me a way to bridge the two in a weekend. Here\'s the architecture, the gotchas, and what I\'d do differently.',
-      ],
-    },
-    {
-      id: 'accessibility-as-security',
-      title: 'Accessibility is a security practice in disguise',
-      date: '2025-11-14',
-      readingTime: '6 min',
-      tag: 'Essay',
-      excerpt: 'Thinking about AODA compliance changed how I think about threat modelling. A brief note from my security specialization.',
-      body: [
-        'The best security engineers I know design for hostile environments — users in bad network conditions, attackers looking for edge cases, systems under load. The best accessibility engineers do exactly the same thing.',
-        "A screen reader user and an adversary have something surprising in common: both are exploring your app's full behavioural surface in ways you didn't plan for. Designing for one quietly hardens you against the other.",
-      ],
-    },
-    {
-      id: 'on-leaving-uoft',
-      title: 'On leaving U of T and going back to school',
-      date: '2025-08-03',
-      readingTime: '4 min',
-      tag: 'Personal',
-      excerpt: "I spent a year studying CS and philosophy at U of T. Then I transferred to Conestoga. Here's why.",
-      body: [
-        "The short version: I wanted to build things. I wanted to be in a room with instructors who'd spent time in industry, not just in academia.",
-        "The long version involves a lot of late nights, a supportive partner, and realizing that the 'prestige' path wasn't the same as the 'right' path. I don't regret my year at U of T — philosophy still shapes how I debug — but Conestoga is where I'm actually learning to engineer.",
-      ],
-    },
-  ],
+  blog: [],
 
   skills: {
     Languages: ['PHP', 'JavaScript', 'TypeScript', 'Python', 'C++', 'C', 'C#', 'Java', 'Swift', 'SQL', 'HTML', 'CSS/SCSS'],

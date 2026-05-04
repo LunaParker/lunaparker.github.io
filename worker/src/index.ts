@@ -93,7 +93,7 @@ export default {
             { name: 'Email', value: email, inline: true },
             { name: 'Message', value: message },
           ],
-          footer: { text: ip ? `From ${ip}` : 'shyowlstudios.com' },
+          footer: { text: ip ? `From ${ip}` : 'lunaparker.dev' },
           timestamp: new Date().toISOString(),
         }],
       }),

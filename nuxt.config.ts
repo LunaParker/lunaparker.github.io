@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   modules: ['@nuxt/fonts', '@nuxt/eslint', '@nuxtjs/sitemap'],
 
   site: {
-    url: 'https://shyowlstudios.com',
+    url: 'https://lunaparker.dev',
     name: 'Luna Parker',
   },
 
@@ -65,10 +65,10 @@ export default defineNuxtConfig({
           property: 'og:description',
           content: "Full-stack web developer and designer with 8+ years' experience. Honours BCS student at Conestoga — available for Fall 2026 co-op.",
         },
-        { property: 'og:image', content: 'https://shyowlstudios.com/og-image.png' },
+        { property: 'og:image', content: 'https://lunaparker.dev/og-image.png' },
         { property: 'og:image:width', content: '1200' },
         { property: 'og:image:height', content: '630' },
-        { property: 'og:url', content: 'https://shyowlstudios.com/' },
+        { property: 'og:url', content: 'https://lunaparker.dev/' },
         // Twitter
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: 'Luna Parker — Developer & Designer' },
@@ -76,7 +76,7 @@ export default defineNuxtConfig({
           name: 'twitter:description',
           content: "Full-stack web developer and designer with 8+ years' experience.",
         },
-        { name: 'twitter:image', content: 'https://shyowlstudios.com/og-image.png' },
+        { name: 'twitter:image', content: 'https://lunaparker.dev/og-image.png' },
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
@@ -91,15 +91,15 @@ export default defineNuxtConfig({
     public: {
       // Override at build time with NUXT_PUBLIC_TURNSTILE_SITE_KEY and NUXT_PUBLIC_CONTACT_ENDPOINT.
       // Default endpoint is absolute so the form works from any deployed origin
-      // (shyowlstudios.com, lunaparker.dev, lunaparker.github.io).
+      // (lunaparker.dev, lunaparker.github.io).
       turnstileSiteKey: '0x4AAAAAADD0v3nrGLOgqLEF',
-      contactEndpoint: 'https://shyowlstudios.com/api/contact',
+      contactEndpoint: 'https://lunaparker.dev/api/contact',
       // Gate the Writing/blog section and /writing routes. Off until real
       // posts exist; flip via NUXT_PUBLIC_WRITING_ENABLED=true.
       writingEnabled: false,
       // Canonical site URL — drives canonical <link>, OG tags, and sitemap.
       // Override per-build with NUXT_PUBLIC_SITE_URL.
-      siteUrl: 'https://shyowlstudios.com',
+      siteUrl: 'https://lunaparker.dev',
     },
   },
 

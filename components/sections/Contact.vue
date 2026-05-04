@@ -142,13 +142,13 @@ async function onSubmit(e: Event) {
         <div>
           <div class="contact__rows">
             <a
-              href="mailto:luna@shyowlstudios.com"
+              href="mailto:luna@lunaparker.dev"
               class="contact__row contact__row--linked"
             >
               <div class="contact__row-icon"><UiIcon name="mail" :size="20" /></div>
               <div>
                 <div class="label contact__row-label">Email</div>
-                <div class="contact__row-value">luna@shyowlstudios.com</div>
+                <div class="contact__row-value">luna@lunaparker.dev</div>
               </div>
               <UiIcon name="arrowUpRight" :size="18" />
             </a>

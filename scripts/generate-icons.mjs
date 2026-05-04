@@ -123,7 +123,7 @@ function ogElement() {
         fontSize: 26,
         letterSpacing: '0.02em',
       },
-    }, 'shyowlstudios.com'),
+    }, 'lunaparker.dev'),
   )
 }
 

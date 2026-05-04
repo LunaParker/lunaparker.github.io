@@ -219,7 +219,7 @@ const DATA: PortfolioData = {
       year: '2026',
       url: 'github.com/lunaparker/macos-permission-report',
       stack: ['Python', 'Jinja2', 'macOS'],
-      size: 'square',
+      size: 'tall',
       accent: 'primary',
     },
     {

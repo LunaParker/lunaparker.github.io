@@ -11,11 +11,6 @@ This repo has **two cooperating deployments**, both on Cloudflare:
 
 `README.md` covers the Nuxt setup, build, deploy, and design system in depth. **Don't duplicate it; consult it.** This file documents the rest.
 
-### Branches
-
-- `master` holds the **old Shy Owl Studios agency site** — vanilla HTML + Bulma + jQuery-style JS. It's historical reference only (used during the redesign to make sure projects/copy weren't lost).
-- `redesign/nuxt-portfolio` is the **canonical** branch and the rewrite. When in doubt about a pattern, look at this branch, not master.
-
 ## Commands you'll actually use
 
 ```bash
@@ -46,7 +41,7 @@ The split is by shape, not by topic:
 Rule of thumb: if you'd add a new entry to a list (another job, another project, another blog post), it belongs in `useData.ts`. If it's a one-off fact about Luna or a fixed bit of marketing copy, it belongs inline in the component.
 
 Notes:
-- The `blog` array currently holds **placeholder posts**, not real essays. The Writing section + nav item are gated behind `runtimeConfig.public.writingEnabled` (default `false`). Flip via `NUXT_PUBLIC_WRITING_ENABLED=true`. With the flag off, nothing links to `/writing`, so the static generator doesn't crawl those routes — direct visits to `/writing` on the deployed site 404. In dev (`npm run dev`) the routes remain reachable for previewing drafts.
+- The `blog` array is currently **empty** — the Writing infrastructure (component, pages, BlogCard) is wired up and ready, but gated behind `runtimeConfig.public.writingEnabled` (default `false`). Flip via `NUXT_PUBLIC_WRITING_ENABLED=true` once `useData.ts.blog` has real posts. With the flag off, nothing links to `/writing`, so the static generator doesn't crawl those routes — direct visits to `/writing` on the deployed site 404. In dev (`npm run dev`) the routes remain reachable for previewing drafts.
 - The services grid in `Skills.vue` is local to that file. It's a relic of the old agency framing but is currently rendered; remove it there if you want it gone.
 
 ## Contact form infrastructure
@@ -88,7 +83,7 @@ Drop the secret into `worker/.dev.vars` (template at `worker/.dev.vars.example`)
 
 These are real follow-ups, not pretend ones — flag them if relevant to the work:
 
-- **The Writing section ships placeholder content** and is currently disabled via `writingEnabled = false`. Replace `useData.ts.blog` with real posts and flip the flag when ready.
+- **The Writing section is empty** — `useData.ts.blog` was emptied of placeholder posts before public release. Add real posts and flip `writingEnabled = true` when ready.
 - **`useData.ts` (experience, education, projects) drifts out of sync with the actual resume/LinkedIn occasionally.** Treat it as the canonical site truth, but expect periodic reconciliation passes.
 
 ## Conventions

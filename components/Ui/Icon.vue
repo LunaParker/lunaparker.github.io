@@ -6,6 +6,7 @@ type IconName =
   | 'github' | 'linkedin' | 'sun' | 'moon' | 'close' | 'sparkles'
   | 'chev' | 'chevDown' | 'heart' | 'maple' | 'dot' | 'menu' | 'tweaks'
   | 'webDesign' | 'webDev' | 'custom' | 'consult' | 'wordpress' | 'database'
+  | 'monitor' | 'check'
 
 const props = withDefaults(defineProps<{
   name: IconName
@@ -135,5 +136,13 @@ const common = computed(() => ({
     <ellipse cx="12" cy="5.5" rx="8" ry="2.5" />
     <path d="M4 5.5v6c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5v-6" />
     <path d="M4 11.5v6c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5v-6" />
+  </svg>
+  <svg v-else-if="name === 'monitor'" v-bind="common" :style="style" aria-hidden>
+    <rect x="3" y="4" width="18" height="13" rx="2" />
+    <path d="M8 21h8" />
+    <path d="M12 17v4" />
+  </svg>
+  <svg v-else-if="name === 'check'" v-bind="common" :style="style" aria-hidden>
+    <path d="m5 12 5 5 9-10" />
   </svg>
 </template>

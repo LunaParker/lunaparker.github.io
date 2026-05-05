@@ -82,6 +82,7 @@ function onNavClick(e: MouseEvent, id: string) {
       </nav>
 
       <div class="nav__cta-row">
+        <ThemeToggle />
         <a
           href="/resume.pdf"
           target="_blank"

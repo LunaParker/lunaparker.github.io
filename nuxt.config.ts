@@ -84,6 +84,14 @@ export default defineNuxtConfig({
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
         { rel: 'manifest', href: '/site.webmanifest' },
       ],
+      script: [
+        {
+          // Apply persisted theme override before first paint to avoid a flash.
+          // Mirrors useTheme composable's storage key + values.
+          innerHTML: '(function(){try{var t=localStorage.getItem("theme-preference");if(t==="dark"||t==="light"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();',
+          tagPriority: 'critical',
+        },
+      ],
     },
   },
 

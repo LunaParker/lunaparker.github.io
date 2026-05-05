@@ -83,7 +83,7 @@ function onNavClick(e: MouseEvent, id: string) {
 
       <div class="nav__cta-row">
         <a
-          href="/Luna_Parker.pdf"
+          href="/resume.pdf"
           target="_blank"
           rel="noopener"
           class="btn btn-outlined nav__cta hide-on-mobile"

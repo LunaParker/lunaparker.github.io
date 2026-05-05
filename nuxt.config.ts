@@ -2,7 +2,13 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-01-01',
   devtools: { enabled: true },
 
-  modules: ['@nuxt/fonts', '@nuxt/eslint', '@nuxtjs/sitemap'],
+  modules: [
+    '@nuxt/fonts',
+    '@nuxt/eslint',
+    '@nuxtjs/sitemap',
+    'nuxt-gtag',
+    '@dargmuesli/nuxt-cookie-control',
+  ],
 
   site: {
     url: 'https://lunaparker.dev',
@@ -17,7 +23,80 @@ export default defineNuxtConfig({
     '~/assets/css/tokens.styl',
     '~/assets/css/base.styl',
     '~/assets/css/app.styl',
+    '~/assets/css/cookie-control.styl',
   ],
+
+  gtag: {
+    id: 'G-0M3HK86F42',
+    initMode: 'manual',
+    initCommands: [
+      ['consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        wait_for_update: 500,
+      }],
+    ],
+  },
+
+  cookieControl: {
+    barPosition: 'bottom-right',
+    closeModalOnClickOutside: true,
+    colors: false,
+    isAcceptNecessaryButtonEnabled: true,
+    isControlButtonEnabled: true,
+    isCookieIdVisible: false,
+    isCssEnabled: true,
+    isCssPonyfillEnabled: false,
+    isDashInDescriptionEnabled: false,
+    isIframeBlocked: false,
+    isModalForced: false,
+    declineAllAcceptsNecessary: false,
+    locales: ['en'],
+    cookies: {
+      necessary: [
+        {
+          id: 'cf-bot-management',
+          name: 'Cloudflare bot management',
+          description: 'Set by the Cloudflare network on every request to lunaparker.dev. Used to distinguish humans from automated traffic so the contact form\'s Turnstile challenge can run. Cannot be disabled while using the site.',
+          targetCookieIds: ['__cf_bm', 'cf_clearance', 'cf_chl_*'],
+        },
+        {
+          id: 'theme-preference',
+          name: 'Theme preference',
+          description: 'A localStorage entry that remembers whether you\'ve overridden the system light/dark theme via the toggle. Stored on your device only — never transmitted.',
+          targetCookieIds: ['theme-preference'],
+        },
+      ],
+      optional: [
+        {
+          id: 'ga4',
+          name: 'Google Analytics 4',
+          description: 'Loads gtag.js to record aggregate page views and visit patterns. Honours Google Consent Mode v2 — no analytics cookies are stored until you accept here.',
+          targetCookieIds: ['_ga', '_ga_*', '_gid', '_gat'],
+        },
+      ],
+    },
+    localeTexts: {
+      en: {
+        bannerTitle: 'Cookies',
+        bannerDescription: 'lunaparker.dev uses Cloudflare Web Analytics (cookieless, always on) to count visits. Enable Google Analytics for richer page-level metrics — your call.',
+        accept: 'Accept all',
+        acceptAll: 'Accept all',
+        decline: 'Reject all',
+        declineAll: 'Reject all',
+        manageCookies: 'Manage',
+        cookiesNecessary: 'Necessary',
+        cookiesOptional: 'Optional',
+        save: 'Save preferences',
+        close: 'Close',
+        settingsUnsaved: 'Your changes haven\'t been saved.',
+        iframeBlocked: 'Embedded content is blocked until you accept its cookie category.',
+        here: 'here',
+      },
+    },
+  },
 
   fonts: {
     families: [

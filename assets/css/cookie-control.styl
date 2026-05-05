@@ -1,0 +1,227 @@
+// Theme overrides for @dargmuesli/nuxt-cookie-control. Maps the library's
+// --cookie-control-* CSS vars onto our M3 token surface roles, then patches
+// hard-coded font/transition/shape rules from the library's stylesheet so
+// the banner reads as part of the portfolio, not a third-party widget.
+
+:root
+  // Bar (the bottom banner)
+  --cookie-control-barBackground: var(--surface-container-high)
+  --cookie-control-barTextColor: var(--on-surface)
+  --cookie-control-barButtonBackground: var(--primary)
+  --cookie-control-barButtonColor: var(--on-primary)
+  --cookie-control-barButtonHoverBackground: var(--on-surface)
+  --cookie-control-barButtonHoverColor: var(--surface)
+  --cookie-control-focusRingColor: unquote("color-mix(in oklch, var(--primary) 35%, transparent)")
+
+  // Modal (preferences dialog)
+  --cookie-control-modalBackground: var(--surface-container-high)
+  --cookie-control-modalTextColor: var(--on-surface)
+  --cookie-control-modalOverlay: var(--surface)
+  --cookie-control-modalOverlayOpacity: 0.6
+  --cookie-control-modalButtonBackground: var(--primary)
+  --cookie-control-modalButtonColor: var(--on-primary)
+  --cookie-control-modalButtonHoverBackground: var(--on-surface)
+  --cookie-control-modalButtonHoverColor: var(--surface)
+  --cookie-control-modalUnsavedColor: var(--on-error)
+
+  // Toggle switch (active = primary; inactive = outline-variant track)
+  --cookie-control-checkboxActiveBackground: var(--primary)
+  --cookie-control-checkboxActiveCircleBackground: var(--on-primary)
+  --cookie-control-checkboxInactiveBackground: var(--outline-variant)
+  --cookie-control-checkboxInactiveCircleBackground: var(--surface)
+  --cookie-control-checkboxDisabledBackground: var(--surface-container-highest)
+  --cookie-control-checkboxDisabledCircleBackground: var(--outline)
+
+  // Floating control button (after consent)
+  --cookie-control-controlButtonBackground: var(--surface-container-high)
+  --cookie-control-controlButtonHoverBackground: var(--primary)
+  --cookie-control-controlButtonIconColor: var(--on-surface)
+  --cookie-control-controlButtonIconHoverColor: var(--on-primary)
+
+// Bar — pill the corners, drop a soft elevation shadow, swap the hard-coded
+// Arial fallback for the site's body font, and push the content area in a bit.
+.cookieControl__Bar
+  font-family: var(--font-body)
+  border-radius: var(--shape-lg)
+  box-shadow: 0 12px 40px -8px unquote("color-mix(in oklch, var(--on-surface) 25%, transparent)"), 0 4px 12px -4px unquote("color-mix(in oklch, var(--on-surface) 12%, transparent)")
+  max-width: 520px
+  overflow: hidden
+
+.cookieControl__Bar h2
+  font-family: var(--font-display)
+  letter-spacing: -0.015em
+  font-weight: 600
+  font-size: 1.125rem
+
+.cookieControl__Bar p
+  font-size: 0.95rem
+  color: var(--on-surface-variant)
+  line-height: 1.5
+
+.cookieControl__BarContainer
+  padding: 24px
+
+// Unsaved-changes warning — library renders this as a sibling of the modal
+// content (so it floats at the viewport bottom). Promote it from a thin red
+// line into a pill toast: filled error container, rounded, with a subtle
+// shadow so it reads as a real notification rather than orphaned text.
+.cookieControl__ModalUnsaved
+  background: var(--error)
+  color: var(--on-error)
+  padding: 0.55rem 1.1rem
+  border-radius: var(--shape-full)
+  font-size: 0.85rem
+  font-weight: 600
+  letter-spacing: -0.005em
+  box-shadow: 0 6px 20px -4px unquote("color-mix(in oklch, var(--error) 50%, transparent)"), 0 2px 6px -2px unquote("color-mix(in oklch, var(--on-surface) 25%, transparent)")
+  bottom: 24px
+
+// Modal — M3 dialog shape and font. Library defaults to `overflow-y: scroll`
+// (always visible) and `max-height: 80vh` (which our 6-cookie modal brushes
+// against). Bump max-height, switch overflow to `auto`, and hide the
+// scrollbar visually on every platform so the rounded modal reads cleanly
+// even on the rare viewport where content does overflow.
+.cookieControl__ModalContent
+  font-family: var(--font-body)
+  border-radius: var(--shape-xl)
+  box-shadow: 0 24px 64px -12px unquote("color-mix(in oklch, var(--on-surface) 35%, transparent)")
+  max-width: 580px
+  max-height: 92vh
+  overflow-y: auto
+  scrollbar-width: none
+  -ms-overflow-style: none
+
+.cookieControl__ModalContent::-webkit-scrollbar
+  display: none
+
+.cookieControl__ModalContent h2
+  font-family: var(--font-display)
+  letter-spacing: -0.02em
+  font-weight: 700
+  font-size: 1.125rem
+  margin: 4px 0 0
+
+.cookieControl__ModalContentInner
+  padding: 24px 28px
+
+// Compact pass: library defaults leave 20px between cookies and 40px above
+// the action row, which pushes the modal past 80vh on shorter viewports
+// (especially with our 6 cookie rows). Tighten both so the dialog fits without
+// the scrollbar appearing.
+.cookieControl__ModalContent li + li
+  margin-top: 14px
+
+.cookieControl__ModalButtons
+  margin-top: 24px
+
+// Buttons — pill shape + spring transitions matching .btn in base.styl
+.cookieControl button
+  font-family: var(--font-body)
+  font-weight: 600
+  font-size: 0.9rem
+  letter-spacing: -0.005em
+  border-radius: var(--shape-full)
+  padding: 0.65rem 1.2rem
+  white-space: nowrap
+  transition: transform var(--dur-short) var(--spring-fast), background-color var(--dur-short) var(--spring-gentle), color var(--dur-short) var(--spring-gentle), box-shadow var(--dur-short) var(--spring-gentle)
+
+.cookieControl button:active
+  transform: scale(0.96)
+
+.cookieControl__Bar button:hover,
+.cookieControl__Modal button:hover
+  box-shadow: 0 4px 22px -2px unquote("color-mix(in oklch, var(--primary) 40%, transparent)")
+
+// GDPR equal-prominence rule: Accept and Reject must share visual weight
+// (same colour, same size, same emphasis) so consent isn't nudged by design.
+// Bar order: [Accept all, Reject all, Manage]. Both action buttons inherit
+// the default filled-primary style; only Manage differentiates as a text
+// variant since it's a different action class (open settings, not consent).
+.cookieControl__BarButtons button:nth-child(3)
+  background: transparent
+  color: var(--primary-text)
+  padding: 0.65rem 0.9rem
+
+.cookieControl__BarButtons button:nth-child(3):hover
+  background: unquote("color-mix(in oklch, var(--primary) 12%, transparent)")
+  color: var(--primary-text)
+  box-shadow: none
+
+// Modal action row: [Save preferences, Accept all, Reject all]. Save is a
+// distinct action ("confirm my custom selection") and stays tonal so it
+// reads differently from the binary consent pair. Accept and Reject both
+// inherit filled primary — equal prominence per GDPR.
+.cookieControl__ModalButtons button:nth-child(1)
+  background: var(--secondary-container)
+  color: var(--on-secondary-container)
+
+.cookieControl__ModalButtons button:nth-child(1):hover
+  background: var(--on-surface)
+  color: var(--surface)
+
+// Modal Close button — make it a quiet text variant rather than a filled
+// primary tile; it's just a dismissal control. Higher specificity so it
+// beats the library's `.cookieControl__Modal button` rule.
+.cookieControl__Modal button.cookieControl__ModalClose
+  background: transparent
+  color: var(--on-surface-variant)
+  padding: 0.5rem 1rem
+
+.cookieControl__Modal button.cookieControl__ModalClose:hover
+  background: unquote("color-mix(in oklch, var(--on-surface) 8%, transparent)")
+  color: var(--on-surface)
+  box-shadow: none
+
+// Control button (post-consent FAB) — keep circular, M3 elevation
+.cookieControl__ControlButton
+  border-radius: var(--shape-full)
+  box-shadow: 0 6px 16px -4px unquote("color-mix(in oklch, var(--on-surface) 25%, transparent)")
+  transition: background-color var(--dur-short) var(--spring-gentle), transform var(--dur-short) var(--spring-fast), box-shadow var(--dur-short) var(--spring-gentle)
+
+.cookieControl__ControlButton:hover
+  transform: scale(1.06)
+
+// Toggle track — match M3 switch shape (already pill from library, but lift the
+// thumb a touch to feel more like a Material switch)
+.cookieControl__ModalContent input + button
+  min-height: 22px
+  min-width: 40px
+  border-radius: var(--shape-full)
+  transition: background-color var(--dur-short) var(--spring-gentle)
+
+.cookieControl__ModalContent input + button:before
+  height: 16px
+  width: 16px
+  transition: transform var(--dur-med) var(--spring-emphasized), background-color var(--dur-short) var(--spring-gentle)
+
+// Library defaults to a 0.25s linear opacity/transform; replace with the
+// project's spring easing + motion-multiplier-aware durations.
+.cookieControl__Modal-enter-active,
+.cookieControl__Modal-leave-active
+  transition: opacity var(--dur-med) var(--spring-emphasized)
+
+.cookieControl__Bar--top-left-enter-active,
+.cookieControl__Bar--top-left-leave-active,
+.cookieControl__Bar--top-right-enter-active,
+.cookieControl__Bar--top-right-leave-active,
+.cookieControl__Bar--top-full-enter-active,
+.cookieControl__Bar--top-full-leave-active,
+.cookieControl__Bar--bottom-left-enter-active,
+.cookieControl__Bar--bottom-left-leave-active,
+.cookieControl__Bar--bottom-right-enter-active,
+.cookieControl__Bar--bottom-right-leave-active,
+.cookieControl__Bar--bottom-full-enter-active,
+.cookieControl__Bar--bottom-full-leave-active
+  transition: transform var(--dur-med) var(--spring-emphasized), opacity var(--dur-med) var(--spring-emphasized)
+
+// Mobile — let the bar go full-width on small screens but keep the rounded top
+@media screen and (max-width: 768px)
+  .cookieControl__Bar
+    max-width: none
+    border-radius: var(--shape-lg) var(--shape-lg) 0 0
+
+  .cookieControl__BarContainer
+    padding: 20px
+
+  .cookieControl__ModalContent
+    border-radius: 0

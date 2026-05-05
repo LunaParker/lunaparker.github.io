@@ -25,7 +25,7 @@ onMounted(() => {
   <article :style="{ minHeight: '100vh', padding: '120px 0 80px' }">
     <div class="container" :style="{ maxWidth: '760px' }">
       <div class="label section-kicker" :style="{ color: 'var(--on-surface-variant)', marginBottom: '20px' }">
-        <span>Last updated April 28, 2026</span>
+        <span>Last updated May 5, 2026</span>
       </div>
 
       <h1 class="title">
@@ -68,6 +68,11 @@ onMounted(() => {
             <b>Your IP address</b> — collected automatically by Cloudflare and forwarded to Cloudflare Turnstile when
             you submit the contact form, for the purpose of bot and abuse detection.
           </li>
+          <li>
+            <b>Aggregate visit metadata</b> — collected by Cloudflare Web Analytics on every page load
+            (cookieless, no fingerprinting), and additionally by Google Analytics 4 only if you opt
+            in via the cookie banner. See "Service provider data collection" below.
+          </li>
         </ul>
         <p>
           As you can see, all data collected by us directly is only collected when you <i>explicitly</i> provide it,
@@ -97,6 +102,28 @@ onMounted(() => {
         <p>
           For more information regarding this data collection, please visit
           <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noreferrer">Cloudflare's Privacy Policy</a>.
+        </p>
+
+        <h3>Cloudflare Web Analytics</h3>
+        <p>
+          The site uses Cloudflare's privacy-focused Web Analytics product. It runs on every page load,
+          regardless of your cookie choice, because it does not set cookies, does not fingerprint your
+          device, and does not track you across sites. Cloudflare records aggregate metrics — page
+          views, referrers, country, and approximate device class — without any identifier that ties
+          requests back to you. This is the only always-on analytics tool on the site.
+        </p>
+
+        <h3>Google Analytics 4 (opt-in)</h3>
+        <p>
+          If you accept analytics cookies via the banner shown on your first visit, the site loads
+          Google Analytics 4 (gtag.js). GA4 sets cookies (<b>_ga</b>, <b>_ga_*</b>) and records page
+          views, session details, and approximate location to give us per-page traffic insight.
+          GA4 honours <a href="https://developers.google.com/tag-platform/security/guides/consent" target="_blank" rel="noreferrer">Google Consent Mode v2</a> —
+          before you accept, no analytics storage is used and no GA cookies are set; the gtag.js
+          script itself is not even loaded. You can revoke consent at any time via the small cookie
+          icon in the bottom corner; we honour the change immediately on the next page load. See
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Google's privacy policy</a>
+          for the data Google may further process.
         </p>
 
         <h3>Discord</h3>

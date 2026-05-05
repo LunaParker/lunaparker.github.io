@@ -72,6 +72,19 @@ Contact.vue ──POST JSON──▶  lunaparker.dev/api/contact  ──▶  shy
 
 Drop the secret into `worker/.dev.vars` (template at `worker/.dev.vars.example`), run `wrangler dev`, then start Nuxt with `NUXT_PUBLIC_TURNSTILE_SITE_KEY=1x00000000000000000000AA NUXT_PUBLIC_CONTACT_ENDPOINT=http://localhost:8787 npm run dev`.
 
+## Analytics + cookie consent
+
+Two analytics tools, with different consent posture:
+
+- **Cloudflare Web Analytics** is auto-injected by the Cloudflare edge for `lunaparker.dev` (configured in the WA dashboard, no code change). Cookieless and unfingerprinted, so it runs on every visit regardless of consent — it's the always-on baseline.
+- **Google Analytics 4** (`G-0M3HK86F42`) is gated behind explicit consent. The `nuxt-gtag` module is configured with `initMode: 'manual'` and Consent Mode v2 defaults (`analytics_storage: 'denied'`), so the gtag.js script tag does not load until the user clicks "Accept all" in the banner.
+
+The banner itself is `@dargmuesli/nuxt-cookie-control`. The bridge between consent state and gtag lives at `plugins/consent-bridge.client.ts`, which watches `useCookieControl().cookiesEnabledIds` and toggles `gtag('consent', 'update', …)` + `useGtag().initialize()` / `disableAnalytics()` accordingly.
+
+Theming: the library's `--cookie-control-*` CSS variables are remapped onto our M3 tokens in `assets/css/cookie-control.styl`. That file also patches the library's hard-coded Arial fallback and 0.25s linear transitions to use `--font-body` and `--spring-emphasized` so the banner reads as part of the site, not a third-party widget. Light/dark switching comes for free via tokens.styl.
+
+If the GA4 ID needs rotating, update it in `nuxt.config.ts` under `gtag.id`. It's public by design (baked into gtag.js), so no secret handling needed.
+
 ## Deployment topology
 
 - **Pages**: Cloudflare Pages serves `.output/public/` from the `master` branch via `wrangler pages deploy` in the GH Actions workflow described in README. Project name is `lunaparker-portfolio`. GitHub repo needs `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` secrets for the Action to authenticate.

@@ -10,18 +10,7 @@ const props = withDefaults(defineProps<{
 })
 
 const big = computed(() => props.size === 'big')
-
-type Treatment = { kind: 'vertical-split' | 'stacked' | 'angle' | 'mono-code', fg: string }
-
-const treatments: Record<string, Treatment> = {
-  'eyolf': { kind: 'vertical-split', fg: 'primary' },
-  'jarvis-ryan': { kind: 'stacked', fg: 'tertiary' },
-  'blsc': { kind: 'angle', fg: 'secondary' },
-  'brightspace-mcp': { kind: 'mono-code', fg: 'tertiary' },
-  'swift-weather': { kind: 'mono-code', fg: 'primary' },
-}
-
-const tx = computed<Treatment>(() => treatments[props.project.id] ?? { kind: 'stacked', fg: props.project.accent })
+const treatment = computed(() => props.project.treatment)
 
 const wrapStyle = computed(() => ({
   position: 'absolute' as const,
@@ -36,7 +25,7 @@ const wrapStyle = computed(() => ({
 
 <template>
   <!-- vertical-split -->
-  <div v-if="tx.kind === 'vertical-split'" :style="{ ...wrapStyle, padding: '0', background: 'var(--surface-container-high)' }">
+  <div v-if="treatment === 'vertical-split'" :style="{ ...wrapStyle, padding: '0', background: 'var(--surface-container-high)' }">
     <div :style="{ position: 'absolute', inset: 0, background: 'var(--brand-gradient-v)', opacity: 0.92 }" />
     <div
 :style="{
@@ -86,7 +75,7 @@ const wrapStyle = computed(() => ({
   </div>
 
   <!-- stacked -->
-  <div v-else-if="tx.kind === 'stacked'" :style="{ ...wrapStyle, background: 'var(--tertiary-container)', color: 'var(--on-tertiary-container)', padding: '0' }">
+  <div v-else-if="treatment === 'stacked'" :style="{ ...wrapStyle, background: 'var(--tertiary-container)', color: 'var(--on-tertiary-container)', padding: '0' }">
     <div
 :style="{
       position: 'absolute',
@@ -114,7 +103,7 @@ const wrapStyle = computed(() => ({
   </div>
 
   <!-- angle -->
-  <div v-else-if="tx.kind === 'angle'" :style="{ ...wrapStyle, background: 'var(--secondary-container)', color: 'var(--on-secondary-container)', padding: '0' }">
+  <div v-else-if="treatment === 'angle'" :style="{ ...wrapStyle, background: 'var(--secondary-container)', color: 'var(--on-secondary-container)', padding: '0' }">
     <div
 :style="{
       position: 'absolute',
@@ -136,7 +125,7 @@ const wrapStyle = computed(() => ({
   </div>
 
   <!-- mono-code -->
-  <div v-else-if="tx.kind === 'mono-code'" :style="{ ...wrapStyle, background: 'var(--surface-container-highest)', color: 'var(--on-surface)', padding: '0' }">
+  <div v-else-if="treatment === 'mono-code'" :style="{ ...wrapStyle, background: 'var(--surface-container-highest)', color: 'var(--on-surface)', padding: '0' }">
     <div
 :style="{
       position: 'absolute',
@@ -146,8 +135,7 @@ const wrapStyle = computed(() => ({
     }" />
     <div :style="{ position: 'relative', padding: big ? '32px' : '20px', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }">
       <div :style="{ fontFamily: 'var(--font-mono)', fontSize: big ? '14px' : '11px', color: 'var(--on-surface-variant)' }">
-        <div>$ npx {{ project.id }}@latest</div>
-        <div :style="{ marginTop: '6px', opacity: 0.6 }">// {{ project.client }}</div>
+        <div>// {{ project.client }}</div>
       </div>
       <div
 :style="{

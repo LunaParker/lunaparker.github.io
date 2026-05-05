@@ -27,6 +27,13 @@ export interface Education {
 
 export type ProjectSize = 'featured' | 'wide' | 'tall' | 'square'
 
+// Visual treatment for the typographic poster on each card.
+// - vertical-split: full-bleed brand gradient with rotated wordmark (signature treatment)
+// - stacked: tonal container with a soft brand-gradient blur in one corner
+// - angle: tonal container with a conic accent sweep, italic title
+// - mono-code: neutral grey surface with a hatch pattern and a "// <client>" comment header
+export type ProjectTreatment = 'vertical-split' | 'stacked' | 'angle' | 'mono-code'
+
 export interface Project {
   id: string
   name: string
@@ -38,6 +45,7 @@ export interface Project {
   stack: string[]
   size: ProjectSize
   accent: AccentKey
+  treatment: ProjectTreatment
 }
 
 export interface BlogPost {
@@ -161,6 +169,7 @@ const DATA: PortfolioData = {
       stack: ['WordPress', 'WooCommerce', 'InvoiceNinja', 'Laravel', 'Cloudflare'],
       size: 'featured',
       accent: 'primary',
+      treatment: 'vertical-split',
     },
     {
       id: 'jarvis-ryan',
@@ -173,6 +182,7 @@ const DATA: PortfolioData = {
       stack: ['Laravel', 'PHP', 'Microsoft Server', 'IIS'],
       size: 'wide',
       accent: 'tertiary',
+      treatment: 'stacked',
     },
     {
       id: 'blsc',
@@ -185,6 +195,7 @@ const DATA: PortfolioData = {
       stack: ['WordPress', 'Laravel', 'Cloudflare'],
       size: 'tall',
       accent: 'secondary',
+      treatment: 'angle',
     },
     {
       id: 'brightspace-mcp',
@@ -197,6 +208,7 @@ const DATA: PortfolioData = {
       stack: ['TypeScript', 'Node.js', 'MCP'],
       size: 'square',
       accent: 'tertiary',
+      treatment: 'mono-code',
     },
     {
       id: 'claude-menu-bar',
@@ -209,6 +221,7 @@ const DATA: PortfolioData = {
       stack: ['Swift', 'SwiftUI', 'macOS'],
       size: 'tall',
       accent: 'secondary',
+      treatment: 'stacked',
     },
     {
       id: 'macos-permission-report',
@@ -221,18 +234,20 @@ const DATA: PortfolioData = {
       stack: ['Python', 'Jinja2', 'macOS'],
       size: 'tall',
       accent: 'primary',
+      treatment: 'stacked',
     },
     {
-      id: 'obsidian-default-handler',
-      name: 'macOS Obsidian Default Handler',
-      tagline: 'Open any .md file in Obsidian, vault or not',
-      client: 'Open Source',
-      role: 'Developer',
+      id: 'portfolio',
+      name: 'lunaparker.dev',
+      tagline: 'This site — powered by Vue/Nuxt, designed as my portfolio',
+      client: 'Personal Project',
+      role: 'Designer & Developer',
       year: '2026',
-      url: 'github.com/lunaparker/macos-obsidian-default-handler',
-      stack: ['AppleScript', 'Python', 'macOS'],
+      url: 'github.com/lunaparker/lunaparker.github.io',
+      stack: ['Vue.js', 'Nuxt', 'Stylus', 'Cloudflare'],
       size: 'square',
-      accent: 'tertiary',
+      accent: 'secondary',
+      treatment: 'stacked',
     },
     {
       id: 'swift-weather',
@@ -245,6 +260,20 @@ const DATA: PortfolioData = {
       stack: ['Swift', 'SwiftUI'],
       size: 'square',
       accent: 'primary',
+      treatment: 'mono-code',
+    },
+    {
+      id: 'obsidian-default-handler',
+      name: 'macOS Obsidian Default Handler',
+      tagline: 'Open any .md file in Obsidian, vault or not',
+      client: 'Open Source',
+      role: 'Developer',
+      year: '2026',
+      url: 'github.com/lunaparker/macos-obsidian-default-handler',
+      stack: ['AppleScript', 'Python', 'macOS'],
+      size: 'square',
+      accent: 'primary',
+      treatment: 'mono-code',
     },
   ],
 

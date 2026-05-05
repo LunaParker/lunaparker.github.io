@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const repoUrl = 'https://github.com/LunaParker/lunaparker.github.io'
 </script>
 
 <template>
@@ -32,7 +33,35 @@
 
       <div class="hero__footer">
         <div class="label hero__footer-cue">Scroll to explore</div>
-        <div class="mono hero__footer-meta">PORTFOLIO v4 · EST. 2026 · <a href="https://github.com/LunaParker/lunaparker.github.io" target="_blank" rel="noreferrer">SOURCE CODE</a></div>
+        <div class="mono hero__footer-meta">
+          <span
+            class="hero__portfolio-trigger"
+            tabindex="0"
+            aria-describedby="hero-portfolio-popover"
+          >
+            PORTFOLIO v4 · EST. 2026
+            <span
+              id="hero-portfolio-popover"
+              class="hero__portfolio-popover"
+              role="tooltip"
+            >
+              <span class="hero__portfolio-popover-label">Built with</span>
+              <span class="hero__portfolio-popover-body">
+                <strong>Vue 3</strong>, <strong>Nuxt</strong> and <strong>Stylus</strong> on the front. <strong>Cloudflare Pages</strong> serves the static site; the contact form runs on a <strong>Cloudflare Worker</strong>.
+              </span>
+              <a
+                :href="repoUrl"
+                target="_blank"
+                rel="noreferrer"
+                class="btn btn-filled hero__portfolio-popover-btn"
+              >
+                <UiIcon name="github" :size="14" :stroke="2" /> View source
+              </a>
+            </span>
+          </span>
+          <span class="hero__footer-meta-divider">·</span>
+          <a :href="repoUrl" target="_blank" rel="noreferrer">SOURCE CODE</a>
+        </div>
       </div>
     </div>
   </section>
@@ -124,6 +153,13 @@
 .hero__footer-meta
   font-size: 12px
   color: var(--on-surface-variant)
+  display: inline-flex
+  align-items: baseline
+  gap: 6px
+  flex-wrap: wrap
+
+.hero__footer-meta-divider
+  opacity: 0.6
 
 .hero__footer-meta a
   color: inherit
@@ -133,4 +169,116 @@
 
 .hero__footer-meta a:hover
   color: var(--on-surface)
+
+// Portfolio meta trigger + popover ----------------------------------
+.hero__portfolio-trigger
+  position: relative
+  cursor: help
+  text-decoration: underline dotted
+  text-decoration-color: var(--outline)
+  text-underline-offset: 3px
+  outline: none
+  border-radius: 4px
+  transition: color var(--dur-short) var(--spring-gentle)
+
+.hero__portfolio-trigger:hover,
+.hero__portfolio-trigger:focus-visible
+  color: var(--on-surface)
+  text-decoration-color: var(--on-surface)
+
+.hero__portfolio-popover
+  position: absolute
+  bottom: calc(100% + 14px)
+  right: 0
+  width: clamp(260px, 30vw, 340px)
+  padding: 16px 18px 14px
+  background: var(--surface-container-high)
+  border: 1px solid var(--outline-variant)
+  border-radius: 20px
+  box-shadow: 0 1px 2px unquote("color-mix(in oklch, var(--on-surface) 8%, transparent)"), 0 16px 36px -12px unquote("color-mix(in oklch, var(--on-surface) 24%, transparent)")
+  display: flex
+  flex-direction: column
+  gap: 10px
+  text-align: left
+  color: var(--on-surface)
+  cursor: default
+  pointer-events: none
+  opacity: 0
+  visibility: hidden
+  transform: translateY(6px) scale(0.97)
+  transform-origin: bottom right
+  transition: opacity var(--dur-short) var(--spring-gentle), transform var(--dur-med) var(--spring-fast), visibility 0s var(--dur-short)
+  z-index: 5
+
+// Hover bridge so cursor can travel from trigger to popover without closing
+.hero__portfolio-popover::before
+  content: ''
+  position: absolute
+  left: 0
+  right: 0
+  bottom: -14px
+  height: 14px
+
+.hero__portfolio-trigger:hover .hero__portfolio-popover,
+.hero__portfolio-trigger:focus-visible .hero__portfolio-popover,
+.hero__portfolio-trigger:focus-within .hero__portfolio-popover,
+.hero__portfolio-popover:hover
+  opacity: 1
+  visibility: visible
+  pointer-events: auto
+  transform: translateY(0) scale(1)
+  transition: opacity var(--dur-short) var(--spring-gentle), transform var(--dur-med) var(--spring-fast), visibility 0s
+
+.hero__portfolio-popover-label
+  font-family: var(--font-mono)
+  font-size: 11px
+  font-weight: 500
+  letter-spacing: 0.1em
+  text-transform: uppercase
+  color: var(--on-surface-variant)
+
+.hero__portfolio-popover-body
+  font-family: var(--font-body)
+  font-size: 13px
+  line-height: 1.5
+  color: var(--on-surface-variant)
+  letter-spacing: 0
+  text-transform: none
+
+.hero__portfolio-popover-body strong
+  color: var(--on-surface)
+  font-weight: 600
+
+.hero__footer-meta a.hero__portfolio-popover-btn
+  align-self: flex-start
+  padding: 6px 14px
+  font-size: 12px
+  letter-spacing: 0
+  text-transform: none
+  font-family: var(--font-body)
+  text-decoration: none
+  color: var(--on-primary)
+  margin-top: 4px
+
+.hero__footer-meta a.hero__portfolio-popover-btn:hover
+  text-decoration: none
+  color: var(--surface)
+
+// Hide popover entirely on touch / small screens — the SOURCE CODE link
+// next to the trigger is sufficient for those contexts.
+@media (max-width: 720px)
+  .hero__portfolio-popover
+    display: none
+
+  .hero__portfolio-trigger
+    cursor: inherit
+    text-decoration: none
+
+@media (hover: none) and (pointer: coarse)
+  .hero__portfolio-popover
+    display: none
+
+  .hero__portfolio-trigger
+    cursor: inherit
+    text-decoration: none
 </style>

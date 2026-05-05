@@ -9,7 +9,7 @@ const data = useData()
     <div class="container">
       <UiSectionHeader
         kicker="03 — Projects"
-        sub="Eight featured. Click any card to visit the live site or open the repo."
+        sub="Nine featured. Click any card to visit the live site or open the repo."
       >
         <template #title>
           Selected client work &<br><span class="projects__title-emphasis">things I build for me.</span>

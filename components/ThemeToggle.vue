@@ -18,8 +18,8 @@ type Option = {
 
 const options: Option[] = [
   { value: 'system', label: 'Device default', description: 'Match your system', icon: 'monitor' },
-  { value: 'light', label: 'Light', description: 'Bright surfaces', icon: 'sun' },
-  { value: 'dark', label: 'Dark', description: 'Dim surfaces', icon: 'moon' },
+  { value: 'light', label: 'Light', description: 'Perfect for daytime', icon: 'sun' },
+  { value: 'dark', label: 'Dark', description: 'Optimized for developers', icon: 'moon' },
 ]
 
 const currentLabel = computed(() => options.find(o => o.value === preference.value)?.label ?? 'Theme')

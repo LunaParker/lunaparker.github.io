@@ -64,11 +64,9 @@ export function useTheme() {
 
     const mql = window.matchMedia('(prefers-color-scheme: dark)')
     systemTheme.value = mql.matches ? 'dark' : 'light'
-    const onChange = (e: MediaQueryListEvent) => {
+    mql.addEventListener('change', (e) => {
       systemTheme.value = e.matches ? 'dark' : 'light'
-    }
-    if (mql.addEventListener) mql.addEventListener('change', onChange)
-    else mql.addListener(onChange)
+    })
   })
 
   return {

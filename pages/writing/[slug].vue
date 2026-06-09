@@ -10,13 +10,13 @@ const siteUrl = String(config.public.siteUrl ?? 'https://lunaparker.dev')
 
 definePageMeta({ viewTransition: true })
 
-const post = computed(() => data.value.blog.find(p => p.id === route.params.slug))
+const post = computed(() => data.blog.find(p => p.id === route.params.slug))
 
 if (!post.value) {
   throw createError({ statusCode: 404, statusMessage: 'Post not found', fatal: true })
 }
 
-const more = computed(() => data.value.blog.filter(p => p.id !== post.value!.id).slice(0, 2))
+const more = computed(() => data.blog.filter(p => p.id !== post.value!.id).slice(0, 2))
 
 const postUrl = computed(() => `${siteUrl}/writing/${post.value!.id}`)
 

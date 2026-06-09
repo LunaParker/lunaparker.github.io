@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 
 const scrolled = ref(false)
 const menuOpen = ref(false)
@@ -35,15 +35,10 @@ onBeforeUnmount(() => {
 async function jump(id: string) {
   if (route.path !== '/') {
     await navigateTo('/')
-    setTimeout(() => {
-      if (id === 'top') window.scrollTo({ top: 0, behavior: 'smooth' })
-      else document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }, 60)
+    await nextTick()
   }
-  else {
-    if (id === 'top') window.scrollTo({ top: 0, behavior: 'smooth' })
-    else document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
+  if (id === 'top') window.scrollTo({ top: 0, behavior: 'smooth' })
+  else document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
 function onNavClick(e: MouseEvent, id: string) {

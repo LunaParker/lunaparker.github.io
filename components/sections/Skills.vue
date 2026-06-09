@@ -2,9 +2,15 @@
 import { computed } from 'vue'
 import { useData } from '~/composables/useData'
 
+withDefaults(defineProps<{
+  kicker?: string
+}>(), {
+  kicker: '04 — Skills',
+})
+
 const data = useData()
 
-const cats = computed(() => Object.entries(data.value.skills))
+const cats = computed(() => Object.entries(data.skills))
 
 function chipVariant(i: number): 'primary' | 'tonal' | 'default' {
   if (i === 0) return 'primary'
@@ -17,7 +23,7 @@ function chipVariant(i: number): 'primary' | 'tonal' | 'default' {
   <section id="skills" class="section skills">
     <div class="container">
       <UiSectionHeader
-        kicker="05 — Skills"
+        :kicker="kicker"
         sub="Languages, frameworks, tools, and practices I use in production. Hover any tech to see where I've used it."
       >
         <template #title>

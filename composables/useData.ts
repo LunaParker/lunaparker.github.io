@@ -1,6 +1,3 @@
-import { ref, readonly } from 'vue'
-import type { DeepReadonly, Ref } from 'vue'
-
 export type AccentKey = 'primary' | 'secondary' | 'tertiary'
 
 export interface Experience {
@@ -165,7 +162,7 @@ const DATA: PortfolioData = {
       client: 'Climbing Gear Manufacturer',
       role: 'Lead Developer & Designer',
       year: '2024',
-      url: 'eyolf.ca',
+      url: 'https://eyolf.ca',
       stack: ['WordPress', 'WooCommerce', 'InvoiceNinja', 'Laravel', 'Cloudflare'],
       size: 'featured',
       accent: 'primary',
@@ -178,7 +175,7 @@ const DATA: PortfolioData = {
       client: 'Accounting Firm, Mississauga',
       role: 'Lead Developer & Designer',
       year: '2023',
-      url: 'jarvisryan.com',
+      url: 'https://jarvisryan.com',
       stack: ['Laravel', 'PHP', 'Microsoft Server', 'IIS'],
       size: 'wide',
       accent: 'tertiary',
@@ -191,7 +188,7 @@ const DATA: PortfolioData = {
       client: 'Member-run Sailing Club',
       role: 'Lead Developer & Designer',
       year: '2023',
-      url: 'newblsc.ca',
+      url: 'https://newblsc.ca',
       stack: ['WordPress', 'Laravel', 'Cloudflare'],
       size: 'tall',
       accent: 'secondary',
@@ -204,7 +201,7 @@ const DATA: PortfolioData = {
       client: 'Open Source',
       role: 'Developer',
       year: '2025',
-      url: 'github.com/lunaparker/brightspace-mcp-server',
+      url: 'https://github.com/lunaparker/brightspace-mcp-server',
       stack: ['TypeScript', 'Node.js', 'MCP'],
       size: 'square',
       accent: 'tertiary',
@@ -217,7 +214,7 @@ const DATA: PortfolioData = {
       client: 'Open Source',
       role: 'Developer',
       year: '2026',
-      url: 'github.com/lunaparker/claude-macos-menu-usage',
+      url: 'https://github.com/lunaparker/claude-macos-menu-usage',
       stack: ['Swift', 'SwiftUI', 'macOS'],
       size: 'tall',
       accent: 'secondary',
@@ -230,7 +227,7 @@ const DATA: PortfolioData = {
       client: 'Open Source',
       role: 'Developer',
       year: '2026',
-      url: 'github.com/lunaparker/macos-permission-report',
+      url: 'https://github.com/lunaparker/macos-permission-report',
       stack: ['Python', 'Jinja2', 'macOS'],
       size: 'tall',
       accent: 'primary',
@@ -243,7 +240,7 @@ const DATA: PortfolioData = {
       client: 'Personal Project',
       role: 'Designer & Developer',
       year: '2026',
-      url: 'github.com/lunaparker/lunaparker.github.io',
+      url: 'https://github.com/lunaparker/lunaparker.github.io',
       stack: ['Vue.js', 'Nuxt', 'Stylus', 'Cloudflare'],
       size: 'square',
       accent: 'secondary',
@@ -256,7 +253,7 @@ const DATA: PortfolioData = {
       client: 'Personal Project',
       role: 'Developer',
       year: '2024',
-      url: 'github.com/lunaparker/swift-weather',
+      url: 'https://github.com/lunaparker/swift-weather',
       stack: ['Swift', 'SwiftUI'],
       size: 'square',
       accent: 'primary',
@@ -269,7 +266,7 @@ const DATA: PortfolioData = {
       client: 'Open Source',
       role: 'Developer',
       year: '2026',
-      url: 'github.com/lunaparker/macos-obsidian-default-handler',
+      url: 'https://github.com/lunaparker/macos-obsidian-default-handler',
       stack: ['AppleScript', 'Python', 'macOS'],
       size: 'square',
       accent: 'primary',
@@ -287,8 +284,6 @@ const DATA: PortfolioData = {
   },
 }
 
-const _data = ref(DATA)
-
-export function useData(): DeepReadonly<Ref<PortfolioData>> {
-  return readonly(_data)
+export function useData(): PortfolioData {
+  return DATA
 }

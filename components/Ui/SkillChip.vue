@@ -15,7 +15,7 @@ const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '')
 
 const techIndex = computed(() => {
   const idx: Record<string, { label: string, projects: Project[] }> = {}
-  for (const p of data.value.projects) {
+  for (const p of data.projects) {
     for (const t of p.stack) {
       const k = norm(t)
       if (!idx[k]) idx[k] = { label: t, projects: [] }
@@ -109,7 +109,7 @@ const isGithub = (url: string) => /github\.com/i.test(url)
         <a
           v-for="p in hit.projects"
           :key="p.id"
-          :href="`https://${p.url}`"
+          :href="p.url"
           target="_blank"
           rel="noreferrer"
           class="skill-chip-link"

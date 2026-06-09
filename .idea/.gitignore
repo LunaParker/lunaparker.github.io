@@ -10,3 +10,5 @@
 /copilot.data.migration.*
 # Local developer tools state
 /developer-tools.xml
+# Editor adds php.xml even for non-PHP projects — irrelevant here
+/php.xml

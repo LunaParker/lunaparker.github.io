@@ -129,7 +129,7 @@ Public runtime config lives in `nuxt.config.ts` under `runtimeConfig.public` and
 
 Colours come from an M3 tonal palette generated at runtime via `oklch()` + `color-mix()` from two CSS vars — `--accent-h` (hue) and `--accent-c` (chroma). The shipped accent is indigo `H=265 C=0.19`; the brand gradient (`#8A2387 → #E94057 → #F27121`) is reserved for emphasis (LUNA wordmark, hero CTA, footer wordmark, contact heading).
 
-Dark mode follows OS preference automatically (`prefers-color-scheme`); no toggle UI is shipped.
+Theme has three states — `system | light | dark` — surfaced via the nav-bar `ThemeToggle`. The user's choice is persisted to `localStorage` (key `theme-preference`); `system` clears the key and falls back to `prefers-color-scheme`. A short inline script in `nuxt.config.ts` applies the resolved `data-theme` to `<html>` before first paint, so there's no flash of the wrong palette on reload.
 
 ## Editor
 

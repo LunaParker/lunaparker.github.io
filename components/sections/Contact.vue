@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 
+withDefaults(defineProps<{
+  kicker?: string
+}>(), {
+  kicker: '05 — Contact',
+})
+
 const config = useRuntimeConfig()
 const turnstileSiteKey = String(config.public.turnstileSiteKey ?? '')
 const contactEndpoint = String(config.public.contactEndpoint ?? '/api/contact')
@@ -155,7 +161,7 @@ async function onSubmit(e: Event) {
   <section id="contact" class="section contact">
     <div class="container">
       <UiSectionHeader
-        kicker="06 — Contact"
+        :kicker="kicker"
         sub="Whether you're hiring a co-op for Fall 2026, need a freelance dev, or just want to say hello — I'd love to hear from you."
       >
         <template #title>
@@ -177,17 +183,13 @@ async function onSubmit(e: Event) {
               </div>
               <UiIcon name="arrowUpRight" :size="18" />
             </a>
-            <a
-              href="#"
-              class="contact__row"
-              @click="$event.preventDefault()"
-            >
+            <div class="contact__row">
               <div class="contact__row-icon"><UiIcon name="pin" :size="20" /></div>
               <div>
                 <div class="label contact__row-label">Location</div>
                 <div class="contact__row-value">Ontario, Canada</div>
               </div>
-            </a>
+            </div>
             <a
               href="https://linkedin.com/in/luna-parker"
               target="_blank"

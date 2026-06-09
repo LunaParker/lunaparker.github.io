@@ -13,7 +13,7 @@ const sizeClass = computed(() => `project-card--${props.project.size ?? 'square'
 
 <template>
   <a
-    :href="`https://${project.url}`"
+    :href="project.url"
     target="_blank"
     rel="noreferrer"
     :aria-label="`Open ${project.name} — ${displayUrl} (opens in new tab)`"

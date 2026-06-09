@@ -39,7 +39,7 @@ const personLd = computed(() => ({
     'addressRegion': 'Ontario',
     'addressCountry': 'CA',
   },
-  'alumniOf': data.value.education.map(e => ({
+  'alumniOf': data.education.map(e => ({
     '@type': 'CollegeOrUniversity',
     'name': e.school,
   })),
@@ -53,9 +53,9 @@ const personLd = computed(() => ({
     'url': 'https://lunaparker.dev',
   },
   'knowsAbout': [
-    ...data.value.skills.Languages,
-    ...data.value.skills.Frameworks,
-    ...data.value.skills.Practices,
+    ...data.skills.Languages,
+    ...data.skills.Frameworks,
+    ...data.skills.Practices,
   ],
 }))
 

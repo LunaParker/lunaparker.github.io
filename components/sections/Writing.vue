@@ -4,8 +4,8 @@ import { useData } from '~/composables/useData'
 
 const data = useData()
 
-const featured = computed(() => data.value.blog[0])
-const rest = computed(() => data.value.blog.slice(1))
+const featured = computed(() => data.blog[0])
+const rest = computed(() => data.blog.slice(1))
 </script>
 
 <template>

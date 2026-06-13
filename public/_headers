@@ -1,0 +1,13 @@
+# Cloudflare Pages response headers.
+#
+# Content-hashed build assets are safe to cache forever: Nuxt embeds a hash in
+# every /_nuxt/ and /_fonts/ filename, so the URL changes whenever the bytes
+# change. "immutable, 1 year" turns these from MISS/REVALIDATED into clean HITs.
+# (Requires the zone's Browser Cache TTL = "Respect Existing Headers" to reach
+# the browser, otherwise Cloudflare clamps max-age at the edge.)
+
+/_nuxt/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/_fonts/*
+  Cache-Control: public, max-age=31536000, immutable

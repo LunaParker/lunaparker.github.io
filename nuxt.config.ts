@@ -133,7 +133,7 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           name: 'description',
-          content: "Full-stack web developer and designer with 8+ years' experience. Honours BCS student at Conestoga — available for Fall 2026 co-op.",
+          content: "Full-stack web developer and designer with 8+ years' experience. Honours BCS student at Conestoga.",
         },
         { name: 'theme-color', content: '#8A2387' },
         // Open Graph
@@ -142,7 +142,7 @@ export default defineNuxtConfig({
         { property: 'og:title', content: 'Luna Parker — Developer & Designer' },
         {
           property: 'og:description',
-          content: "Full-stack web developer and designer with 8+ years' experience. Honours BCS student at Conestoga — available for Fall 2026 co-op.",
+          content: "Full-stack web developer and designer with 8+ years' experience. Honours BCS student at Conestoga.",
         },
         { property: 'og:image', content: 'https://lunaparker.dev/og-image.png' },
         { property: 'og:image:width', content: '1200' },

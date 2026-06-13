@@ -10,7 +10,7 @@ const siteUrl = String(config.public.siteUrl ?? 'https://lunaparker.dev')
 const canonical = computed(() => `${siteUrl}${route.path === '/' ? '' : route.path.replace(/\/$/, '')}`)
 
 const ogImage = `${siteUrl}/og-image.png`
-const description = "Full-stack web developer and designer with 8+ years' experience. Honours BCS student at Conestoga — available for Fall 2026 co-op."
+const description = "Full-stack web developer and designer with 8+ years' experience. Honours BCS student at Conestoga."
 
 useSeoMeta({
   ogSiteName: 'Luna Parker',

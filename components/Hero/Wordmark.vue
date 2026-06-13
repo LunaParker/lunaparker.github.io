@@ -20,7 +20,6 @@ const repoUrl = 'https://github.com/LunaParker/lunaparker.github.io'
         </div>
 
         <div class="stagger hero__intro-meta">
-          <UiAvailabilityPill />
           <div class="mono hero__intro-meta-line">Ontario, Canada</div>
           <div class="mono hero__intro-meta-line">Remote · EST</div>
         </div>

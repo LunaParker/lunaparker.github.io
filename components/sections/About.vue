@@ -20,7 +20,6 @@
           </p>
           <p class="body-lg about__bio about__bio--muted">
             I'm currently pursuing an Honours Bachelor of Computer Science with a Security Specialisation at Conestoga, where I've deepened my understanding of low-level programming, secure systems design, and collaborative software development. I started my postsecondary studies at the University of Toronto (studying CS and philosophy); that year still shapes how I reason about complex problems.
-            <UiAvailabilityPill compact />
           </p>
         </UiReveal>
 

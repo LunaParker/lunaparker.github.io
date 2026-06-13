@@ -162,7 +162,7 @@ async function onSubmit(e: Event) {
     <div class="container">
       <UiSectionHeader
         :kicker="kicker"
-        sub="Whether you're hiring a co-op for Fall 2026, need a freelance dev, or just want to say hello — I'd love to hear from you."
+        sub="Whether you've got a project in mind, need a freelance dev, or just want to say hello — I'd love to hear from you."
       >
         <template #title>
           <span class="contact__title-gradient gradient-text">Let's work<br>together.</span>

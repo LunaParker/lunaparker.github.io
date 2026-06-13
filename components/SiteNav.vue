@@ -79,14 +79,6 @@ function onNavClick(e: MouseEvent, id: string) {
       <div class="nav__cta-row">
         <ThemeToggle />
         <a
-          href="/resume.pdf"
-          target="_blank"
-          rel="noopener"
-          class="btn btn-outlined nav__cta hide-on-mobile"
-        >
-          <UiIcon name="download" :size="16" /> Resume
-        </a>
-        <a
           href="#contact"
           class="btn btn-filled nav__cta"
           @click="onNavClick($event, 'contact')"

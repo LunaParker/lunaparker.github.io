@@ -137,7 +137,6 @@ const DATA: PortfolioData = {
       period: 'Sep 2022 — Expected 2027',
       specialization: 'Security',
       gpa: '3.59',
-      status: 'One co-op term remaining — Fall 2026',
       notes: [
         'Security specialization: penetration testing, rootkits, network security, privacy in computing, and software safety/reliability.',
         'Six collaborative software projects spanning the full SDLC — from requirements and design through testing, deployment, and performance optimization.',

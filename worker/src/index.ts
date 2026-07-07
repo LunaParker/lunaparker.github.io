@@ -8,6 +8,9 @@ interface ContactPayload {
   name?: unknown
   email?: unknown
   message?: unknown
+  organization?: unknown
+  projectType?: unknown
+  source?: unknown
   turnstileToken?: unknown
 }
 
@@ -56,6 +59,9 @@ export default {
     const name = clean(payload.name, 200)
     const email = clean(payload.email, 200)
     const message = clean(payload.message, 4000)
+    const organization = clean(payload.organization, 200)
+    const projectType = clean(payload.projectType, 200)
+    const source = clean(payload.source, 50)
     const token = typeof payload.turnstileToken === 'string' ? payload.turnstileToken : ''
 
     if (!name || !email || !message) {
@@ -84,16 +90,18 @@ export default {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        username: 'Portfolio Contact Form',
+        username: source === 'shy-owl' ? 'Shy Owl Contact Form' : 'Portfolio Contact Form',
         embeds: [{
           title: 'New contact form submission',
           color: DISCORD_EMBED_COLOR,
           fields: [
             { name: 'Name', value: name, inline: true },
             { name: 'Email', value: email, inline: true },
+            ...(organization ? [{ name: 'Organization', value: organization, inline: true }] : []),
+            ...(projectType ? [{ name: 'Project type', value: projectType, inline: true }] : []),
             { name: 'Message', value: message },
           ],
-          footer: { text: ip ? `From ${ip}` : 'lunaparker.dev' },
+          footer: { text: `${source === 'shy-owl' ? 'shy-owl' : 'lunaparker.dev'}${ip ? ` · From ${ip}` : ''}` },
           timestamp: new Date().toISOString(),
         }],
       }),

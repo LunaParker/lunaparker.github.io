@@ -45,3 +45,55 @@
   100%
     transform: scale(2.4)
     opacity: 0
+
+// Shy Owl Studios (/shy-owl) ----------------------------------------
+
+// Scoped accent: pages/shy-owl.vue sets data-accent="shy-owl" on <html>
+// via useHead htmlAttrs (SSG-rendered, so no colour flash). Every derived
+// M3 token is declared on the root element and substitutes var(--accent-h/-c)
+// there, so light AND dark palettes re-derive from these two lines.
+:root[data-accent="shy-owl"]
+  --accent-h: 333
+  --accent-c: 0.17
+
+// Shy Owl filled button — black (inverts on dark theme), cross-fading to
+// the brand gradient on hover. ::before carries the gradient; isolation
+// keeps it above the background but under the label.
+.btn-gradient
+  position: relative
+  isolation: isolate
+  overflow: hidden
+  background: var(--on-surface)
+  color: var(--surface)
+
+.btn-gradient::before
+  content: ''
+  position: absolute
+  inset: 0
+  z-index: -1
+  background: var(--brand-gradient-135)
+  opacity: 0
+  transition: opacity var(--dur-short) var(--spring-gentle)
+
+.btn-gradient:hover
+  color: #fff
+  box-shadow: 0 6px 26px -6px unquote("color-mix(in oklch, #E94057 55%, transparent)")
+
+.btn-gradient:hover::before
+  opacity: 1
+
+// Skip link for the studio layout
+.skip-link
+  position: absolute
+  left: 16px
+  top: -48px
+  z-index: 100
+  padding: 10px 18px
+  border-radius: var(--shape-full)
+  background: var(--on-surface)
+  color: var(--surface)
+  font-weight: 600
+  transition: top var(--dur-short) var(--spring-gentle)
+
+.skip-link:focus-visible
+  top: 12px

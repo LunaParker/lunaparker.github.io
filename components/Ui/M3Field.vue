@@ -6,9 +6,13 @@ const props = withDefaults(defineProps<{
   label: string
   type?: string
   multiline?: boolean
+  options?: string[]
+  placeholderOption?: string
 }>(), {
   type: 'text',
   multiline: false,
+  options: undefined,
+  placeholderOption: undefined,
 })
 
 const emit = defineEmits<{
@@ -16,10 +20,12 @@ const emit = defineEmits<{
 }>()
 
 const focused = ref(false)
-const active = computed(() => focused.value || props.modelValue.length > 0)
+// Selects keep the label permanently floated: the closed control shows the
+// placeholder option's text, which would collide with a resting label.
+const active = computed(() => Boolean(props.options) || focused.value || props.modelValue.length > 0)
 
 function onInput(e: Event) {
-  emit('update:modelValue', (e.target as HTMLInputElement | HTMLTextAreaElement).value)
+  emit('update:modelValue', (e.target as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement).value)
 }
 </script>
 
@@ -29,8 +35,19 @@ function onInput(e: Event) {
     :class="{ 'm3-field--focused': focused, 'm3-field--active': active }"
   >
     <span class="m3-field__label">{{ label }}</span>
+    <select
+      v-if="options"
+      class="m3-field__input m3-field__input--select"
+      :value="modelValue"
+      @change="onInput"
+      @focus="focused = true"
+      @blur="focused = false"
+    >
+      <option v-if="placeholderOption !== undefined" value="">{{ placeholderOption }}</option>
+      <option v-for="opt in options" :key="opt" :value="opt">{{ opt }}</option>
+    </select>
     <textarea
-      v-if="multiline"
+      v-else-if="multiline"
       class="m3-field__input m3-field__input--multiline"
       :value="modelValue"
       :rows="5"
@@ -99,4 +116,14 @@ function onInput(e: Event) {
 
 .m3-field__input--multiline
   resize: vertical
+
+.m3-field__input--select
+  appearance: none
+  -webkit-appearance: none
+  padding-right: 44px
+  cursor: pointer
+  background-image: linear-gradient(45deg, transparent 50%, var(--on-surface-variant) 50%), linear-gradient(135deg, var(--on-surface-variant) 50%, transparent 50%)
+  background-position: right 22px center, right 17px center
+  background-size: 5px 5px
+  background-repeat: no-repeat
 </style>

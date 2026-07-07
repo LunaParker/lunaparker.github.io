@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { ref } from 'vue'
 
 withDefaults(defineProps<{
   kicker?: string
@@ -14,97 +14,12 @@ const contactEndpoint = String(config.public.contactEndpoint ?? '/api/contact')
 const name = ref('')
 const email = ref('')
 const message = ref('')
-const turnstileToken = ref('')
 const submitting = ref(false)
 const sent = ref(false)
 const errorMsg = ref('')
 
 const widgetEl = ref<HTMLElement | null>(null)
-let widgetId: string | null = null
-let observer: IntersectionObserver | null = null
-let turnstileLoadPromise: Promise<void> | null = null
-
-declare global {
-  interface Window {
-    turnstile?: {
-      render: (el: HTMLElement | string, opts: Record<string, unknown>) => string
-      reset: (id?: string) => void
-      remove: (id: string) => void
-    }
-  }
-}
-
-// Defer Turnstile's api.js (and the bot-detection / iframe work it kicks off)
-// until the form is near the viewport. Loading site-wide via useHead made every
-// home-page visit pay the cost even when the visitor never scrolled to Contact;
-// Safari's main thread was particularly sensitive to it.
-function loadTurnstileScript(): Promise<void> {
-  if (turnstileLoadPromise) return turnstileLoadPromise
-  turnstileLoadPromise = new Promise((resolve, reject) => {
-    if (window.turnstile) { resolve(); return }
-    const waitForGlobal = () => {
-      const start = Date.now()
-      const tick = () => {
-        if (window.turnstile) resolve()
-        else if (Date.now() - start > 8000) reject(new Error('Turnstile failed to load'))
-        else setTimeout(tick, 50)
-      }
-      tick()
-    }
-    const existing = document.querySelector<HTMLScriptElement>('script[data-turnstile]')
-    if (existing) { waitForGlobal(); return }
-    const s = document.createElement('script')
-    s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js'
-    s.async = true
-    s.defer = true
-    s.dataset.turnstile = ''
-    s.onerror = () => reject(new Error('Turnstile script failed to load'))
-    s.onload = waitForGlobal
-    document.head.appendChild(s)
-  })
-  return turnstileLoadPromise
-}
-
-async function initTurnstile() {
-  if (!turnstileSiteKey || !widgetEl.value || widgetId) return
-  try {
-    await loadTurnstileScript()
-    if (!widgetEl.value || widgetId) return
-    widgetId = window.turnstile!.render(widgetEl.value, {
-      sitekey: turnstileSiteKey,
-      theme: 'auto',
-      callback: (token: string) => { turnstileToken.value = token },
-      'expired-callback': () => { turnstileToken.value = '' },
-      'error-callback': () => { turnstileToken.value = '' },
-    })
-  }
-  catch (e) {
-    console.error('[contact] Turnstile failed to initialise', e)
-  }
-}
-
-function resetTurnstile() {
-  turnstileToken.value = ''
-  if (widgetId && window.turnstile) window.turnstile.reset(widgetId)
-}
-
-onMounted(() => {
-  if (!turnstileSiteKey || !widgetEl.value) return
-  observer = new IntersectionObserver((entries) => {
-    if (entries.some(e => e.isIntersecting)) {
-      observer?.disconnect()
-      observer = null
-      initTurnstile()
-    }
-  }, { rootMargin: '600px 0px' })
-  observer.observe(widgetEl.value)
-})
-
-onBeforeUnmount(() => {
-  observer?.disconnect()
-  observer = null
-  if (widgetId && window.turnstile) window.turnstile.remove(widgetId)
-})
+const { token: turnstileToken, reset: resetTurnstile } = useTurnstile(widgetEl, turnstileSiteKey)
 
 async function onSubmit(e: Event) {
   e.preventDefault()

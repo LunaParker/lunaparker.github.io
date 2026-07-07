@@ -126,7 +126,7 @@ function jump(e: MouseEvent, id: string) {
 .studio-about__photo
   position: absolute
   inset: 0
-  background-image: url("/shy-owl/about_owl.jpg")
+  background-image: url("/images/shy-owl/about_owl.jpg")
   background-size: cover
   background-position: center
 

@@ -19,9 +19,9 @@ const BLURBS: Record<string, string[]> = {
 }
 
 const IMAGES: Record<string, string> = {
-  'eyolf': '/shy-owl/projects/eyolf.jpg',
-  'blsc': '/shy-owl/projects/blsc.jpg',
-  'jarvis-ryan': '/shy-owl/projects/jarvisryan.jpg',
+  'eyolf': '/images/shy-owl/projects/eyolf.jpg',
+  'blsc': '/images/shy-owl/projects/blsc.jpg',
+  'jarvis-ryan': '/images/shy-owl/projects/jarvisryan.jpg',
 }
 
 const data = useData()

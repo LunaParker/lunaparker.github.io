@@ -36,7 +36,11 @@ const orgLd = {
 useHead({
   htmlAttrs: { 'data-accent': 'shy-owl' },
   title: 'Shy Owl Studios — Web design & development from Ontario, Canada',
-  link: [{ rel: 'canonical', href: pageUrl }],
+  link: [
+    { rel: 'canonical', href: pageUrl },
+    // The hero background is the whole first viewport; fetch it alongside the CSS
+    { rel: 'preload', as: 'image', href: '/images/shy-owl/hero_owl.jpg', fetchpriority: 'high' },
+  ],
   script: [{
     type: 'application/ld+json',
     innerHTML: JSON.stringify(orgLd),

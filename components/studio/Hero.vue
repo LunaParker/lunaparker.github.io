@@ -7,24 +7,17 @@ function jump(e: MouseEvent, id: string) {
 
 <template>
   <section id="top" class="studio-hero">
-    <div class="container studio-hero__content">
-      <UiReveal>
-        <div class="mono studio-hero__kicker">Shy Owl Studios · Ontario, Canada</div>
-      </UiReveal>
-      <UiReveal :delay="80">
-        <h1 class="studio-hero__title">We help organizations succeed on the web.</h1>
-      </UiReveal>
-      <UiReveal :delay="160">
-        <p class="studio-hero__sub">
-          Tailored design and engineering for organizations that need their software to last. Patient, perceptive, occasionally a little wise.
-        </p>
-      </UiReveal>
-      <UiReveal :delay="220">
-        <div class="studio-hero__cta-row">
-          <a href="#contact" class="btn btn-gradient" @click="jump($event, 'contact')">Start a project <UiIcon name="arrow" :size="16" /></a>
-          <a href="#projects" class="btn btn-outlined" @click="jump($event, 'projects')">See our work</a>
-        </div>
-      </UiReveal>
+    <!-- .stagger, not UiReveal: above-fold content must paint before hydration -->
+    <div class="container studio-hero__content stagger">
+      <div class="mono studio-hero__kicker">Shy Owl Studios · Ontario, Canada</div>
+      <h1 class="studio-hero__title">We help organizations succeed on the web.</h1>
+      <p class="studio-hero__sub">
+        Tailored design and engineering for organizations that need their software to last. Patient, perceptive, occasionally a little wise.
+      </p>
+      <div class="studio-hero__cta-row">
+        <a href="#contact" class="btn btn-gradient" @click="jump($event, 'contact')">Start a project <UiIcon name="arrow" :size="16" /></a>
+        <a href="#projects" class="btn btn-outlined" @click="jump($event, 'projects')">See our work</a>
+      </div>
     </div>
   </section>
 </template>

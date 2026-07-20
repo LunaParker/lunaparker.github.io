@@ -343,6 +343,19 @@ h1, h2, h3, h4, h5, h6
   opacity: 1
   transform: none
 
+// Rescue: SSG ships .reveal content at opacity 0, so if hydration is slow or
+// JS never runs, self-reveal after a grace period. UiReveal adds .js on mount,
+// cancelling this on normal loads so scroll choreography is untouched. The
+// delay is deliberately NOT --motion-scaled: reduced-motion visitors would
+// otherwise see rescued content flash and re-hide when hydration lands.
+@keyframes reveal-rescue
+  to
+    opacity: 1
+    transform: none
+
+.reveal:not(.js)
+  animation: reveal-rescue var(--dur-long) var(--spring-standard) 1400ms forwards
+
 // Focus
 :focus-visible
   outline: 2px solid var(--primary)

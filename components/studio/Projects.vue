@@ -35,7 +35,7 @@ const projects = PROJECT_IDS
     <div class="container">
       <UiSectionHeader
         kicker="Selected work"
-        sub="A small studio means we can be choosy. Here's a few of the organizations we've partnered with."
+        sub="Here are a few of the fine organizations we've partnered with."
       >
         <template #title>
           Recent client projects.

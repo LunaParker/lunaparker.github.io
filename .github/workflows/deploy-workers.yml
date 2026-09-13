@@ -1,0 +1,42 @@
+name: Deploy Workers
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'worker/**'
+      - '.github/workflows/deploy-workers.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: workers
+  cancel-in-progress: false
+
+defaults:
+  run:
+    working-directory: worker
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_WORKERS_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: worker/package-lock.json
+
+      - run: npm ci
+      - run: npm test
+      - run: npm run typecheck
+
+      - name: Deploy shyowl-contact (lunaparker.dev/api/contact)
+        run: npx wrangler deploy
+
+      - name: Deploy lunaparker-files (files.lunaparker.dev)
+        run: npx wrangler deploy -c wrangler.files.toml

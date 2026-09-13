@@ -1,0 +1,15 @@
+# files.lunaparker.dev — read-only alias for the public GCS bucket behind staging.lunaparker.dev.
+# Deploy: npx wrangler deploy -c wrangler.files.toml   (CI does this on pushes to master touching worker/)
+name = "lunaparker-files"
+main = "src/files.ts"
+compatibility_date = "2025-04-01"
+workers_dev = false
+
+# Public, non-secret config: the GCS bucket served under the custom domain.
+[vars]
+BUCKET = "staging.lunaparker.dev"
+
+# Custom Domain: Cloudflare creates and manages the DNS record and edge certificate.
+[[routes]]
+pattern = "files.lunaparker.dev"
+custom_domain = true

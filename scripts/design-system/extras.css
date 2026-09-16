@@ -1,0 +1,24 @@
+/* Additions the exported system needs but the site expresses in component
+   logic rather than CSS. Kept small and explicit — anything that can be
+   compiled from a .styl source or an SFC should be, not written here. */
+
+/* SkillChip.vue applies this inline when a technology resolves to a project.
+   The tint is the whole affordance; there is no extra icon. */
+.chip-linked {
+  background: color-mix(in oklch, var(--primary-container) 55%, var(--surface-container-high));
+  color: var(--on-surface);
+  border: 0;
+  cursor: help;
+}
+
+/* M3Field.vue keeps a select's label permanently floated, because the closed
+   control already shows its placeholder option's text. In the component that
+   is a computed `active` flag; exported, it needs a class. */
+.m3-field--select .m3-field__label {
+  top: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}

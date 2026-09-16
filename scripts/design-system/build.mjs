@@ -7,10 +7,16 @@
  *
  *   npm run design-system
  *
- * Then sync dist/ to the Claude Design project with the DesignSync tool
- * (project "Luna Parker — Portfolio"). Preview heights live on each card
- * definition and must be MEASURED, not guessed — estimating them was wrong by
- * up to 826px. Serve dist/ and run this in the page console:
+ * The system now lives as a Design System artifact, not the old Claude Design
+ * project, and dist/ no longer maps onto it one-to-one: the artifact merges
+ * tokens.css and components.css into a single components/bundle.css, and holds
+ * the token values as project/tokens.json. A naive re-sync would re-split them
+ * and overwrite the artifact's own guide, so port changes across deliberately
+ * rather than uploading dist/ wholesale.
+ *
+ * Preview heights live on each card definition and must be MEASURED, not
+ * guessed — estimating them was wrong by up to 826px. Serve dist/ and run this
+ * in the page console:
  *
  *   const cards = await fetch('/_cards.json').then(r => r.json());
  *   const out = {};

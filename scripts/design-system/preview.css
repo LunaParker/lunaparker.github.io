@@ -1,0 +1,60 @@
+/* Preview chrome — presentation of the spec sheets, not part of the system. */
+body { padding: 0; }
+.ds-page { padding: 36px clamp(20px, 4vw, 44px) 48px; }
+.ds-head { margin-bottom: 34px; max-width: 74ch; }
+.ds-title { font-family: var(--font-display); font-size: 27px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; margin: 0; }
+.ds-desc { color: var(--on-surface-variant); font-size: 14.5px; line-height: 1.6; margin: 10px 0 0; max-width: 72ch; }
+.ds-desc code { font-family: var(--font-mono); font-size: 12.5px; background: var(--surface-container-high); padding: 1px 5px; border-radius: var(--shape-xs); }
+
+.ds-block { margin-bottom: 34px; }
+.ds-block:last-child { margin-bottom: 0; }
+.ds-block__name {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--on-surface-variant);
+  margin: 0 0 14px; display: flex; align-items: baseline; gap: 10px;
+}
+.ds-block__name::after { content: ''; flex: 1; height: 1px; background: var(--outline-variant); }
+
+.ds-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.ds-row--top { align-items: flex-start; }
+.ds-grid { display: grid; gap: 14px; }
+
+/* Panes pin their own palette so light and dark both show regardless of the
+   renderer's colour scheme. */
+.ds-pane { background: var(--surface); color: var(--on-surface); border: 1px solid var(--outline-variant); border-radius: var(--shape-xl); padding: 26px; }
+.ds-pane__tag { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--on-surface-variant); margin-bottom: 18px; }
+.ds-split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 860px) { .ds-split { grid-template-columns: 1fr; } }
+
+/* Colour swatches */
+.ds-sw { border-radius: var(--shape-lg); overflow: hidden; border: 1px solid var(--outline-variant); min-width: 0; }
+.ds-sw__chip { height: 64px; display: flex; align-items: flex-end; padding: 8px 10px; font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; }
+.ds-sw__meta { padding: 8px 10px 10px; background: var(--surface-container-low); }
+.ds-sw__var { font-family: var(--font-mono); font-size: 11px; color: var(--on-surface); word-break: break-all; }
+.ds-sw__val { font-family: var(--font-mono); font-size: 10px; color: var(--on-surface-variant); margin-top: 3px; word-break: break-all; }
+
+.ds-note { font-family: var(--font-mono); font-size: 11px; line-height: 1.55; color: var(--on-surface-variant); margin-top: 12px; }
+.ds-cap { font-size: 12.5px; line-height: 1.55; color: var(--on-surface-variant); margin: 10px 0 0; max-width: 64ch; }
+.ds-cap strong { color: var(--on-surface); font-weight: 600; }
+
+.ds-spec { font-family: var(--font-mono); font-size: 10.5px; color: var(--on-surface-variant); letter-spacing: 0.02em; }
+.ds-stack { display: grid; gap: 4px; }
+.ds-labelled { display: grid; gap: 8px; justify-items: start; }
+
+/* Rest / hover pairs: .ds-hover replays each component's :hover rules so a
+   still screenshot shows both states. */
+.ds-states { display: grid; grid-template-columns: max-content max-content; justify-content: start; gap: 10px 16px; align-items: center; justify-items: start; }
+.ds-states__tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-surface-variant); }
+.ds-hover .btn-filled { background: var(--on-surface); color: var(--surface); box-shadow: 0 0 0 4px color-mix(in oklch, var(--on-surface) 14%, transparent); }
+.ds-hover .btn-outlined { background: var(--on-surface); color: var(--surface); border-color: var(--on-surface); }
+.ds-hover .btn-brand { background: var(--primary); color: var(--on-primary); box-shadow: 0 4px 22px -2px color-mix(in oklch, var(--primary) 40%, transparent); }
+.ds-hover .btn-gradient { color: #fff; box-shadow: 0 6px 26px -6px color-mix(in oklch, #E94057 55%, transparent); }
+.ds-hover .btn-gradient::before { opacity: 1; }
+.ds-hover .project-card { transform: translateY(-6px); border-color: var(--primary); }
+.ds-hover .project-card__overlay { opacity: 1; transform: translateY(0); }
+.ds-hover .project-card__icon-bubble { opacity: 0; }
+
+/* Preview-only: the real nav has no persistent active class, but a still card
+   needs to show what a hovered link looks like. */
+.nav__link--active { background: var(--surface-container-high); color: var(--on-surface); }

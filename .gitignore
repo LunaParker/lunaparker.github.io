@@ -39,3 +39,6 @@ Thumbs.db
 
 # Icon generator font cache (re-fetched on demand)
 scripts/.cache
+
+# Design system bundle (regenerate with `npm run design-system`)
+scripts/design-system/dist

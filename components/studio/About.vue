@@ -45,9 +45,6 @@ function jump(e: MouseEvent, id: string) {
 </template>
 
 <style scoped lang="stylus">
-.studio-about
-  background: var(--surface-container-low)
-
 .studio-about__grid
   display: grid
   grid-template-columns: 1fr 1fr

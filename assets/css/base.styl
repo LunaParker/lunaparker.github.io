@@ -17,7 +17,15 @@ html
 
 body
   min-height: 100vh
-  background: radial-gradient(1200px 800px at 85% -10%, unquote("color-mix(in oklch, var(--primary) 8%, transparent)"), transparent 60%), radial-gradient(900px 600px at -10% 30%, unquote("color-mix(in oklch, var(--tertiary) 6%, transparent)"), transparent 55%), var(--surface)
+  // The two washes are authored against the viewport: "85% -10%" means just off
+  // the top-right corner of the screen. Backgrounds default to
+  // attachment: scroll, though, so those percentages were resolving against the
+  // body box instead — and on a long page that pushed the primary wash clean off
+  // the top of the document (0% coverage on the home page, 3.5% on /shy-owl).
+  // "fixed" restores the frame they were written for; the vh offsets keep the
+  // placement sane on browsers that quietly fall back to scroll.
+  background: radial-gradient(1200px 800px at 85% -10vh, unquote("color-mix(in oklch, var(--primary) 8%, transparent)"), transparent 60%), radial-gradient(900px 600px at -10% 30vh, unquote("color-mix(in oklch, var(--tertiary) 6%, transparent)"), transparent 55%), var(--surface)
+  background-attachment: fixed
   transition: background-color var(--dur-med) var(--spring-gentle), color var(--dur-med) var(--spring-gentle)
 
 a

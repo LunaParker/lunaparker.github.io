@@ -38,7 +38,6 @@ function jump(e: MouseEvent, id: string) {
 <style scoped lang="stylus">
 .studio-footer
   padding: 3rem 0 2.5rem
-  border-top: 1px solid var(--outline-variant)
 
 .studio-footer__container
   display: grid

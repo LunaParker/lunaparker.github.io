@@ -29,14 +29,13 @@ function jump(e: MouseEvent, id: string) {
   display: flex
   align-items: center
   overflow: hidden
-  border-bottom: 1px solid var(--outline-variant)
-  background-image: linear-gradient(95deg, var(--surface) 0%, unquote("color-mix(in oklch, var(--surface) 90%, transparent)") 42%, unquote("color-mix(in oklch, var(--surface) 62%, transparent)") 70%, unquote("color-mix(in oklch, var(--surface) 25%, transparent)") 100%), linear-gradient(180deg, unquote("color-mix(in oklch, var(--surface) 35%, transparent)") 0%, unquote("color-mix(in oklch, var(--surface) 72%, transparent)") 100%), url("/images/shy-owl/hero_owl.jpg")
+  background-image: linear-gradient(95deg, var(--surface) 0%, unquote("color-mix(in oklch, var(--surface) 90%, transparent)") 42%, unquote("color-mix(in oklch, var(--surface) 62%, transparent)") 70%, unquote("color-mix(in oklch, var(--surface) 25%, transparent)") 100%), linear-gradient(180deg, unquote("color-mix(in oklch, var(--surface) 35%, transparent)") 0%, unquote("color-mix(in oklch, var(--surface) 72%, transparent)") 78%, var(--surface) 100%), url("/images/shy-owl/hero_owl.jpg")
   background-size: cover, cover, cover
   background-position: center, center, center 30%
 
 @media (max-width: 1000px)
   .studio-hero
-    background-image: linear-gradient(95deg, var(--surface) 0%, unquote("color-mix(in oklch, var(--surface) 94%, transparent)") 55%, unquote("color-mix(in oklch, var(--surface) 80%, transparent)") 80%, unquote("color-mix(in oklch, var(--surface) 55%, transparent)") 100%), linear-gradient(180deg, unquote("color-mix(in oklch, var(--surface) 45%, transparent)") 0%, unquote("color-mix(in oklch, var(--surface) 80%, transparent)") 100%), url("/images/shy-owl/hero_owl.jpg")
+    background-image: linear-gradient(95deg, var(--surface) 0%, unquote("color-mix(in oklch, var(--surface) 94%, transparent)") 55%, unquote("color-mix(in oklch, var(--surface) 80%, transparent)") 80%, unquote("color-mix(in oklch, var(--surface) 55%, transparent)") 100%), linear-gradient(180deg, unquote("color-mix(in oklch, var(--surface) 45%, transparent)") 0%, unquote("color-mix(in oklch, var(--surface) 80%, transparent)") 78%, var(--surface) 100%), url("/images/shy-owl/hero_owl.jpg")
 
 .studio-hero__content
   position: relative

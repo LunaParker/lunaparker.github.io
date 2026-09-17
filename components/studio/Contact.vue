@@ -170,10 +170,6 @@ function sendAnother() {
 </template>
 
 <style scoped lang="stylus">
-.studio-contact
-  background: var(--surface-container-low)
-  border-top: 1px solid var(--outline-variant)
-
 .studio-contact__grid
   display: grid
   grid-template-columns: 1fr 1.2fr

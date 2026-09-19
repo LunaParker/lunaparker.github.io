@@ -16,10 +16,10 @@
             I'm a full-stack developer; I've been building for the web since high school. Through my own consultancy, <b>Shy Owl Studios</b>, I've delivered dozens of websites and web applications for clients ranging from local businesses to nation-wide brands.
           </p>
           <p class="body-lg about__bio about__bio--muted">
-            I specialise in Laravel and WordPress (and, in practice, whatever else the problem calls for). After all, the right tool is rarely the trendiest one. I pair the technical work with strong client relations, project management, and a genuine commitment to helping organisations thrive.
+            I specialise in Laravel and WordPress (and, in practice, whatever else the problem calls for). I pair the technical work with strong client relations, project management, and a genuine commitment to helping organisations thrive.
           </p>
           <p class="body-lg about__bio about__bio--muted">
-            I'm currently pursuing an Honours Bachelor of Computer Science with a Security Specialisation at Conestoga, where I've deepened my understanding of low-level programming, secure systems design, and collaborative software development. I started my postsecondary studies at the University of Toronto (studying CS and philosophy); that year still shapes how I reason about complex problems.
+            I started my postsecondary studies at the University of Toronto, studying CS and philosophy, and I'm now pursuing an Honours Bachelor of Computer Science with a Security Specialisation at Conestoga, where I've deepened my understanding of low-level programming, secure systems design, and collaborative software development.
           </p>
         </UiReveal>
 

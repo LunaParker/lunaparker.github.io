@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, onBeforeUnmount, ref, useId, watch } from 'vue'
 import { useData, type Project } from '~/composables/useData'
 
 const props = withDefaults(defineProps<{
@@ -32,6 +32,8 @@ const hasHit = computed(() => !!hit.value && hit.value.projects.length > 0)
 const open = ref(false)
 const pos = ref<'top' | 'bottom'>('bottom')
 const wrapRef = ref<HTMLElement | null>(null)
+const btnRef = ref<HTMLButtonElement | null>(null)
+const popId = useId()
 
 const show = () => {
   if (!hasHit.value) return
@@ -39,6 +41,34 @@ const show = () => {
   if (r) pos.value = r.top < 260 ? 'bottom' : 'top'
   open.value = true
 }
+
+// Close only once focus has left the chip and its popover together. Closing on
+// every focusout unmounted the popover while Tab was moving into its links,
+// which dropped keyboard focus onto <body>.
+const onFocusOut = (e: FocusEvent) => {
+  if (!wrapRef.value?.contains(e.relatedTarget as Node | null)) open.value = false
+}
+
+// Keep it open for a keyboard user whose focus is inside it, even if the
+// pointer wanders off.
+const onMouseLeave = () => {
+  if (!wrapRef.value?.contains(document.activeElement)) open.value = false
+}
+
+// Escape dismisses it however it was opened (WCAG 1.4.13). If focus was on one
+// of its links, hand focus back to the chip before the popover unmounts.
+const onKeydown = (e: KeyboardEvent) => {
+  if (e.key !== 'Escape') return
+  const active = document.activeElement
+  if (active !== btnRef.value && wrapRef.value?.contains(active)) btnRef.value?.focus()
+  open.value = false
+}
+
+watch(open, (isOpen) => {
+  if (isOpen) document.addEventListener('keydown', onKeydown)
+  else document.removeEventListener('keydown', onKeydown)
+})
+onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
 
 const chipClass = computed(() =>
   `chip${props.variant === 'primary' ? ' chip-primary' : props.variant === 'tonal' ? ' chip-tonal' : ''}`,
@@ -52,13 +82,16 @@ const isGithub = (url: string) => /github\.com/i.test(url)
     ref="wrapRef"
     :style="{ position: 'relative', display: 'inline-block' }"
     @mouseenter="show"
-    @mouseleave="open = false"
+    @mouseleave="onMouseLeave"
     @focusin="show"
-    @focusout="open = false"
+    @focusout="onFocusOut"
   >
     <button
+      ref="btnRef"
       type="button"
       :tabindex="hasHit ? 0 : -1"
+      :aria-expanded="hasHit ? String(open) : undefined"
+      :aria-controls="open && hasHit ? popId : undefined"
       :class="chipClass"
       :style="{
         cursor: hasHit ? 'help' : 'default',
@@ -76,7 +109,7 @@ const isGithub = (url: string) => /github\.com/i.test(url)
     </button>
     <div
       v-if="open && hasHit && hit"
-      role="tooltip"
+      :id="popId"
       :style="{
         position: 'absolute',
         [pos === 'top' ? 'bottom' : 'top']: 'calc(100% + 10px)',

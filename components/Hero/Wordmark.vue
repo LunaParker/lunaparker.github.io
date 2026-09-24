@@ -1,5 +1,24 @@
 <script setup lang="ts">
+import { onBeforeUnmount, onMounted, ref } from 'vue'
+
 const repoUrl = 'https://github.com/LunaParker/lunaparker.github.io'
+
+// Escape hides the portfolio popover without moving the pointer or focus
+// (WCAG 1.4.13). The next hover or focus on the trigger shows it again.
+const triggerRef = ref<HTMLElement | null>(null)
+const dismissed = ref(false)
+
+const onKeydown = (e: KeyboardEvent) => {
+  if (e.key !== 'Escape' || dismissed.value) return
+  const trigger = triggerRef.value
+  if (!trigger) return
+  // Focus on the popover's own link would be hidden with it: park it on the trigger.
+  if (document.activeElement !== trigger && trigger.contains(document.activeElement)) trigger.focus()
+  dismissed.value = true
+}
+
+onMounted(() => document.addEventListener('keydown', onKeydown))
+onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
 </script>
 
 <template>
@@ -34,9 +53,13 @@ const repoUrl = 'https://github.com/LunaParker/lunaparker.github.io'
         <div class="label hero__footer-cue">Scroll to explore</div>
         <div class="mono hero__footer-meta">
           <span
+            ref="triggerRef"
             class="hero__portfolio-trigger"
+            :class="{ 'is-dismissed': dismissed }"
             tabindex="0"
             aria-describedby="hero-portfolio-popover"
+            @mouseenter="dismissed = false"
+            @focusin="dismissed = false"
           >
             PORTFOLIO v4 · EST. 2026
             <span
@@ -176,7 +199,6 @@ const repoUrl = 'https://github.com/LunaParker/lunaparker.github.io'
   text-decoration: underline dotted
   text-decoration-color: var(--outline)
   text-underline-offset: 3px
-  outline: none
   border-radius: 4px
   transition: color var(--dur-short) var(--spring-gentle)
 
@@ -227,6 +249,13 @@ const repoUrl = 'https://github.com/LunaParker/lunaparker.github.io'
   pointer-events: auto
   transform: translateY(0) scale(1)
   transition: opacity var(--dur-short) var(--spring-gentle), transform var(--dur-med) var(--spring-fast), visibility 0s
+
+// After the reveal rules so it wins the specificity tie
+.hero__portfolio-trigger.is-dismissed .hero__portfolio-popover
+  opacity: 0
+  visibility: hidden
+  pointer-events: none
+  transition: none
 
 .hero__portfolio-popover-label
   font-family: var(--font-mono)

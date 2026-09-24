@@ -259,7 +259,9 @@ const data = useData()
 
 .experience__edu-grid
   display: grid
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))
+  // min() lets the one column shrink below 320px on a 320px-wide screen;
+  // unquoted so Stylus's own min() doesn't fold it to 100% at compile time
+  grid-template-columns: repeat(auto-fit, minmax(unquote("min(320px, 100%)"), 1fr))
   gap: 20px
 
 .experience__edu-card

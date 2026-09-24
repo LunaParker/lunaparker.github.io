@@ -69,6 +69,9 @@ export function useTurnstile(widgetEl: Ref<HTMLElement | null>, siteKey: string)
       widgetId = window.turnstile!.render(widgetEl.value, {
         'sitekey': siteKey,
         'theme': 'auto',
+        // The normal widget is a fixed 300px; on a 320px screen the form only
+        // has ~240px, so fall back to the 150px compact one.
+        'size': widgetEl.value.clientWidth < 300 ? 'compact' : 'normal',
         'callback': (t: string) => {
           token.value = t
         },

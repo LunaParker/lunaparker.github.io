@@ -228,6 +228,7 @@ async function onSubmit(e: Event) {
   border-radius: 28px
   background: var(--surface-container)
   display: grid
+  grid-template-columns: minmax(0, 1fr)
   gap: 18px
 
 .contact__turnstile
@@ -251,5 +252,5 @@ async function onSubmit(e: Event) {
 
 @media (max-width: 860px)
   .contact__grid
-    grid-template-columns: 1fr
+    grid-template-columns: minmax(0, 1fr)
 </style>

@@ -10,7 +10,7 @@ Personal developer & designer portfolio for Luna Parker. Built with Nuxt 3 + Typ
 - **@nuxt/fonts** — Plus Jakarta Sans, Roboto Flex, JetBrains Mono via Google Fonts
 - **@nuxt/eslint** — flat config at `eslint.config.mjs`
 - **Cloudflare Pages** for static hosting
-- **Cloudflare Workers** for the contact form API (Turnstile + Discord webhook)
+- **Cloudflare Workers** for the contact form API (Turnstile + Cloudflare email)
 
 ## Quick start
 
@@ -40,7 +40,7 @@ npm run icons      # regenerates favicons + OG card from the brand gradient
 
 ## Contact form Worker
 
-Located in `worker/` as a separate npm package. Verifies a Cloudflare Turnstile token, then forwards the submission to a private Discord webhook. Routed at `lunaparker.dev/api/contact*`.
+Located in `worker/` as a separate npm package. Verifies a Cloudflare Turnstile token, then emails the submission through Cloudflare's `send_email` binding, from `contact@forms.lunaparker.dev` to a verified Email Routing destination (the `CONTACT_TO` secret), with Reply-To set to the sender. Routed at `lunaparker.dev/api/contact*`.
 
 ```bash
 cd worker
@@ -48,7 +48,8 @@ npm install
 npx wrangler dev                              # local Worker on :8787, reads worker/.dev.vars
 npx wrangler deploy                           # ships to Cloudflare; wrangler.toml is source of truth
 npx wrangler secret put TURNSTILE_SECRET      # rotate Turnstile secret
-npx wrangler secret put DISCORD_WEBHOOK_URL   # rotate Discord webhook
+npx wrangler secret put CONTACT_TO            # change the receiving inbox (must be a verified destination)
+npm test                                      # Vitest suite for both Workers
 npx wrangler tail                             # stream live Worker logs
 ```
 

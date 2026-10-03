@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This repo has **two cooperating deployments**, both on Cloudflare:
 
 1. **Static Nuxt 3 portfolio** at the repo root → built with `nuxt generate`, deployed to Cloudflare Pages (project `lunaparker-portfolio`), served at `lunaparker.dev`.
-2. **Cloudflare Worker** at `worker/` (`shyowl-contact`) → handles the contact form. Verifies a Turnstile CAPTCHA, then forwards submissions to a private Discord webhook. Routed at `lunaparker.dev/api/contact*`. Worker routes take precedence over Pages, so they coexist on the same hostname.
+2. **Cloudflare Worker** at `worker/` (`shyowl-contact`) → handles the contact form. Verifies a Turnstile CAPTCHA, then emails submissions to Luna through Cloudflare's `send_email` binding. Routed at `lunaparker.dev/api/contact*`. Worker routes take precedence over Pages, so they coexist on the same hostname.
 
 `README.md` covers the Nuxt setup, build, deploy, and design system in depth. **Don't duplicate it; consult it.** This file documents the rest.
 
@@ -25,11 +25,12 @@ npm install              # one-time
 npx wrangler dev         # local Worker at http://localhost:8787, reads worker/.dev.vars
 npx wrangler deploy      # ships to Cloudflare; wrangler.toml is source of truth
 npx wrangler secret put TURNSTILE_SECRET     # interactive — re-run if rotated
-npx wrangler secret put DISCORD_WEBHOOK_URL  # interactive — re-run if rotated
+npx wrangler secret put CONTACT_TO           # interactive — inbox that receives submissions
+npm test                 # Vitest suite for both Workers
 npx wrangler tail        # stream live Worker logs
 ```
 
-There are no tests in this repo.
+The Nuxt site has no tests. The `worker/` package has a Vitest suite (`npm test`), which CI runs before deploying the Workers.
 
 ## Where content lives
 
@@ -50,7 +51,8 @@ Notes:
 Contact.vue ──POST JSON──▶  lunaparker.dev/api/contact  ──▶  shyowl-contact Worker
    │                                                             │
    └─ Turnstile widget                                            ├─ verify Turnstile token
-      (managed/visible mode)                                      └─ forward to Discord webhook
+      (managed/visible mode)                                      └─ email via send_email binding
+                                                                     (contact@forms.lunaparker.dev → CONTACT_TO)
 ```
 
 **Configuration variables (where things live):**
@@ -62,7 +64,9 @@ Contact.vue ──POST JSON──▶  lunaparker.dev/api/contact  ──▶  shy
 | `runtimeConfig.public.writingEnabled` | `nuxt.config.ts` | `false` by default — hides the Writing section + nav item, and prevents `/writing*` from being statically generated. Set `NUXT_PUBLIC_WRITING_ENABLED=true` to re-enable when real posts exist. |
 | `ALLOWED_ORIGINS` | `worker/wrangler.toml` `[vars]` | Comma-separated CORS allowlist. Currently: `lunaparker.dev`, `www.lunaparker.dev`, `lunaparker.github.io`, `localhost:3000`. |
 | `TURNSTILE_SECRET` | Worker secret (`wrangler secret put`) | Cloudflare Turnstile secret key. Never committed. |
-| `DISCORD_WEBHOOK_URL` | Worker secret (`wrangler secret put`) | Discord channel webhook (private channel `#website-contact-form`). Never committed. |
+| `CONTACT_FROM` | `worker/wrangler.toml` `[vars]` | Sender address, `contact@forms.lunaparker.dev`. Must sit on a domain with Email Routing enabled and match the binding's `allowed_sender_addresses`. |
+| `CONTACT_TO` | Worker secret (`wrangler secret put`) | Inbox that receives submissions. Must be a **verified destination address** in Email Routing (dashboard → Email Service → Email Routing → Destination addresses). Kept as a secret so the address stays out of the public repo. |
+| `EMAIL` (`send_email` binding) | `worker/wrangler.toml` `[[send_email]]` | Sending to verified destinations is free on every Workers plan. Needs wrangler 4: wrangler 3 ignores `allowed_sender_addresses` and leaves `env.EMAIL` undefined in local dev. |
 | Route binding `lunaparker.dev/api/contact*` | `worker/wrangler.toml` `[[routes]]` + Cloudflare dashboard | Both must agree. |
 
 **Local dev for the form:** Cloudflare ships test keys that always pass:
@@ -70,7 +74,11 @@ Contact.vue ──POST JSON──▶  lunaparker.dev/api/contact  ──▶  shy
 - Site key `1x00000000000000000000AA`
 - Secret `1x0000000000000000000000000000000AA`
 
-Drop the secret into `worker/.dev.vars` (template at `worker/.dev.vars.example`), run `wrangler dev`, then start Nuxt with `NUXT_PUBLIC_TURNSTILE_SITE_KEY=1x00000000000000000000AA NUXT_PUBLIC_CONTACT_ENDPOINT=http://localhost:8787 npm run dev`.
+Drop the secret and a `CONTACT_TO` into `worker/.dev.vars` (template at `worker/.dev.vars.example`), run `wrangler dev`, then start Nuxt with `NUXT_PUBLIC_TURNSTILE_SITE_KEY=1x00000000000000000000AA NUXT_PUBLIC_CONTACT_ENDPOINT=http://localhost:8787 npm run dev`.
+
+Local `wrangler dev` simulates the email: it logs the From/To/Subject and writes the body to a file under `.wrangler/tmp/email/`. To send a real email from local dev, add `remote = true` to the `[[send_email]]` block for that session only.
+
+**Email Routing DNS:** routing is enabled only on the `forms.lunaparker.dev` subdomain (Cloudflare MX + SPF there, DKIM at `cf2024-1._domainkey.lunaparker.dev`). The apex MX records point at iCloud for `luna@lunaparker.dev`. The Email Routing settings page lists them as "Conflicting" and offers to add its own apex MX; **never accept that**, or iCloud mail breaks.
 
 ## Analytics + cookie consent
 

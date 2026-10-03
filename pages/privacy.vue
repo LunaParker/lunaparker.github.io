@@ -25,7 +25,7 @@ onMounted(() => {
   <article :style="{ minHeight: '100vh', padding: '120px 0 80px' }">
     <div class="container" :style="{ maxWidth: '760px' }">
       <div class="label section-kicker" :style="{ color: 'var(--on-surface-variant)', marginBottom: '20px' }">
-        <span>Last updated May 5, 2026</span>
+        <span>Last updated October 3, 2026</span>
       </div>
 
       <h1 class="title">
@@ -126,12 +126,16 @@ onMounted(() => {
           for the data Google may further process.
         </p>
 
-        <h3>Discord</h3>
+        <h3>Email delivery</h3>
         <p>
-          When you submit the contact form, the message contents (your name, email, and message), along with the IP
-          address recorded by the Worker, are forwarded via a webhook to a private Discord channel that we monitor
-          for inquiries. Discord stores these messages on its servers as part of normal operation. Please visit
-          <a href="https://discord.com/privacy" target="_blank" rel="noreferrer">Discord's Privacy Policy</a> for more information.
+          When you submit the contact form, the message contents (your name, email, and message, plus your
+          organization and project type if you provide them), along with the IP address recorded by the Worker, are
+          sent as an email through Cloudflare's Email Service to a private inbox hosted by Google (Gmail) that we
+          monitor for inquiries. Your email address is set as the reply address so we can respond to you directly.
+          Google stores these emails on its servers as part of normal mailbox operation. Please visit
+          <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noreferrer">Cloudflare's Privacy Policy</a>
+          and <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Google's Privacy Policy</a>
+          for more information.
         </p>
 
         <h2>Use of data</h2>
@@ -161,10 +165,9 @@ onMounted(() => {
         <h3>For processing and storage</h3>
         <p>
           As mentioned above, this site uses Cloudflare Workers to process contact form submissions, Cloudflare
-          Turnstile to verify those submissions are not from bots, and a Discord webhook to deliver the message
-          to a private channel we monitor. As a result, your message contents (and your IP address, in the case
-          of Turnstile and Discord) may be retained by Cloudflare and Discord for record-keeping and operational
-          purposes.
+          Turnstile to verify those submissions are not from bots, and Cloudflare's Email Service to deliver the
+          message by email to a private Gmail inbox we monitor. As a result, your message contents and your IP
+          address may be retained by Cloudflare and Google for record-keeping and operational purposes.
         </p>
 
         <h2>Links to other sites</h2>

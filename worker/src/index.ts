@@ -1,7 +1,9 @@
 export interface Env {
   TURNSTILE_SECRET: string
-  DISCORD_WEBHOOK_URL: string
+  CONTACT_TO: string
+  CONTACT_FROM: string
   ALLOWED_ORIGINS: string
+  EMAIL: SendEmail
 }
 
 interface ContactPayload {
@@ -21,7 +23,6 @@ interface TurnstileVerifyResponse {
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
-const DISCORD_EMBED_COLOR = 0x7C3AED
 
 export default {
   async fetch(req: Request, env: Env): Promise<Response> {
@@ -86,28 +87,32 @@ export default {
       return json({ error: 'CAPTCHA verification failed. Please try again.' }, 403, corsHeaders)
     }
 
-    const discordRes = await fetch(env.DISCORD_WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        username: source === 'shy-owl' ? 'Shy Owl Contact Form' : 'Portfolio Contact Form',
-        embeds: [{
-          title: 'New contact form submission',
-          color: DISCORD_EMBED_COLOR,
-          fields: [
-            { name: 'Name', value: name, inline: true },
-            { name: 'Email', value: email, inline: true },
-            ...(organization ? [{ name: 'Organization', value: organization, inline: true }] : []),
-            ...(projectType ? [{ name: 'Project type', value: projectType, inline: true }] : []),
-            { name: 'Message', value: message },
-          ],
-          footer: { text: `${source === 'shy-owl' ? 'shy-owl' : 'lunaparker.dev'}${ip ? ` · From ${ip}` : ''}` },
-          timestamp: new Date().toISOString(),
-        }],
-      }),
-    })
+    const isShyOwl = source === 'shy-owl'
+    // Name lands in the subject and Reply-To headers, so flatten any line breaks.
+    const headerName = name.replace(/[\r\n]+/g, ' ')
+    const text = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      ...(organization ? [`Organization: ${organization}`] : []),
+      ...(projectType ? [`Project type: ${projectType}`] : []),
+      `Source: ${isShyOwl ? 'shy-owl' : 'lunaparker.dev'}`,
+      ...(ip ? [`IP: ${ip}`] : []),
+      '',
+      'Message:',
+      message,
+    ].join('\n')
 
-    if (!discordRes.ok) {
+    try {
+      await env.EMAIL.send({
+        from: { name: isShyOwl ? 'Shy Owl Contact Form' : 'Portfolio Contact Form', email: env.CONTACT_FROM },
+        to: env.CONTACT_TO,
+        replyTo: { name: headerName, email },
+        subject: `Contact form: ${headerName}`,
+        text,
+      })
+    }
+    catch (err) {
+      console.error('Contact email failed to send:', err)
       return json({ error: 'Could not deliver the message. Please try again later.' }, 502, corsHeaders)
     }
 

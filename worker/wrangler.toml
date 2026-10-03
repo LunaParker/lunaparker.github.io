@@ -3,12 +3,19 @@ main = "src/index.ts"
 compatibility_date = "2025-04-01"
 
 # Public, non-secret config. Comma-separated list of origins allowed to POST.
+# CONTACT_FROM is on forms.lunaparker.dev, the subdomain with Email Routing enabled.
 [vars]
 ALLOWED_ORIGINS = "https://lunaparker.dev,https://www.lunaparker.dev,https://lunaparker.github.io,http://localhost:3000"
+CONTACT_FROM = "contact@forms.lunaparker.dev"
 
 # Set secrets via:
 #   wrangler secret put TURNSTILE_SECRET
-#   wrangler secret put DISCORD_WEBHOOK_URL
+#   wrangler secret put CONTACT_TO   (inbox for submissions; a verified Email Routing destination)
+
+# Sends only to verified destination addresses, which is free on every Workers plan.
+[[send_email]]
+name = "EMAIL"
+allowed_sender_addresses = ["contact@forms.lunaparker.dev"]
 
 # Route binding: same-origin contact endpoint on the apex domain.
 [[routes]]

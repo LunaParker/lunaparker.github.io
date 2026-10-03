@@ -6,7 +6,7 @@ const PROJECT_IDS = ['eyolf', 'blsc', 'jarvis-ryan'] as const
 const BLURBS: Record<string, string[]> = {
   'eyolf': [
     'EYOLF makes climbing gear that lets professionals work safely at great heights.',
-    'We designed a website built around their brand\'s verticality and momentum, then connected the front-end to a custom Laravel inventory portal and a tailored InvoiceNinja deployment; together they quietly streamline the operations behind the storefront.',
+    'We designed a website built around their brand\'s verticality and momentum, then connected the front-end to a custom Laravel inventory portal and a QuickBooks Online bridge that carries WooCommerce orders into their accounting; together they quietly streamline the operations behind the storefront.',
   ],
   'blsc': [
     'Belwood Lake Sailing Club is a member-run sailing organization in Belwood, Ontario.',

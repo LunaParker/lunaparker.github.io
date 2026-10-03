@@ -101,7 +101,7 @@ const DATA: PortfolioData = {
         'Run the production infrastructure behind client properties: a Linux VPS serving WordPress plus three containerized Laravel apps, fronted by Cloudflare with origin-CA TLS and cache rules.',
         'Review third-party plugin code before it reaches a client site and trace security defects to root cause in vendor source, including a broken nonce check in a file-upload plugin.',
         'Plan major-version upgrades on live commerce sites: version pinning where plugins lag core, scripted end-to-end verification of the checkout flow, and a tested rollback path.',
-        'Created and open-sourced waveapps-mcp (28 tools, MIT), brightspace-mcp-server (Entra SSO fork), and macos-permission-report, a macOS TCC auditor.',
+        'Open-sourced brightspace-mcp-server, an MCP server for the Brightspace LMS with a Microsoft Entra SSO fork, and macos-permission-report, a macOS TCC privacy auditor.',
       ],
       stack: ['Laravel', 'WordPress', 'WooCommerce', 'Vue.js', 'PHP', 'Node.js', 'Python', 'Docker', 'Cloudflare', 'MCP'],
     },
@@ -183,7 +183,7 @@ const DATA: PortfolioData = {
       role: 'Lead Developer & Designer',
       year: '2024',
       url: 'https://eyolf.ca',
-      stack: ['WordPress', 'WooCommerce', 'InvoiceNinja', 'Laravel', 'Cloudflare'],
+      stack: ['WordPress', 'WooCommerce', 'QuickBooks Online', 'Laravel', 'Cloudflare'],
       size: 'featured',
       accent: 'primary',
       treatment: 'vertical-split',
@@ -299,7 +299,7 @@ const DATA: PortfolioData = {
   skills: {
     Languages: ['PHP', 'JavaScript', 'TypeScript', 'Python', 'C++', 'C', 'C#', 'Java', 'Swift', 'SQL', 'HTML', 'CSS/SCSS'],
     Frameworks: ['Laravel', 'Vue.js', 'Nuxt', 'ASP.NET Core', 'SwiftUI', 'WordPress', 'WooCommerce', 'Node.js'],
-    Tools: ['Git', 'Docker', 'Figma', 'Cloudflare', 'Microsoft Server / IIS', 'InvoiceNinja', 'CI/CD'],
+    Tools: ['Git', 'Docker', 'Figma', 'Cloudflare', 'Microsoft Server / IIS', 'QuickBooks Online', 'CI/CD'],
     Practices: ['Full-stack Development', 'UX/UI Design', 'Project Management', 'TDD', 'Agile/Scrum', 'API Integration', 'Database Design', 'Information Security', 'Client Relations', 'Technical Writing'],
   },
 }

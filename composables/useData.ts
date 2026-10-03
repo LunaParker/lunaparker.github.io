@@ -70,6 +70,24 @@ export interface PortfolioData {
 const DATA: PortfolioData = {
   experience: [
     {
+      id: 'sandbox',
+      role: 'Junior Web Developer (Co-op)',
+      org: 'Sandbox Software Solutions',
+      period: 'Sep 2026 — Present',
+      type: 'Co-op',
+      location: 'Guelph, ON (Hybrid)',
+      blurb: 'Final four-month co-op term of my Honours BCS, on the projects team of a web agency building and maintaining sites for non-profit, healthcare, and public-sector clients. Reporting to the lead developer.',
+      bullets: [
+        'Own client WordPress builds end to end: the agency\'s shared parent theme, custom ACF/Gutenberg blocks, custom post types and taxonomies, and front-end work in JavaScript and SCSS.',
+        'Scope and estimate work before it starts, and run developer first-pass QA on medium and large sites before code reaches peer review and formal QA gates.',
+        'Flag gaps and risks in proposed solutions before they reach production, applying the security-minded habit from my Information Security specialization to client web work.',
+        'Resolve client support tickets end to end: reproduce on the live site, trace to root cause in theme code, ship and verify the fix, and write the client-facing reply.',
+        'Apply WCAG accessibility requirements to every solution, in a shop with a dedicated accessibility coordinator and formal accessibility QA gates.',
+        'Build in the agency\'s proprietary in-house CMS as well as WordPress, including a containerized local dev environment (Docker, PHP, MariaDB) for a large intranet project.',
+      ],
+      stack: ['WordPress', 'PHP', 'ACF', 'JavaScript', 'SCSS', 'MySQL', 'Docker', 'Git'],
+    },
+    {
       id: 'shy-owl',
       role: 'Founder',
       org: 'Shy Owl Studios',

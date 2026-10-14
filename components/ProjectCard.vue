@@ -7,7 +7,7 @@ const props = defineProps<{ project: Project }>()
 const isGithub = computed(() => /github\.com/i.test(props.project.url))
 const displayUrl = computed(() => props.project.url.replace(/^https?:\/\//, ''))
 const iconName = computed<'github' | 'arrowUpRight'>(() => (isGithub.value ? 'github' : 'arrowUpRight'))
-const posterSize = computed<'big' | 'default'>(() => (props.project.size === 'featured' ? 'big' : 'default'))
+const posterSize = computed<'big' | 'default'>(() => (['featured', 'large'].includes(props.project.size) ? 'big' : 'default'))
 const sizeClass = computed(() => `project-card--${props.project.size ?? 'square'}`)
 </script>
 
@@ -61,6 +61,10 @@ const sizeClass = computed(() => `project-card--${props.project.size ?? 'square'
 
 .project-card--featured
   grid-column: span 6
+  grid-row: span 2
+
+.project-card--large
+  grid-column: span 4
   grid-row: span 2
 
 .project-card--wide

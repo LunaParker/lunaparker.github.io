@@ -81,6 +81,28 @@ const big = computed(() => props.size === 'big')
       <div class="poster__mc-name">{{ project.name }}</div>
     </div>
   </div>
+
+  <!-- transit — tonal container crossed by a brand-gradient route line; the stops are the stack -->
+  <div
+    v-else-if="project.treatment === 'transit'"
+    class="poster poster--transit"
+    :class="{ 'poster--big': big }"
+  >
+    <div class="poster__tr-line">
+      <div v-for="tech in project.stack" :key="tech" class="poster__tr-stop">
+        <span class="mono poster__tr-stop-label">{{ tech }}</span>
+      </div>
+    </div>
+    <div class="poster__tr-content">
+      <div class="label poster__tr-meta">
+        {{ project.year }} · {{ project.client }}
+      </div>
+      <div>
+        <div class="poster__tr-name">{{ project.name }}</div>
+        <div class="poster__tr-tagline">{{ project.tagline }}</div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped lang="stylus">
@@ -285,4 +307,84 @@ const big = computed(() => props.size === 'big')
 
 .poster--mono-code.poster--big .poster__mc-name
   font-size: clamp(2.4rem, 5.5vw, 4.2rem)
+
+// ── transit ────────────────────────────────────────────────
+.poster--transit
+  background: var(--primary-container)
+  color: var(--on-primary-container)
+
+.poster__tr-line
+  position: absolute
+  left: 0
+  right: 0
+  top: 44%
+  height: 10px
+  background: var(--brand-gradient)
+  display: flex
+  justify-content: space-around
+  align-items: center
+
+.poster--transit.poster--big .poster__tr-line
+  height: 14px
+
+.poster__tr-stop
+  position: relative
+  width: 22px
+  height: 22px
+  border-radius: 50%
+  background: var(--primary-container)
+  border: 4px solid currentColor
+
+.poster--transit.poster--big .poster__tr-stop
+  width: 30px
+  height: 30px
+  border-width: 5px
+
+.poster__tr-stop-label
+  position: absolute
+  top: calc(100% + 10px)
+  left: 50%
+  transform: translateX(-50%)
+  font-size: 11px
+  letter-spacing: 0.04em
+  white-space: nowrap
+  opacity: 0.75
+
+.poster__tr-content
+  position: relative
+  width: 100%
+  height: 100%
+  padding: 20px
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+
+.poster--transit.poster--big .poster__tr-content
+  padding: 32px
+
+.poster__tr-meta
+  opacity: 0.8
+
+.poster__tr-name
+  font-family: var(--font-display)
+  font-weight: 800
+  letter-spacing: -0.04em
+  line-height: 0.9
+  font-size: clamp(1.8rem, 4vw, 2.8rem)
+
+.poster--transit.poster--big .poster__tr-name
+  font-size: clamp(2.6rem, 7vw, 6rem)
+
+.poster__tr-tagline
+  margin-top: 10px
+  font-size: 13px
+  opacity: 0.85
+
+.poster--transit.poster--big .poster__tr-tagline
+  font-size: 15px
+
+// Stop labels collide once the card is phone-width.
+@media (max-width: 600px)
+  .poster__tr-stop-label
+    display: none
 </style>

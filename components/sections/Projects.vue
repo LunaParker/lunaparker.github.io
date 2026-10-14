@@ -52,25 +52,12 @@ const data = useData()
     grid-template-columns: repeat(4, 1fr)
     grid-auto-rows: 220px
 
-  .projects__grid > .project-card:nth-child(1)
+  // Four columns: featured goes full width; wide drops to two so the grid closes.
+  .projects__grid > .project-card--featured
     grid-column: span 4
-    grid-row: span 2
 
-  .projects__grid > .project-card:nth-child(2)
-    grid-column: span 4
-    grid-row: span 1
-
-  .projects__grid > .project-card:nth-child(3)
+  .projects__grid > .project-card--wide
     grid-column: span 2
-    grid-row: span 2
-
-  .projects__grid > .project-card:nth-child(4)
-    grid-column: span 2
-    grid-row: span 1
-
-  .projects__grid > .project-card:nth-child(5)
-    grid-column: span 2
-    grid-row: span 1
 
 @media (max-width: 600px)
   .projects__grid
@@ -83,6 +70,7 @@ const data = useData()
     min-height: 280px
     height: 280px
 
-  .projects__grid > .project-card:nth-child(1)
+  .projects__grid > .project-card--featured,
+  .projects__grid > .project-card--large
     height: 360px
 </style>

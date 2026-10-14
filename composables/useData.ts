@@ -22,14 +22,15 @@ export interface Education {
   notes: string[]
 }
 
-export type ProjectSize = 'featured' | 'wide' | 'tall' | 'square'
+export type ProjectSize = 'featured' | 'large' | 'wide' | 'tall' | 'square'
 
 // Visual treatment for the typographic poster on each card.
 // - vertical-split: full-bleed brand gradient with rotated wordmark (signature treatment)
 // - stacked: tonal container with a soft brand-gradient blur in one corner
 // - angle: tonal container with a conic accent sweep, italic title
 // - mono-code: neutral grey surface with a hatch pattern and a "// <client>" comment header
-export type ProjectTreatment = 'vertical-split' | 'stacked' | 'angle' | 'mono-code'
+// - transit: tonal container crossed by a brand-gradient route line whose stops are the stack
+export type ProjectTreatment = 'vertical-split' | 'stacked' | 'angle' | 'mono-code' | 'transit'
 
 export interface Project {
   id: string
@@ -189,6 +190,19 @@ const DATA: PortfolioData = {
       treatment: 'vertical-split',
     },
     {
+      id: 'ttc-mcp',
+      name: 'TTC MCP Server',
+      tagline: 'Live arrivals, closures & trip planning for Claude',
+      client: 'Open Source',
+      role: 'Developer',
+      year: '2026',
+      url: 'https://github.com/lunaparker/ttc-mcp',
+      stack: ['Python', 'MCP', 'GTFS-RT', 'SQLite', 'Docker'],
+      size: 'large',
+      accent: 'primary',
+      treatment: 'transit',
+    },
+    {
       id: 'jarvis-ryan',
       name: 'Jarvis Ryan Associates',
       tagline: 'Secure client portal & redesign',
@@ -275,19 +289,6 @@ const DATA: PortfolioData = {
       year: '2024',
       url: 'https://github.com/lunaparker/swift-weather',
       stack: ['Swift', 'SwiftUI'],
-      size: 'square',
-      accent: 'primary',
-      treatment: 'mono-code',
-    },
-    {
-      id: 'obsidian-default-handler',
-      name: 'macOS Obsidian Default Handler',
-      tagline: 'Open any .md file in Obsidian, vault or not',
-      client: 'Open Source',
-      role: 'Developer',
-      year: '2026',
-      url: 'https://github.com/lunaparker/macos-obsidian-default-handler',
-      stack: ['AppleScript', 'Python', 'macOS'],
       size: 'square',
       accent: 'primary',
       treatment: 'mono-code',

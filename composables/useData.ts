@@ -157,7 +157,6 @@ const DATA: PortfolioData = {
       degree: 'Honours Bachelor of Computer Science',
       period: 'Sep 2022 — Expected 2027',
       specialization: 'Security',
-      gpa: '3.59',
       notes: [
         'Security specialization: penetration testing, rootkits, network security, privacy in computing, and software safety/reliability.',
         'Six collaborative software projects spanning the full SDLC — from requirements and design through testing, deployment, and performance optimization.',

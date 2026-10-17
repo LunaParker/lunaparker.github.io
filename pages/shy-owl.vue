@@ -9,27 +9,38 @@ definePageMeta({ layout: 'studio' })
 
 const config = useRuntimeConfig()
 const siteUrl = String(config.public.siteUrl ?? 'https://lunaparker.dev')
-const pageUrl = `${siteUrl}/shy-owl`
+const pageUrl = `${siteUrl}/shy-owl/`
 const description = 'Shy Owl Studios builds tailored, accessible, high-performance websites and web applications. Based in Ontario; partnering with organizations worldwide.'
+// The studio has no logo of its own yet; the LP monogram shares its gradient
+const logo = {
+  '@type': 'ImageObject',
+  'url': `${siteUrl}/icon-512.png`,
+  'width': 512,
+  'height': 512,
+}
 
 const orgLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': `${pageUrl}#organization`,
   'name': 'Shy Owl Studios',
   'url': pageUrl,
+  'logo': logo,
+  'image': logo,
   'email': 'mailto:hello@shyowlstudios.com',
   'description': description,
   'address': {
     '@type': 'PostalAddress',
-    'addressLocality': 'Greater Toronto Area',
     'addressRegion': 'Ontario',
     'addressCountry': 'CA',
   },
   'founder': {
     '@type': 'Person',
+    '@id': `${siteUrl}/#person`,
     'name': 'Luna Parker',
-    'url': siteUrl,
+    'url': `${siteUrl}/`,
   },
+  'sameAs': ['https://shyowlstudios.com/'],
   'knowsAbout': ['Web Design', 'Web Development', 'Custom Software', 'WordPress', 'Accessibility (AODA/WCAG)', 'Web Security', 'Database Development'],
 }
 

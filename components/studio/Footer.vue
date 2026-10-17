@@ -28,7 +28,9 @@ function jump(e: MouseEvent, id: string) {
         </nav>
       </div>
       <div class="studio-footer__bottom">
-        <div class="mono">© 2026 Shy Owl Studios.</div>
+        <div class="mono studio-footer__legal">
+          © 2026 Shy Owl Studios. <NuxtLink to="/privacy/">Privacy</NuxtLink>
+        </div>
         <div class="mono">Discerning · Perceptive · Built to last.</div>
       </div>
     </div>
@@ -85,6 +87,16 @@ function jump(e: MouseEvent, id: string) {
   transition: color var(--dur-short)
 
 .studio-footer__nav a:hover
+  color: var(--on-surface)
+
+.studio-footer__legal a
+  color: inherit
+  text-decoration: underline
+  text-underline-offset: 3px
+  margin-left: 0.75rem
+  transition: color var(--dur-short)
+
+.studio-footer__legal a:hover
   color: var(--on-surface)
 
 .studio-footer__bottom

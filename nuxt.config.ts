@@ -13,6 +13,8 @@ export default defineNuxtConfig({
   site: {
     url: 'https://lunaparker.dev',
     name: 'Luna Parker',
+    // Pages serves /x/index.html and 308s /x to /x/, so URLs carry the slash
+    trailingSlash: true,
   },
 
   sitemap: {
@@ -99,6 +101,8 @@ export default defineNuxtConfig({
   },
 
   fonts: {
+    // Families are named only in tokens.styl's --font-* properties
+    experimental: { processCSSVariables: true },
     families: [
       {
         name: 'Plus Jakarta Sans',
@@ -108,8 +112,10 @@ export default defineNuxtConfig({
       },
       {
         name: 'Roboto Flex',
-        provider: 'google',
-        weights: [300, 400, 500, 600, 700],
+        // Google's Roboto Flex filenames exceed 255 bytes and break the font cache;
+        // Fontsource ships the variable file (all weights) under a short name
+        provider: 'fontsource',
+        weights: [400],
       },
       {
         name: 'JetBrains Mono',
@@ -121,28 +127,31 @@ export default defineNuxtConfig({
 
   experimental: {
     viewTransition: true,
+    defaults: {
+      nuxtLink: { trailingSlash: 'append' },
+    },
   },
 
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       htmlAttrs: { lang: 'en' },
-      title: 'Luna Parker — Developer & Designer',
+      title: 'Luna Parker | Full-Stack Web Developer & Designer, Ontario',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           name: 'description',
-          content: "Full-stack web developer and designer with 8+ years' experience. Honours BCS student at Conestoga.",
+          content: 'Full-stack web developer and designer in Ontario with 8+ years building WordPress, Laravel and Vue sites. Honours BCS (Security) student at Conestoga.',
         },
         { name: 'theme-color', content: '#8A2387' },
         // Open Graph
         { property: 'og:type', content: 'website' },
         { property: 'og:site_name', content: 'Luna Parker' },
-        { property: 'og:title', content: 'Luna Parker — Developer & Designer' },
+        { property: 'og:title', content: 'Luna Parker | Full-Stack Web Developer & Designer, Ontario' },
         {
           property: 'og:description',
-          content: "Full-stack web developer and designer with 8+ years' experience. Honours BCS student at Conestoga.",
+          content: 'Full-stack web developer and designer in Ontario with 8+ years building WordPress, Laravel and Vue sites. Honours BCS (Security) student at Conestoga.',
         },
         { property: 'og:image', content: 'https://lunaparker.dev/og-image.png' },
         { property: 'og:image:width', content: '1200' },
@@ -150,10 +159,10 @@ export default defineNuxtConfig({
         { property: 'og:url', content: 'https://lunaparker.dev/' },
         // Twitter
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'Luna Parker — Developer & Designer' },
+        { name: 'twitter:title', content: 'Luna Parker | Full-Stack Web Developer & Designer, Ontario' },
         {
           name: 'twitter:description',
-          content: "Full-stack web developer and designer with 8+ years' experience.",
+          content: 'Full-stack web developer and designer in Ontario with 8+ years building WordPress, Laravel and Vue sites. Honours BCS (Security) student at Conestoga.',
         },
         { name: 'twitter:image', content: 'https://lunaparker.dev/og-image.png' },
       ],
@@ -195,6 +204,27 @@ export default defineNuxtConfig({
       // Skip /writing routes unless the flag is explicitly enabled at build time.
       // Keeps the deployed bundle clean of placeholder blog content.
       ignore: process.env.NUXT_PUBLIC_WRITING_ENABLED === 'true' ? [] : ['/writing'],
+      // Unmatched path, so error.vue is server-rendered into 404.html below
+      routes: ['/404'],
+    },
+    hooks: {
+      // Nuxt's own 404.html is an empty SPA shell; swap in the rendered error page
+      'prerender:generate'(route) {
+        if (route.route === '/404.html') route.skip = true
+        if (route.route === '/404') {
+          route.error = undefined
+          route.fileName = '/404.html'
+          // Without this, hydration rewrites the visitor's URL to /404
+          route.contents = route.contents?.replace(
+            /(<script type="application\/json"[^>]*id="__NUXT_DATA__"[^>]*>)(.*?)(<\/script>)/s,
+            (_, open: string, json: string, close: string) => {
+              const data = JSON.parse(json)
+              delete data[0].path
+              return open + JSON.stringify(data).replace(/</g, '\\u003C').replace(/\//g, '\\u002F') + close
+            },
+          )
+        }
+      },
     },
   },
 })

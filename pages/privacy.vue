@@ -13,7 +13,7 @@ useSeoMeta({
   description: 'Privacy policy for lunaparker.dev — what data we collect, who processes it, and how to reach us.',
   ogTitle: 'Privacy Policy — Luna Parker',
   ogDescription: 'Privacy policy for lunaparker.dev.',
-  ogUrl: `${siteUrl}/privacy`,
+  ogUrl: `${siteUrl}/privacy/`,
 })
 
 onMounted(() => {

@@ -7,7 +7,7 @@ Personal developer & designer portfolio for Luna Parker. Built with Nuxt 3 + Typ
 - **Nuxt 3** (Vue 3, Vite) — file-based routing, SSG for static hosting
 - **TypeScript** — strict, `.nuxt/tsconfig.json` auto-generated
 - **Stylus** (indented syntax) for all styles
-- **@nuxt/fonts** — Plus Jakarta Sans, Roboto Flex, JetBrains Mono via Google Fonts
+- **@nuxt/fonts** — self-hosts Plus Jakarta Sans and JetBrains Mono (Google Fonts) and Roboto Flex (Fontsource)
 - **@nuxt/eslint** — flat config at `eslint.config.mjs`
 - **Cloudflare Pages** for static hosting
 - **Cloudflare Workers** for the contact form API (Turnstile + Cloudflare email)

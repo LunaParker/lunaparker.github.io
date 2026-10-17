@@ -30,10 +30,6 @@ useHead({
     : `${code.value} — Luna Parker`,
   meta: [{ name: 'robots', content: 'noindex' }],
 })
-
-async function goHome() {
-  await clearError({ redirect: '/' })
-}
 </script>
 
 <template>
@@ -100,9 +96,9 @@ async function goHome() {
         </p>
 
         <div :style="{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap', marginBottom: '60px' }">
-          <button type="button" class="btn btn-brand" @click="goHome">
+          <NuxtLink to="/" class="btn btn-brand">
             Back home <UiIcon name="arrow" :size="18" />
-          </button>
+          </NuxtLink>
           <NuxtLink to="/#contact" class="btn btn-outlined">
             Get in touch
           </NuxtLink>

@@ -7,6 +7,9 @@ import WritingSection from '~/components/sections/Writing.vue'
 import SkillsSection from '~/components/sections/Skills.vue'
 import ContactSection from '~/components/sections/Contact.vue'
 
+// Own title entry, or client-side navigation home keeps the previous page's title
+useHead({ title: 'Luna Parker | Full-Stack Web Developer & Designer, Ontario' })
+
 const config = useRuntimeConfig()
 const writingEnabled = Boolean(config.public.writingEnabled)
 

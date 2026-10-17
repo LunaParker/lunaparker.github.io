@@ -53,7 +53,7 @@ function chipVariant(i: number): 'primary' | 'tonal' | 'default' {
 
       <div class="skills__services">
         <div class="label section-kicker skills__services-kicker">
-          <span>Services · through Shy Owl Studios</span>
+          <span>Services · through <NuxtLink to="/shy-owl/" class="skills__studio-link">Shy Owl Studios</NuxtLink></span>
         </div>
         <div class="skills__services-grid">
           <UiReveal :delay="0">
@@ -135,6 +135,17 @@ function chipVariant(i: number): 'primary' | 'tonal' | 'default' {
 .skills__services-kicker
   color: var(--on-surface-variant)
   margin-bottom: 24px
+
+.skills__studio-link
+  color: inherit
+  text-decoration: underline
+  text-decoration-color: var(--outline)
+  text-underline-offset: 3px
+  transition: color var(--dur-short) var(--spring-gentle), text-decoration-color var(--dur-short) var(--spring-gentle)
+
+.skills__studio-link:hover
+  color: var(--primary-text)
+  text-decoration-color: currentColor
 
 .skills__services-grid
   display: grid

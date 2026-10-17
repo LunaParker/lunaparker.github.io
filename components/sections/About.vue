@@ -13,7 +13,7 @@
       <div class="about__grid">
         <UiReveal>
           <p class="body-lg about__bio about__bio--lede">
-            I'm a full-stack developer; I've been building for the web since high school. Through my own consultancy, <b>Shy Owl Studios</b>, I've delivered dozens of websites and web applications for clients ranging from local businesses to nation-wide brands.
+            I'm a full-stack developer; I've been building for the web since high school. Through my own consultancy, <NuxtLink to="/shy-owl/" class="about__studio-link"><b>Shy Owl Studios</b></NuxtLink>, I've delivered dozens of websites and web applications for clients ranging from local businesses to nation-wide brands.
           </p>
           <p class="body-lg about__bio about__bio--muted">
             I specialise in Laravel and WordPress (and, in practice, whatever else the problem calls for). I pair the technical work with strong client relations, project management, and a genuine commitment to helping organisations thrive.
@@ -72,6 +72,17 @@
 
 .about__bio--muted
   color: var(--on-surface-variant)
+
+.about__studio-link
+  color: inherit
+  text-decoration: underline
+  text-decoration-color: var(--outline)
+  text-underline-offset: 4px
+  transition: color var(--dur-short) var(--spring-gentle), text-decoration-color var(--dur-short) var(--spring-gentle)
+
+.about__studio-link:hover
+  color: var(--primary-text)
+  text-decoration-color: currentColor
 
 .about__bio:last-child
   margin-bottom: 0

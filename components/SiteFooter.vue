@@ -15,7 +15,8 @@
           <a href="https://github.com/lunaparker" target="_blank" rel="noreferrer">GitHub</a>
           <a href="https://linkedin.com/in/luna-parker" target="_blank" rel="noreferrer">LinkedIn</a>
           <a href="https://github.com/LunaParker/lunaparker.github.io" target="_blank" rel="noreferrer">Source</a>
-          <NuxtLink to="/privacy">Privacy</NuxtLink>
+          <NuxtLink to="/shy-owl/">Shy Owl Studios</NuxtLink>
+          <NuxtLink to="/privacy/">Privacy</NuxtLink>
           <span class="footer__credit">
             Made with ❤️ in 🍁 Canada
           </span>

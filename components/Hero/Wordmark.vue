@@ -27,10 +27,10 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
       <div class="hero__intro">
         <div class="stagger hero__intro-text">
           <div class="label hero__kicker">
-            <span>— Developer · Designer · Student</span>
+            <span>— Developer · Designer · Security</span>
           </div>
           <p class="body-lg hero__lede">
-            Full-stack web developer with 8+ years of experience building tailored digital solutions. Finishing an Honours BCS with a Security Specialization at Conestoga College.
+            Full-stack developer who builds with security in mind, with eight years of production web work.
           </p>
           <div class="hero__cta-row">
             <a href="#projects" class="btn btn-brand">View my work <UiIcon name="arrow" :size="18" /></a>
@@ -40,7 +40,7 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
 
         <div class="stagger hero__intro-meta">
           <div class="mono hero__intro-meta-line">Ontario, Canada</div>
-          <div class="mono hero__intro-meta-line">Remote · EST</div>
+          <div class="mono hero__intro-meta-line">Open to roles · Jan 2027</div>
         </div>
       </div>
 

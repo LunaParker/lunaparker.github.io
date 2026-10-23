@@ -11,3 +11,11 @@
 
 /_fonts/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Baseline security headers for every page. No CSP yet: Nuxt's inline scripts
+# need build-time hashes first.
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY

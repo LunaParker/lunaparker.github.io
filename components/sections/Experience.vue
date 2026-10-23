@@ -8,7 +8,6 @@ const data = useData()
   <section id="experience" class="section experience">
     <div class="container">
       <UiSectionHeader
-        kicker="02 — Experience"
         sub="Where I've worked, what I built, and the stacks I've carried."
       >
         <template #title>
@@ -76,9 +75,7 @@ const data = useData()
       </div>
 
       <div class="experience__edu">
-        <div class="label section-kicker experience__edu-kicker">
-          <span>Education</span>
-        </div>
+        <h3 class="headline experience__edu-heading">Education</h3>
         <div class="experience__edu-grid">
           <UiReveal
             v-for="(edu, i) in data.education"
@@ -253,8 +250,7 @@ const data = useData()
 .experience__edu
   margin-top: 80px
 
-.experience__edu-kicker
-  color: var(--on-surface-variant)
+.experience__edu-heading
   margin-bottom: 24px
 
 .experience__edu-grid

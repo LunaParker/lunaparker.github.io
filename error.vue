@@ -43,10 +43,6 @@ useHead({
       }"
     >
       <div class="container" :style="{ width: '100%' }">
-        <div class="label" :style="{ color: 'var(--on-surface-variant)', marginBottom: '24px' }">
-          <span>— {{ isNotFound ? 'Lost in the woods' : 'Unexpected error' }}</span>
-        </div>
-
         <h1
           :aria-label="isNotFound ? '404 — Four oh four' : `Error ${code}`"
           class="error-wordmark"
@@ -71,7 +67,6 @@ useHead({
             fontFamily: 'var(--font-display)',
             fontSize: 'clamp(1.75rem, 4vw, 3rem)',
             fontWeight: 300,
-            fontStyle: 'italic',
             letterSpacing: '-0.025em',
             lineHeight: 1.1,
             marginTop: '24px',

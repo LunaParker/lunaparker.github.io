@@ -15,7 +15,6 @@ const SERVICES = [
   <section id="services" class="section studio-services">
     <div class="container">
       <UiSectionHeader
-        kicker="What we do"
         sub="From a one-page site to a full custom application, we handle the design, the build, and the operational tools your team relies on."
       >
         <template #title>

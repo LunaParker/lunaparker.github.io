@@ -47,7 +47,7 @@ onMounted(() => {
               backgroundClip: 'text',
               color: 'transparent',
             }">Notes</span>
-            <span :style="{ fontStyle: 'italic', fontWeight: 300 }"> from the workshop.</span>
+            <span :style="{ fontWeight: 300 }"> from the workshop.</span>
           </h1>
           <p class="body-lg" :style="{ color: 'var(--on-surface-variant)' }">
             Essays, tutorials, and opinionated takes — on Laravel, security, AI tooling, and what it's like being a senior dev & an undergrad at the same time.

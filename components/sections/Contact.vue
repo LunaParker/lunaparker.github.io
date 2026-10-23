@@ -1,12 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-withDefaults(defineProps<{
-  kicker?: string
-}>(), {
-  kicker: '05 — Contact',
-})
-
 const config = useRuntimeConfig()
 const turnstileSiteKey = String(config.public.turnstileSiteKey ?? '')
 const contactEndpoint = String(config.public.contactEndpoint ?? '/api/contact')
@@ -76,7 +70,6 @@ async function onSubmit(e: Event) {
   <section id="contact" class="section contact">
     <div class="container">
       <UiSectionHeader
-        :kicker="kicker"
         sub="Whether you've got a project in mind, need a freelance dev, or just want to say hello — I'd love to hear from you."
       >
         <template #title>

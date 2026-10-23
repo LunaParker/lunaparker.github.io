@@ -93,7 +93,6 @@ function sendAnother() {
     <div class="container">
       <div class="studio-contact__grid">
         <div>
-          <div class="label section-kicker studio-contact__kicker"><span>Say hello</span></div>
           <h2 class="studio-contact__title">Let's build something good together.</h2>
           <p class="studio-contact__intro">
             Tell us about your organization and what you're trying to ship. We'll get back to you promptly.
@@ -175,10 +174,6 @@ function sendAnother() {
   grid-template-columns: 1fr 1.2fr
   gap: unquote("clamp(2rem, 6vw, 5rem)")
   align-items: start
-
-.studio-contact__kicker
-  color: var(--on-surface-variant)
-  margin-bottom: 1.25rem
 
 .studio-contact__title
   font-family: var(--font-display)

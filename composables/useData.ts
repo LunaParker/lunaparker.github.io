@@ -156,7 +156,7 @@ const DATA: PortfolioData = {
     {
       school: 'Conestoga College',
       degree: 'Honours Bachelor of Computer Science',
-      period: 'Sep 2022 — Expected 2027',
+      period: 'Sep 2022 — Dec 2026',
       specialization: 'Security',
       notes: [
         'Security specialization: penetration testing, rootkits, network security, privacy in computing, and software safety/reliability.',

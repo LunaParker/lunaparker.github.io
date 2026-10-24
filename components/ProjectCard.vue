@@ -13,10 +13,11 @@ const sizeClass = computed(() => `project-card--${props.project.size ?? 'square'
 
 <template>
   <a
+    :id="`project-${project.id}`"
     :href="project.url"
     target="_blank"
     rel="noreferrer"
-    :aria-label="`Open ${project.name} — ${displayUrl} (opens in new tab)`"
+    :aria-label="`Open ${project.name}, ${displayUrl} (opens in new tab)`"
     :class="['project-card', sizeClass]"
   >
     <UiTypographicPoster :project="project" :size="posterSize" />
@@ -48,6 +49,7 @@ const sizeClass = computed(() => `project-card--${props.project.size ?? 'square'
 <style scoped lang="stylus">
 .project-card
   position: relative
+  scroll-margin-top: 100px
   border-radius: 28px
   overflow: hidden
   display: block
@@ -58,6 +60,12 @@ const sizeClass = computed(() => `project-card--${props.project.size ?? 'square'
 .project-card:hover
   transform: translateY(-6px)
   border-color: var(--primary)
+
+// Landing spot for the About section's proof links: mark which card was meant
+.project-card:target
+  border-color: var(--primary)
+  outline: 2px solid var(--primary)
+  outline-offset: 4px
 
 .project-card--featured
   grid-column: span 6

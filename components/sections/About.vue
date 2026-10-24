@@ -1,4 +1,32 @@
 <script setup lang="ts">
+// Each verb links to one piece of work that backs it up. Client code stays
+// private, so the proof points at the project card or the studio page.
+const whatIDo = [
+  {
+    verb: 'Build',
+    body: 'High-performance websites and web applications using modern frameworks and battle-tested platforms.',
+    proof: 'QuickBooks Online sync for EYOLF\'s store',
+    to: '#project-eyolf',
+  },
+  {
+    verb: 'Design',
+    body: 'User-friendly interfaces that align with an organization\'s brand and help them accomplish their goals.',
+    proof: 'Belwood Lake Sailing Club brand refresh',
+    to: '#project-blsc',
+  },
+  {
+    verb: 'Solve',
+    body: 'Custom software, from inventory systems to secure client portals, that makes businesses more productive.',
+    proof: 'Jarvis Ryan\'s secure client portal',
+    to: '#project-jarvis-ryan',
+  },
+  {
+    verb: 'Consult',
+    body: 'Direct collaboration with clients to identify requirements, recommend stacks, and manage timelines.',
+    proof: 'Shy Owl Studios, my consultancy',
+    to: '/shy-owl/',
+  },
+]
 </script>
 
 <template>
@@ -6,7 +34,7 @@
     <div class="container">
       <UiSectionHeader>
         <template #title>
-          I build the whole thing end-to-end — from client kickoff to deployed code.
+          I build the whole thing end-to-end: from client kickoff to deployed code.
         </template>
       </UiSectionHeader>
 
@@ -24,24 +52,22 @@
         </UiReveal>
 
         <UiReveal :delay="120">
-          <div class="about__what-i-do-list">
-            <div class="about__what-i-do-card">
-              <div class="about__what-i-do-card-verb">Build.</div>
-              <p class="about__what-i-do-card-body">High-performance websites and web applications using modern frameworks and battle-tested platforms.</p>
-            </div>
-            <div class="about__what-i-do-card">
-              <div class="about__what-i-do-card-verb">Design.</div>
-              <p class="about__what-i-do-card-body">User-friendly interfaces that align with an organization's brand and help them accomplish their goals.</p>
-            </div>
-            <div class="about__what-i-do-card">
-              <div class="about__what-i-do-card-verb">Solve.</div>
-              <p class="about__what-i-do-card-body">Custom software — from inventory systems to secure client portals — that makes businesses more productive.</p>
-            </div>
-            <div class="about__what-i-do-card">
-              <div class="about__what-i-do-card-verb">Consult.</div>
-              <p class="about__what-i-do-card-body">Direct collaboration with clients to identify requirements, recommend stacks, and manage timelines.</p>
-            </div>
-          </div>
+          <ul class="about__what-i-do-list">
+            <li v-for="item in whatIDo" :key="item.verb" class="about__what-i-do-row">
+              <div class="about__what-i-do-verb">{{ item.verb }}.</div>
+              <div>
+                <p class="about__what-i-do-body">{{ item.body }}</p>
+                <a v-if="item.to.startsWith('#')" :href="item.to" class="about__what-i-do-proof">
+                  <span class="about__what-i-do-proof-text">{{ item.proof }}</span>
+                  <UiIcon name="arrow" :size="14" :stroke="2" class="about__what-i-do-proof-icon" :style="{ transform: 'rotate(90deg)' }" />
+                </a>
+                <NuxtLink v-else :to="item.to" class="about__what-i-do-proof">
+                  <span class="about__what-i-do-proof-text">{{ item.proof }}</span>
+                  <UiIcon name="arrow" :size="14" :stroke="2" class="about__what-i-do-proof-icon" />
+                </NuxtLink>
+              </div>
+            </li>
+          </ul>
         </UiReveal>
       </div>
     </div>
@@ -83,37 +109,62 @@
 .about__bio:last-child
   margin-bottom: 0
 
+// Ruled rows rather than boxed cards, so the proof link carries the weight
 .about__what-i-do-list
-  display: grid
-  gap: 12px
+  list-style: none
+  margin: 0
+  padding: 0
+  border-top: 1px solid var(--outline-variant)
 
-.about__what-i-do-card
-  padding: 22px 24px
-  background: var(--surface-container)
-  border-radius: 20px
+.about__what-i-do-row
   display: grid
-  grid-template-columns: auto 1fr
+  grid-template-columns: 120px 1fr
   gap: 20px
   align-items: baseline
-  transition: background-color var(--dur-short) var(--spring-gentle), transform var(--dur-short) var(--spring-fast)
+  padding: 22px 0
+  border-bottom: 1px solid var(--outline-variant)
 
-.about__what-i-do-card:hover
-  background: var(--surface-container-high)
-  transform: translateX(4px)
-
-.about__what-i-do-card-verb
+.about__what-i-do-verb
   font-family: var(--font-display)
   font-size: 1.5rem
   font-weight: 800
   letter-spacing: -0.03em
   color: var(--primary-text)
-  min-width: 100px
 
-.about__what-i-do-card-body
+.about__what-i-do-body
   color: var(--on-surface-variant)
-  margin: 0
+  margin: 0 0 10px
+
+.about__what-i-do-proof
+  font-size: 0.9375rem
+  font-weight: 500
+  color: var(--on-surface)
+  transition: color var(--dur-short) var(--spring-gentle)
+
+// Underline the words only, not the gap before the arrow
+.about__what-i-do-proof-text
+  text-decoration: underline
+  text-decoration-color: var(--outline)
+  text-underline-offset: 4px
+  transition: text-decoration-color var(--dur-short) var(--spring-gentle)
+
+.about__what-i-do-proof:hover
+  color: var(--primary-text)
+
+.about__what-i-do-proof:hover .about__what-i-do-proof-text
+  text-decoration-color: currentColor
+
+.about__what-i-do-proof-icon
+  display: inline-block
+  vertical-align: -2px
+  margin-left: 6px
 
 @media (max-width: 860px)
   .about__grid
     grid-template-columns: 1fr
+
+@media (max-width: 480px)
+  .about__what-i-do-row
+    grid-template-columns: 1fr
+    gap: 6px
 </style>

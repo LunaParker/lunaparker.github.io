@@ -21,13 +21,13 @@ const headline = computed(() => isNotFound.value
   : 'Something broke on our end.')
 
 const sub = computed(() => isNotFound.value
-  ? 'The link you followed might be old, or the page may have moved. Pick a destination below — or head back to the home page.'
+  ? 'The link you followed might be old, or the page may have moved. Pick a destination below, or head back to the home page.'
   : "An unexpected error occurred. Try refreshing, or head back home and try again.")
 
 useHead({
   title: isNotFound.value
-    ? '404 — Page not found · Luna Parker'
-    : `${code.value} — Luna Parker`,
+    ? '404: Page not found | Luna Parker'
+    : `Error ${code.value} | Luna Parker`,
   meta: [{ name: 'robots', content: 'noindex' }],
 })
 </script>
@@ -44,7 +44,7 @@ useHead({
     >
       <div class="container" :style="{ width: '100%' }">
         <h1
-          :aria-label="isNotFound ? '404 — Four oh four' : `Error ${code}`"
+          :aria-label="isNotFound ? '404: Four oh four' : `Error ${code}`"
           class="error-wordmark"
           :style="{
             fontFamily: 'var(--font-display)',

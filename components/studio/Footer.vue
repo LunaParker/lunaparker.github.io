@@ -12,7 +12,7 @@ function jump(e: MouseEvent, id: string) {
         <div>
           <div class="studio-footer__wordmark">Shy Owl Studios</div>
           <p class="studio-footer__blurb">
-            Web design &amp; development for organizations that need their software to last. Based in the Greater Toronto Area.
+            Web design &amp; development for organizations that need their software to last. Based in Ontario, Canada.
           </p>
           <div class="studio-footer__credit">
             Founded by <NuxtLink to="/">Luna Parker</NuxtLink>.

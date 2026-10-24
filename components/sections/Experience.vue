@@ -11,7 +11,7 @@ const data = useData()
         sub="Where I've worked, what I built, and the stacks I've carried."
       >
         <template #title>
-          Eight years of shipping — agencies, enterprise, and my own consultancy.
+          Eight years of shipping: agencies, enterprise, and my own consultancy.
         </template>
       </UiSectionHeader>
 

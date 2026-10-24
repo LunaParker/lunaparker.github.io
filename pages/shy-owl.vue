@@ -46,7 +46,7 @@ const orgLd = {
 
 useHead({
   htmlAttrs: { 'data-accent': 'shy-owl' },
-  title: 'Shy Owl Studios — Web design & development from Ontario, Canada',
+  title: 'Shy Owl Studios | Web design & development from Ontario, Canada',
   link: [
     { rel: 'canonical', href: pageUrl },
     // The hero background is the whole first viewport; fetch it alongside the CSS
@@ -60,11 +60,11 @@ useHead({
 
 useSeoMeta({
   description,
-  ogTitle: 'Shy Owl Studios — Web design & development from Ontario, Canada',
+  ogTitle: 'Shy Owl Studios | Web design & development from Ontario, Canada',
   ogDescription: description,
   ogUrl: pageUrl,
   ogSiteName: 'Shy Owl Studios',
-  twitterTitle: 'Shy Owl Studios — Web design & development from Ontario, Canada',
+  twitterTitle: 'Shy Owl Studios | Web design & development from Ontario, Canada',
   twitterDescription: description,
 })
 </script>

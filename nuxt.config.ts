@@ -67,7 +67,7 @@ export default defineNuxtConfig({
         {
           id: 'theme-preference',
           name: 'Theme preference',
-          description: 'A localStorage entry that remembers whether you\'ve overridden the system light/dark theme via the toggle. Stored on your device only — never transmitted.',
+          description: 'A localStorage entry that remembers whether you\'ve overridden the system light/dark theme via the toggle. Stored on your device only and never transmitted.',
           targetCookieIds: ['theme-preference'],
         },
       ],
@@ -75,7 +75,7 @@ export default defineNuxtConfig({
         {
           id: 'ga4',
           name: 'Google Analytics 4',
-          description: 'Loads gtag.js to record aggregate page views and visit patterns. Honours Google Consent Mode v2 — no analytics cookies are stored until you accept here.',
+          description: 'Loads gtag.js to record aggregate page views and visit patterns. Honours Google Consent Mode v2, so no analytics cookies are stored until you accept here.',
           targetCookieIds: ['_ga', '_ga_*', '_gid', '_gat'],
         },
       ],
@@ -83,7 +83,7 @@ export default defineNuxtConfig({
     localeTexts: {
       en: {
         bannerTitle: 'Cookies',
-        bannerDescription: 'lunaparker.dev uses Cloudflare Web Analytics (cookieless, always on) to count visits. Enable Google Analytics for richer page-level metrics — your call.',
+        bannerDescription: 'lunaparker.dev uses Cloudflare Web Analytics (cookieless, always on) to count visits. Enable Google Analytics for richer page-level metrics: your call.',
         accept: 'Accept all',
         acceptAll: 'Accept all',
         decline: 'Reject all',

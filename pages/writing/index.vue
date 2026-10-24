@@ -9,11 +9,11 @@ const siteUrl = String(config.public.siteUrl ?? 'https://lunaparker.dev')
 definePageMeta({ viewTransition: true })
 
 useHead({
-  title: 'Writing — Luna Parker',
+  title: 'Writing | Luna Parker',
 })
 useSeoMeta({
   description: 'Essays, tutorials, and opinionated takes on Laravel, security, AI tooling, and being a senior dev and undergrad at the same time.',
-  ogTitle: 'Writing — Luna Parker',
+  ogTitle: 'Writing | Luna Parker',
   ogDescription: 'Essays, tutorials, and opinionated takes on Laravel, security, AI tooling, and being a senior dev and undergrad at the same time.',
   ogUrl: `${siteUrl}/writing`,
 })
@@ -50,7 +50,7 @@ onMounted(() => {
             <span :style="{ fontWeight: 300 }"> from the workshop.</span>
           </h1>
           <p class="body-lg" :style="{ color: 'var(--on-surface-variant)' }">
-            Essays, tutorials, and opinionated takes — on Laravel, security, AI tooling, and what it's like being a senior dev & an undergrad at the same time.
+            Essays, tutorials, and opinionated takes: on Laravel, security, AI tooling, and what it's like being a senior dev & an undergrad at the same time.
           </p>
         </div>
         <NuxtLink to="/" class="btn btn-outlined">

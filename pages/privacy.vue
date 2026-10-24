@@ -7,11 +7,11 @@ const siteUrl = String(config.public.siteUrl ?? 'https://lunaparker.dev')
 definePageMeta({ viewTransition: true })
 
 useHead({
-  title: 'Privacy Policy — Luna Parker',
+  title: 'Privacy Policy | Luna Parker',
 })
 useSeoMeta({
-  description: 'Privacy policy for lunaparker.dev — what data we collect, who processes it, and how to reach us.',
-  ogTitle: 'Privacy Policy — Luna Parker',
+  description: 'Privacy policy for lunaparker.dev: what data we collect, who processes it, and how to reach us.',
+  ogTitle: 'Privacy Policy | Luna Parker',
   ogDescription: 'Privacy policy for lunaparker.dev.',
   ogUrl: `${siteUrl}/privacy/`,
 })
@@ -36,7 +36,7 @@ onMounted(() => {
         <p>
           Hi there! Welcome to the privacy policy for Luna Parker's portfolio. We appreciate you taking the time to
           check out how we process and use your information. To get started: we're not in the data analytics business
-          — we're a personal portfolio and consultancy — so you can rest assured we're not attempting to mine or sell
+          (we're a personal portfolio and consultancy), so you can rest assured we're not attempting to mine or sell
           your data. We only directly collect your information in order to respond to your contact inquiries.
         </p>
         <p>
@@ -61,15 +61,15 @@ onMounted(() => {
           the specific information you might (or might have already) provided to us, and when it was collected:
         </p>
         <ul>
-          <li><b>Your email address</b> — provided explicitly by you via a contact form.</li>
-          <li><b>Your name</b> — provided explicitly by you via a contact form.</li>
-          <li><b>Your intellectual property and ideas</b> — provided explicitly by you via a contact form.</li>
+          <li><b>Your email address:</b> provided explicitly by you via a contact form.</li>
+          <li><b>Your name:</b> provided explicitly by you via a contact form.</li>
+          <li><b>Your intellectual property and ideas:</b> provided explicitly by you via a contact form.</li>
           <li>
-            <b>Your IP address</b> — collected automatically by Cloudflare and forwarded to Cloudflare Turnstile when
+            <b>Your IP address:</b> collected automatically by Cloudflare and forwarded to Cloudflare Turnstile when
             you submit the contact form, for the purpose of bot and abuse detection.
           </li>
           <li>
-            <b>Aggregate visit metadata</b> — collected by Cloudflare Web Analytics on every page load
+            <b>Aggregate visit metadata:</b> collected by Cloudflare Web Analytics on every page load
             (cookieless, no fingerprinting), and additionally by Google Analytics 4 only if you opt
             in via the cookie banner. See "Service provider data collection" below.
           </li>
@@ -108,8 +108,8 @@ onMounted(() => {
         <p>
           The site uses Cloudflare's privacy-focused Web Analytics product. It runs on every page load,
           regardless of your cookie choice, because it does not set cookies, does not fingerprint your
-          device, and does not track you across sites. Cloudflare records aggregate metrics — page
-          views, referrers, country, and approximate device class — without any identifier that ties
+          device, and does not track you across sites. Cloudflare records aggregate metrics (page
+          views, referrers, country, and approximate device class) without any identifier that ties
           requests back to you. This is the only always-on analytics tool on the site.
         </p>
 
@@ -118,7 +118,7 @@ onMounted(() => {
           If you accept analytics cookies via the banner shown on your first visit, the site loads
           Google Analytics 4 (gtag.js). GA4 sets cookies (<b>_ga</b>, <b>_ga_*</b>) and records page
           views, session details, and approximate location to give us per-page traffic insight.
-          GA4 honours <a href="https://developers.google.com/tag-platform/security/guides/consent" target="_blank" rel="noreferrer">Google Consent Mode v2</a> —
+          GA4 honours <a href="https://developers.google.com/tag-platform/security/guides/consent" target="_blank" rel="noreferrer">Google Consent Mode v2</a>:
           before you accept, no analytics storage is used and no GA cookies are set; the gtag.js
           script itself is not even loaded. You can revoke consent at any time via the small cookie
           icon in the bottom corner; we honour the change immediately on the next page load. See
@@ -142,12 +142,12 @@ onMounted(() => {
         <p>We use your collected personal information for various purposes:</p>
         <ul>
           <li>
-            <b>To contact you regarding your inquiries</b> — when you provide your personal information using a
+            <b>To contact you regarding your inquiries:</b> when you provide your personal information using a
             contact form, we use that contact information to respond to your inquiry via the communication
             method(s) you provided.
           </li>
           <li>
-            <b>To detect, prevent and address technical issues, spam, and abuse</b> — when a spammer or bad actor
+            <b>To detect, prevent and address technical issues, spam, and abuse:</b> when a spammer or bad actor
             visits the site, we may block future access to protect the site and reduce spam.
           </li>
         </ul>

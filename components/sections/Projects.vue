@@ -8,11 +8,10 @@ const data = useData()
   <section id="projects" class="section projects">
     <div class="container">
       <UiSectionHeader
-        kicker="03 — Projects"
         sub="Nine featured. Click any card to visit the live site or open the repo."
       >
         <template #title>
-          Selected client work &<br><span class="projects__title-emphasis">things I build for me.</span>
+          Client work &<br>open source projects.
         </template>
         <template #action>
           <div class="mono projects__action">
@@ -31,10 +30,6 @@ const data = useData()
 <style scoped lang="stylus">
 .projects
   position: relative
-
-.projects__title-emphasis
-  font-style: italic
-  font-weight: 300
 
 .projects__action
   font-size: 12px

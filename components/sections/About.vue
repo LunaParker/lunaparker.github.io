@@ -4,9 +4,9 @@
 <template>
   <section id="about" class="section about">
     <div class="container">
-      <UiSectionHeader kicker="01 — About">
+      <UiSectionHeader>
         <template #title>
-          I build the whole thing <span class="about__title-emphasis">end-to-end</span> — from client kickoff to deployed code.
+          I build the whole thing end-to-end — from client kickoff to deployed code.
         </template>
       </UiSectionHeader>
 
@@ -51,10 +51,6 @@
 <style scoped lang="stylus">
 .about
   position: relative
-
-.about__title-emphasis
-  font-style: italic
-  font-weight: 300
 
 .about__grid
   display: grid

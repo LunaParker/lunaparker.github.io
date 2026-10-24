@@ -11,7 +11,6 @@ function jump(e: MouseEvent, id: string) {
       <div class="studio-about__grid">
         <UiReveal>
           <div>
-            <div class="label section-kicker studio-about__kicker"><span>About us</span></div>
             <h2 class="studio-about__title">We make complex problems simple.</h2>
             <div class="studio-about__body">
               <p>Based in Ontario, Canada, we're a small studio that partners with organizations around the world to solve their digital challenges.</p>
@@ -50,10 +49,6 @@ function jump(e: MouseEvent, id: string) {
   grid-template-columns: 1fr 1fr
   gap: unquote("clamp(2rem, 6vw, 5rem)")
   align-items: center
-
-.studio-about__kicker
-  color: var(--on-surface-variant)
-  margin-bottom: 1.25rem
 
 .studio-about__title
   font-family: var(--font-display)

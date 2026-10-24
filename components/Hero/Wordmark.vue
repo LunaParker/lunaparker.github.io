@@ -26,9 +26,6 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
     <div class="container hero__container">
       <div class="hero__intro">
         <div class="stagger hero__intro-text">
-          <div class="label hero__kicker">
-            <span>— Developer · Designer · Security</span>
-          </div>
           <p class="body-lg hero__lede">
             Full-stack developer who builds with security in mind, with eight years of production web work.
           </p>
@@ -46,8 +43,9 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
 
       <h1 aria-label="Luna Parker" class="hero__wordmark">
         <span class="hero__wordmark-luna gradient-text">LUNA</span>
-        <span class="hero__wordmark-parker">Parker.</span>
+        <span class="hero__wordmark-parker">Parker</span>
       </h1>
+      <p class="hero__role">Development · Design · Security</p>
 
       <div class="hero__footer">
         <div class="label hero__footer-cue">Scroll to explore</div>
@@ -123,10 +121,6 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
   font-size: 12px
   color: var(--on-surface-variant)
 
-.hero__kicker
-  color: var(--on-surface-variant)
-  margin-bottom: 24px
-
 .hero__lede
   color: var(--on-surface-variant)
   font-size: 1.25rem
@@ -155,9 +149,18 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
 .hero__wordmark-parker
   display: block
   color: var(--on-surface)
-  font-style: italic
   font-weight: 300
   text-indent: 0.5em
+
+// Lines up with "Parker", whose indent is 0.5em of the wordmark size
+.hero__role
+  margin: 20px 0 0
+  padding-left: clamp(2rem, 8vw, 8rem)
+  font-family: var(--font-display)
+  font-size: clamp(1.125rem, 2vw, 1.75rem)
+  font-weight: 500
+  letter-spacing: -0.01em
+  color: var(--on-surface-variant)
 
 .hero__footer
   margin-top: 32px

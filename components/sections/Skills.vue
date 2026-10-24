@@ -2,12 +2,6 @@
 import { computed } from 'vue'
 import { useData } from '~/composables/useData'
 
-withDefaults(defineProps<{
-  kicker?: string
-}>(), {
-  kicker: '04 — Skills',
-})
-
 const data = useData()
 
 const cats = computed(() => Object.entries(data.skills))
@@ -23,11 +17,10 @@ function chipVariant(i: number): 'primary' | 'tonal' | 'default' {
   <section id="skills" class="section skills">
     <div class="container">
       <UiSectionHeader
-        :kicker="kicker"
         sub="Languages, frameworks, tools, and practices I use in production. Hover any tech to see where I've used it."
       >
         <template #title>
-          The <span class="skills__title-emphasis">toolkit.</span>
+          The toolkit.
         </template>
       </UiSectionHeader>
 
@@ -52,9 +45,9 @@ function chipVariant(i: number): 'primary' | 'tonal' | 'default' {
       </div>
 
       <div class="skills__services">
-        <div class="label section-kicker skills__services-kicker">
-          <span>Services · through <NuxtLink to="/shy-owl/" class="skills__studio-link">Shy Owl Studios</NuxtLink></span>
-        </div>
+        <h3 class="headline skills__services-heading">
+          Services through <NuxtLink to="/shy-owl/" class="skills__studio-link">Shy Owl Studios</NuxtLink>
+        </h3>
         <div class="skills__services-grid">
           <UiReveal :delay="0">
             <div class="skills__service-card">
@@ -105,10 +98,6 @@ function chipVariant(i: number): 'primary' | 'tonal' | 'default' {
 </template>
 
 <style scoped lang="stylus">
-.skills__title-emphasis
-  font-style: italic
-  font-weight: 300
-
 .skills__categories
   display: grid
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))
@@ -132,8 +121,7 @@ function chipVariant(i: number): 'primary' | 'tonal' | 'default' {
 .skills__services
   margin-top: 72px
 
-.skills__services-kicker
-  color: var(--on-surface-variant)
+.skills__services-heading
   margin-bottom: 24px
 
 .skills__studio-link

@@ -34,7 +34,6 @@ const projects = PROJECT_IDS
   <section id="projects" class="section studio-projects">
     <div class="container">
       <UiSectionHeader
-        kicker="Selected work"
         sub="Here are a few of the fine organizations we've partnered with."
       >
         <template #title>

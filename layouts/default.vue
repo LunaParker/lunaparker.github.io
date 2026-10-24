@@ -22,7 +22,7 @@ useSeoMeta({
   ogDescription: description,
   ogUrl: () => error.value ? undefined : canonical.value,
   ogImage,
-  ogImageAlt: 'Luna Parker — Developer, Designer, and Problem Solver',
+  ogImageAlt: 'Luna Parker: Development, design, and security',
   twitterCard: 'summary_large_image',
   twitterTitle: () => title,
   twitterDescription: description,

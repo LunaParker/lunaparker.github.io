@@ -12,7 +12,6 @@ const rest = computed(() => data.blog.slice(1))
   <section id="writing" class="section writing">
     <div class="container">
       <UiSectionHeader
-        kicker="04 — Field notes"
         sub="Short essays on frameworks, security, and the weird parts of being both a senior developer and an undergrad."
       >
         <template #title>My thoughts.</template>

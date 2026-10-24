@@ -10,6 +10,10 @@ const props = withDefaults(defineProps<{
 })
 
 const big = computed(() => props.size === 'big')
+
+// Own work has no client to name, so its header lists the stack instead
+const ownWork = computed(() => ['Open Source', 'Personal Project'].includes(props.project.client))
+const header = computed(() => ownWork.value ? props.project.stack.join(' · ') : props.project.client)
 </script>
 
 <template>
@@ -41,7 +45,7 @@ const big = computed(() => props.size === 'big')
   >
     <div class="poster__stacked-halo" />
     <div class="poster__stacked-content">
-      <div class="label poster__stacked-client">{{ project.client }}</div>
+      <div class="poster__stacked-client" :class="ownWork ? 'mono poster__stack' : 'label'">{{ header }}</div>
       <div class="poster__stacked-name">
         <div
           v-for="(word, i) in project.name.split(' ')"
@@ -54,7 +58,7 @@ const big = computed(() => props.size === 'big')
     </div>
   </div>
 
-  <!-- angle — tonal container with a conic accent sweep, italic title -->
+  <!-- angle — tonal container with a conic accent sweep -->
   <div
     v-else-if="project.treatment === 'angle'"
     class="poster poster--angle"
@@ -77,7 +81,7 @@ const big = computed(() => props.size === 'big')
   >
     <div class="poster__mc-grid" />
     <div class="poster__mc-content">
-      <div class="mono poster__mc-comment">// {{ project.client }}</div>
+      <div class="mono poster__mc-comment">{{ header }}</div>
       <div class="poster__mc-name">{{ project.name }}</div>
     </div>
   </div>
@@ -95,7 +99,7 @@ const big = computed(() => props.size === 'big')
     </div>
     <div class="poster__tr-content">
       <div class="label poster__tr-meta">
-        {{ project.year }} · {{ project.client }}
+        {{ project.year }}<template v-if="!ownWork"> · {{ project.client }}</template>
       </div>
       <div>
         <div class="poster__tr-name">{{ project.name }}</div>
@@ -216,6 +220,10 @@ const big = computed(() => props.size === 'big')
   margin-bottom: 18px
   opacity: 0.8
 
+.poster__stack
+  font-size: 0.8125rem
+  font-weight: 500
+
 .poster--stacked.poster--big .poster__stacked-client
   margin-bottom: 40px
 
@@ -263,7 +271,6 @@ const big = computed(() => props.size === 'big')
   font-size: clamp(1.6rem, 3.5vw, 2.4rem)
   letter-spacing: -0.04em
   line-height: 0.9
-  font-style: italic
 
 .poster--angle.poster--big .poster__angle-name
   font-size: clamp(2.6rem, 6vw, 5rem)

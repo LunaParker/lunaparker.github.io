@@ -9,7 +9,6 @@ function jump(e: MouseEvent, id: string) {
   <section id="top" class="studio-hero">
     <!-- .stagger, not UiReveal: above-fold content must paint before hydration -->
     <div class="container studio-hero__content stagger">
-      <div class="mono studio-hero__kicker">Shy Owl Studios · Ontario, Canada</div>
       <h1 class="studio-hero__title">We help organizations succeed on the web.</h1>
       <p class="studio-hero__sub">
         Tailored design and engineering for organizations that need their software to last. Patient, perceptive, occasionally a little wise.
@@ -42,13 +41,6 @@ function jump(e: MouseEvent, id: string) {
   z-index: 2
   padding-top: 8rem
   padding-bottom: 6rem
-
-.studio-hero__kicker
-  color: var(--on-surface-variant)
-  margin-bottom: 1.25rem
-  font-size: 0.78rem
-  letter-spacing: 0.12em
-  text-transform: uppercase
 
 .studio-hero__title
   font-family: var(--font-display)

@@ -33,7 +33,7 @@ function jump(e: MouseEvent, id: string) {
       <a
         href="#top"
         class="studio-nav__brand"
-        aria-label="Shy Owl Studios — top"
+        aria-label="Shy Owl Studios, back to top"
         @click="jump($event, 'top')"
       >Shy Owl Studios</a>
 

@@ -70,7 +70,7 @@ async function onSubmit(e: Event) {
   <section id="contact" class="section contact">
     <div class="container">
       <UiSectionHeader
-        sub="Whether you've got a project in mind, need a freelance dev, or just want to say hello — I'd love to hear from you."
+        sub="Whether you've got a project in mind, need a freelance dev, or just want to say hello, I'd love to hear from you."
       >
         <template #title>
           <span class="contact__title-gradient gradient-text">Let's work<br>together.</span>

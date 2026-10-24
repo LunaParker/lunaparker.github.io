@@ -21,7 +21,7 @@ const more = computed(() => data.blog.filter(p => p.id !== post.value!.id).slice
 const postUrl = computed(() => `${siteUrl}/writing/${post.value!.id}`)
 
 useHead({
-  title: () => `${post.value!.title} — Luna Parker`,
+  title: () => `${post.value!.title} | Luna Parker`,
 })
 useSeoMeta({
   description: () => post.value!.excerpt,

@@ -104,7 +104,7 @@ function sendAnother() {
             </div>
             <div class="studio-contact__row">
               <UiIcon name="pin" :size="18" />
-              <span>Greater Toronto Area · Working remotely worldwide</span>
+              <span>Ontario, Canada · Working remotely worldwide</span>
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@ const data = useData()
         sub="Nine featured. Click any card to visit the live site or open the repo."
       >
         <template #title>
-          Selected client work &<br>things I build for me.
+          Client work &<br>open source projects.
         </template>
         <template #action>
           <div class="mono projects__action">

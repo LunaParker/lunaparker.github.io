@@ -45,7 +45,7 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
         <span class="hero__wordmark-luna gradient-text">LUNA</span>
         <span class="hero__wordmark-parker">Parker</span>
       </h1>
-      <p class="hero__role">Developer · Designer · Security</p>
+      <p class="hero__role">Development · Design · Security</p>
 
       <div class="hero__footer">
         <div class="label hero__footer-cue">Scroll to explore</div>

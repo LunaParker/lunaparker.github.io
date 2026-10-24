@@ -102,7 +102,7 @@ function ogElement() {
           lineHeight: 1.02,
           letterSpacing: '-0.04em',
         },
-      }, 'Developer, designer,'),
+      }, 'Development, design,'),
       h('div', {
         style: {
           fontWeight: 800,
@@ -111,7 +111,7 @@ function ogElement() {
           letterSpacing: '-0.04em',
           opacity: 0.78,
         },
-      }, '& problem solver.'),
+      }, '& security.'),
     ),
 
     // Bottom: URL

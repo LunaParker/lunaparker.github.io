@@ -4,11 +4,11 @@ Personal developer & designer portfolio for Luna Parker. Built with Nuxt 3 + Typ
 
 ## Stack
 
-- **Nuxt 3** (Vue 3, Vite) — file-based routing, SSG for static hosting
-- **TypeScript** — strict, `.nuxt/tsconfig.json` auto-generated
+- **Nuxt 3** (Vue 3, Vite): file-based routing, SSG for static hosting
+- **TypeScript**: strict, `.nuxt/tsconfig.json` auto-generated
 - **Stylus** (indented syntax) for all styles
-- **@nuxt/fonts** — self-hosts Plus Jakarta Sans and JetBrains Mono (Google Fonts) and Roboto Flex (Fontsource)
-- **@nuxt/eslint** — flat config at `eslint.config.mjs`
+- **@nuxt/fonts**: self-hosts Plus Jakarta Sans and JetBrains Mono (Google Fonts) and Roboto Flex (Fontsource)
+- **@nuxt/eslint**: flat config at `eslint.config.mjs`
 - **Cloudflare Pages** for static hosting
 - **Cloudflare Workers** for the contact form API (Turnstile + Cloudflare email)
 
@@ -23,7 +23,7 @@ npm install        # installs deps and runs `nuxt prepare` to generate .nuxt typ
 npm run dev        # http://localhost:3000
 ```
 
-Edit anything under `components/`, `pages/`, `composables/`, or `assets/css/` and the dev server hot-reloads. The contact form Worker is a separate sub-package — see [Contact form Worker](#contact-form-worker) below if you need it running locally.
+Edit anything under `components/`, `pages/`, `composables/`, or `assets/css/` and the dev server hot-reloads. The contact form Worker is a separate sub-package; see [Contact form Worker](#contact-form-worker) below if you need it running locally.
 
 ## Build
 
@@ -61,7 +61,7 @@ NUXT_PUBLIC_CONTACT_ENDPOINT=http://localhost:8787 \
 npm run dev
 ```
 
-`worker/.dev.vars` is gitignored — never commit real secrets.
+`worker/.dev.vars` is gitignored. Never commit real secrets.
 
 ## Deploy
 
@@ -79,7 +79,7 @@ First-time setup:
 
 Manual deploy: trigger the workflow from the Actions tab (it has `workflow_dispatch`), or run `npx wrangler pages deploy .output/public --project-name=lunaparker-portfolio` locally after `npm run generate`.
 
-The Worker deploys independently of the site — `wrangler deploy` from `worker/` is enough.
+The Worker deploys independently of the site: `wrangler deploy` from `worker/` is enough.
 
 ## Project layout
 
@@ -128,21 +128,21 @@ Public runtime config lives in `nuxt.config.ts` under `runtimeConfig.public` and
 | `turnstileSiteKey` | (production key) | `NUXT_PUBLIC_TURNSTILE_SITE_KEY` |
 | `writingEnabled` | `false` | `NUXT_PUBLIC_WRITING_ENABLED` |
 
-`runtimeConfig.public.*` is **public** by definition — it gets baked into the static bundle. Don't put secrets there. Worker secrets are handled separately via `wrangler secret put` (see [Contact form Worker](#contact-form-worker)).
+`runtimeConfig.public.*` is **public** by definition: it gets baked into the static bundle. Don't put secrets there. Worker secrets are handled separately via `wrangler secret put` (see [Contact form Worker](#contact-form-worker)).
 
 ## Design system
 
-Colours come from an M3 tonal palette generated at runtime via `oklch()` + `color-mix()` from two CSS vars — `--accent-h` (hue) and `--accent-c` (chroma). The shipped accent is indigo `H=265 C=0.19`; the brand gradient (`#8A2387 → #E94057 → #F27121`) is reserved for emphasis (LUNA wordmark, hero CTA, footer wordmark, contact heading).
+Colours come from an M3 tonal palette generated at runtime via `oklch()` + `color-mix()` from two CSS vars, `--accent-h` (hue) and `--accent-c` (chroma). The shipped accent is indigo `H=265 C=0.19`; the brand gradient (`#8A2387 → #E94057 → #F27121`) is reserved for emphasis (LUNA wordmark, hero CTA, footer wordmark, contact heading).
 
-Theme has three states — `system | light | dark` — surfaced via the nav-bar `ThemeToggle`. The user's choice is persisted to `localStorage` (key `theme-preference`); `system` clears the key and falls back to `prefers-color-scheme`. A short inline script in `nuxt.config.ts` applies the resolved `data-theme` to `<html>` before first paint, so there's no flash of the wrong palette on reload.
+Theme has three states (`system | light | dark`), surfaced via the nav-bar `ThemeToggle`. The user's choice is persisted to `localStorage` (key `theme-preference`); `system` clears the key and falls back to `prefers-color-scheme`. A short inline script in `nuxt.config.ts` applies the resolved `data-theme` to `<html>` before first paint, so there's no flash of the wrong palette on reload.
 
 ### Exportable bundle
 
 `npm run design-system` builds a self-contained copy of the system into `scripts/design-system/dist/`: `tokens.css`, `components.css`, a README, and twelve preview cards grouped as Foundations, Components and Patterns.
 
-Both stylesheets are **compiled from the Stylus sources above** — plus the scoped `<style>` blocks of `M3Field.vue`, `ProjectCard.vue` and `SiteNav.vue` — so the export can't drift from what the site actually ships. Only the preview pages and a small `extras.css` layer are authored by the generator; edit the real source and rebuild, never the output. `dist/` is gitignored.
+Both stylesheets are **compiled from the Stylus sources above** (plus the scoped `<style>` blocks of `M3Field.vue`, `ProjectCard.vue` and `SiteNav.vue`), so the export can't drift from what the site actually ships. Only the preview pages and a small `extras.css` layer are authored by the generator; edit the real source and rebuild, never the output. `dist/` is gitignored.
 
-The bundle syncs to the Claude Design project **"Luna Parker — Portfolio"** via the DesignSync tool. Card heights on each preview are measured, not estimated; the recipe is in the header comment of `scripts/design-system/build.mjs`.
+The bundle syncs to the Claude Design project **"Luna Parker's Portfolio"** via the DesignSync tool. Card heights on each preview are measured, not estimated; the recipe is in the header comment of `scripts/design-system/build.mjs`.
 
 ## Editor
 

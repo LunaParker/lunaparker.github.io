@@ -29,6 +29,7 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
           <p class="body-lg hero__lede">
             Full-stack developer who builds with security in mind, with eight years of production web work.
           </p>
+          <p class="hero__availability">Open to development and security roles from January 2027.</p>
           <div class="hero__cta-row">
             <a href="#projects" class="btn btn-brand">View my work <UiIcon name="arrow" :size="18" /></a>
             <a href="#contact" class="btn btn-outlined">Get in touch</a>
@@ -37,7 +38,6 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
 
         <div class="stagger hero__intro-meta">
           <div class="mono hero__intro-meta-line">Ontario, Canada</div>
-          <div class="mono hero__intro-meta-line">Open to roles · Jan 2027</div>
         </div>
       </div>
 
@@ -125,6 +125,12 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
   color: var(--on-surface-variant)
   font-size: 1.25rem
   line-height: 1.55
+  margin-bottom: 12px
+
+.hero__availability
+  font-size: 1.0625rem
+  font-weight: 600
+  color: var(--on-surface)
   margin-bottom: 28px
 
 .hero__cta-row

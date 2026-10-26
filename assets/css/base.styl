@@ -347,6 +347,11 @@ h1, h2, h3, h4, h5, h6
       transform: scale(1)
       opacity: 1
 
+// Reduced motion: headings sit at full size instead of scaling with scroll
+@media (prefers-reduced-motion: reduce)
+  .scroll-scale
+    animation: none
+
 // Reveal on intersect (JS-driven fallback)
 .reveal
   opacity: 0

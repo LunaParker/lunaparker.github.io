@@ -62,8 +62,11 @@ const expanded = reactive<Record<string, boolean>>({})
               {{ expanded[entry.id] ? 'Show fewer' : `Show all ${entry.bullets.length}` }}
               <UiIcon name="chevDown" :size="16" :stroke="2" class="experience__more-icon" :class="{ 'is-open': expanded[entry.id] }" />
             </button>
+          </div>
 
-            <div class="experience__stack">
+          <div class="experience__stack">
+            <div class="experience__stack-label">Stack</div>
+            <div class="experience__stack-chips">
               <UiSkillChip v-for="t in entry.stack" :key="t" :tech="t" variant="tonal" />
             </div>
           </div>
@@ -119,18 +122,48 @@ const expanded = reactive<Record<string, boolean>>({})
   position: relative
 
 // One newest-first column: dates in a narrow margin, each role at reading
-// width beside them, joined by a single rule
+// width, its stack in the right-hand column, all joined by a single rule
 .experience__list
   list-style: none
   margin: 0
   padding: 0
 
 .experience__item
+  position: relative
   display: grid
-  grid-template-columns: 168px minmax(0, 68ch)
-  gap: 0 40px
+  grid-template-columns: 168px minmax(0, 68ch) minmax(200px, 1fr)
+  grid-template-areas: "when body stack"
+  gap: 0 52px
+  padding-bottom: 56px
+
+.experience__item:last-child
+  padding-bottom: 8px
+
+// The rule runs down the gap between the dates and the roles
+.experience__item::after
+  content: ''
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 194px
+  width: 1px
+  background: var(--outline-variant)
+
+// Marker where each role meets the rule
+.experience__item::before
+  content: ''
+  position: absolute
+  z-index: 1
+  top: 12px
+  left: 190px
+  width: 9px
+  height: 9px
+  border-radius: 50%
+  background: var(--primary)
+  box-shadow: 0 0 0 4px var(--surface)
 
 .experience__when
+  grid-area: when
   padding-top: 6px
   text-align: right
 
@@ -146,24 +179,17 @@ const expanded = reactive<Record<string, boolean>>({})
   color: var(--on-surface-variant)
 
 .experience__body
-  position: relative
-  padding: 0 0 56px 32px
-  border-left: 1px solid var(--outline-variant)
+  grid-area: body
 
-// Marker where each role meets the rule
-.experience__body::before
-  content: ''
-  position: absolute
-  top: 12px
-  left: -5px
-  width: 9px
-  height: 9px
-  border-radius: 50%
-  background: var(--primary)
-  box-shadow: 0 0 0 4px var(--surface)
+.experience__stack
+  grid-area: stack
+  padding-top: 8px
+  max-width: 340px
 
-.experience__item:last-child .experience__body
-  padding-bottom: 8px
+.experience__stack-label
+  font-size: 0.875rem
+  color: var(--on-surface-variant)
+  margin-bottom: 10px
 
 .experience__role
   font-family: var(--font-display)
@@ -223,7 +249,7 @@ const expanded = reactive<Record<string, boolean>>({})
 .experience__more-icon.is-open
   transform: rotate(180deg)
 
-.experience__stack
+.experience__stack-chips
   display: flex
   flex-wrap: wrap
   gap: 6px
@@ -300,26 +326,41 @@ const expanded = reactive<Record<string, boolean>>({})
   border-radius: 50%
   background: currentColor
 
+// Narrower screens: the stack drops under the role
+@media (max-width: 1100px)
+  .experience__item
+    grid-template-columns: 168px minmax(0, 1fr)
+    grid-template-areas: "when body" ". stack"
+
+  .experience__stack
+    padding-top: 4px
+    max-width: none
+
+  .experience__stack-label
+    display: none
+
 // Phones: dates move above each role, the rule stays on the left
 @media (max-width: 720px)
   .experience__item
     grid-template-columns: minmax(0, 1fr)
+    grid-template-areas: "when" "body" "stack"
+    padding-left: 24px
+    padding-bottom: 40px
+
+  .experience__item::after
+    left: 0
+
+  .experience__item::before
+    top: 7px
+    left: -4px
 
   .experience__when
     display: flex
     gap: 6px
     align-items: baseline
     text-align: left
-    padding: 0 0 6px 24px
-    border-left: 1px solid var(--outline-variant)
+    padding: 0 0 6px
 
   .experience__type::before
     content: '· '
-
-  .experience__body
-    padding-left: 24px
-    padding-bottom: 40px
-
-  .experience__body::before
-    top: -22px
 </style>

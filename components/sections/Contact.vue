@@ -148,7 +148,8 @@ async function onSubmit(e: Event) {
 
           <div class="contact__form-footer">
             <p class="mono contact__form-footer-meta">
-              Typical reply within 1–2 business days
+              Typical reply within 1–2 business days<br>
+              Resume available on request
             </p>
             <button type="submit" class="btn btn-brand" :disabled="submitting">
               <template v-if="sent">

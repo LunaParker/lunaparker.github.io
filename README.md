@@ -142,7 +142,7 @@ Theme has three states (`system | light | dark`), surfaced via the nav-bar `Them
 
 Both stylesheets are **compiled from the Stylus sources above** (plus the scoped `<style>` blocks of `M3Field.vue`, `ProjectCard.vue` and `SiteNav.vue`), so the export can't drift from what the site actually ships. Only the preview pages and a small `extras.css` layer are authored by the generator; edit the real source and rebuild, never the output. `dist/` is gitignored.
 
-The bundle syncs to the Claude Design project **"Luna Parker's Portfolio"** via the DesignSync tool. Card heights on each preview are measured, not estimated; the recipe is in the header comment of `scripts/design-system/build.mjs`.
+The published system lives in the Design System artifact **"Luna Parker's Portfolio"**, which no longer maps onto `dist/` one-to-one: it merges both stylesheets into a single `bundle.css` and keeps the token values in `tokens.json`. Port changes across deliberately instead of uploading `dist/` wholesale. Card heights on each preview are measured, not estimated; the recipe is in the header comment of `scripts/design-system/build.mjs`.
 
 ## Editor
 

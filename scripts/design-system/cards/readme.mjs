@@ -1,6 +1,6 @@
 // The design system's own README, shipped into the bundle. Kept as a module
 // rather than a .md file so the repo keeps only CLAUDE.md and README.md.
-export const readme = `# Luna Parker — Portfolio Design System
+export const readme = `# Luna Parker's Portfolio Design System
 
 The system behind [lunaparker.dev](https://lunaparker.dev) and the Shy Owl Studios
 studio page. Material 3 Expressive, expressed in OKLCH, with a fixed brand gradient

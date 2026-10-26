@@ -1,5 +1,5 @@
 /**
- * Builds the "Luna Parker — Portfolio" design-system bundle into dist/.
+ * Builds the "Luna Parker's Portfolio" design-system bundle into dist/.
  *
  * Both stylesheets are compiled from the site's own Stylus sources, so the
  * exported system cannot drift from what lunaparker.dev ships. Only the
@@ -57,7 +57,7 @@ const CYAN_PRESET = `/* Named by the export so tokens.styl's own default hue is 
 }`;
 
 const TOKENS = [
-  banner('Luna Parker — Portfolio Design System / tokens', [
+  banner("Luna Parker's Portfolio Design System / tokens", [
     'assets/css/tokens.styl',
     'assets/css/app.styl  (the :root accent override and data-accent presets)',
   ]),
@@ -74,7 +74,7 @@ const SFCS = [
 ];
 
 const COMPONENTS = [
-  banner('Luna Parker — Portfolio Design System / components', [
+  banner("Luna Parker's Portfolio Design System / components", [
     'assets/css/base.styl',
     'assets/css/app.styl  (everything that is not a token)',
     ...SFCS.map((f) => `${f}  (scoped <style> block)`),

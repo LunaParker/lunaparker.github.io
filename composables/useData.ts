@@ -81,7 +81,7 @@ const DATA: PortfolioData = {
       bullets: [
         'Own client WordPress builds end to end: the agency\'s shared parent theme, custom ACF/Gutenberg blocks, custom post types and taxonomies, and front-end work in JavaScript and SCSS.',
         'Scope and estimate work before it starts, and run developer first-pass QA on medium and large sites before code reaches peer review and formal QA gates.',
-        'Flag gaps and risks in proposed solutions before they reach production, applying the security-minded habit from my Information Security specialization to client web work.',
+        'Flag gaps and risks in proposed solutions before they reach production, applying the security-minded habit from my Security specialization to client web work.',
         'Resolve client support tickets end to end: reproduce on the live site, trace to root cause in theme code, ship and verify the fix, and write the client-facing reply.',
         'Apply WCAG accessibility requirements to every solution, in a shop with a dedicated accessibility coordinator and formal accessibility QA gates.',
         'Build in the agency\'s proprietary in-house CMS as well as WordPress, including a containerized local dev environment (Docker, PHP, MariaDB) for a large intranet project.',
@@ -102,7 +102,7 @@ const DATA: PortfolioData = {
         'Run the production infrastructure behind client properties: a Linux VPS serving WordPress plus three containerized Laravel apps, fronted by Cloudflare with origin-CA TLS and cache rules.',
         'Review third-party plugin code before it reaches a client site and trace security defects to root cause in vendor source, including a broken nonce check in a file-upload plugin.',
         'Plan major-version upgrades on live commerce sites: version pinning where plugins lag core, scripted end-to-end verification of the checkout flow, and a tested rollback path.',
-        'Open-sourced brightspace-mcp-server, an MCP server for the Brightspace LMS with a Microsoft Entra SSO fork, and macos-permission-report, a macOS TCC privacy auditor.',
+        'Extended an open-source Brightspace MCP server with a Microsoft Entra ID SSO provider, and open-sourced macos-permission-report, a macOS TCC privacy auditor.',
       ],
       stack: ['Laravel', 'WordPress', 'WooCommerce', 'Vue.js', 'PHP', 'Node.js', 'Python', 'Docker', 'Cloudflare', 'MCP'],
     },

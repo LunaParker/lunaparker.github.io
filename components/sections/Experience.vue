@@ -1,7 +1,13 @@
 <script setup lang="ts">
+import { reactive } from 'vue'
 import { useData } from '~/composables/useData'
 
 const data = useData()
+
+// Three bullets per role up front; the rest stay in the page (for search and
+// print) behind a per-role toggle
+const VISIBLE_BULLETS = 3
+const expanded = reactive<Record<string, boolean>>({})
 </script>
 
 <template>
@@ -15,64 +21,57 @@ const data = useData()
         </template>
       </UiSectionHeader>
 
-      <div class="experience__timeline">
-        <div class="experience__rail" />
-
+      <ol class="experience__list">
         <UiReveal
           v-for="(entry, i) in data.experience"
           :key="entry.id"
           :delay="i * 60"
-          as="article"
-          class="experience__entry"
+          as="li"
+          class="experience__item"
         >
-          <div
-            class="experience__row"
-            :class="i % 2 === 0 ? 'experience__row--left' : 'experience__row--right'"
-          >
-            <div class="experience__cell experience__cell--entry">
-              <div class="experience__card">
-                <div class="label mono experience__card-meta">
-                  {{ entry.period }} · {{ entry.type }}
-                </div>
-                <h3 class="title experience__card-role">
-                  {{ entry.role }}
-                </h3>
-                <div class="experience__card-org">
-                  {{ entry.org }} · {{ entry.location }}
-                </div>
-                <p
-                  v-if="entry.blurb"
-                  class="experience__card-blurb"
-                  :class="entry.bullets.length ? 'experience__card-blurb--with-bullets' : null"
-                >
-                  {{ entry.blurb }}
-                </p>
-                <ul v-if="entry.bullets.length > 0" class="experience__card-bullets">
-                  <li
-                    v-for="(b, j) in entry.bullets"
-                    :key="j"
-                    class="experience__card-bullet"
-                  >
-                    <span class="experience__card-bullet-dot" />
-                    <span>{{ b }}</span>
-                  </li>
-                </ul>
-                <div class="experience__card-stack">
-                  <UiSkillChip v-for="s in entry.stack" :key="s" :tech="s" variant="tonal" />
-                </div>
-              </div>
-            </div>
+          <div class="experience__when">
+            <div class="experience__period">{{ entry.period }}</div>
+            <div class="experience__type">{{ entry.type }}</div>
+          </div>
 
-            <div class="experience__cell experience__cell--dot">
-              <div class="experience__dot">
-                <div class="experience__dot-inner" />
-              </div>
+          <div class="experience__body">
+            <h3 class="experience__role">{{ entry.role }}</h3>
+            <div class="experience__org">
+              {{ entry.org }} <span class="experience__location">· {{ entry.location }}</span>
             </div>
+            <p v-if="entry.blurb" class="experience__blurb">{{ entry.blurb }}</p>
 
-            <div class="experience__cell experience__cell--empty" />
+            <ul v-if="entry.bullets.length > 0" :id="`experience-bullets-${entry.id}`" class="experience__bullets">
+              <li
+                v-for="(b, j) in entry.bullets"
+                v-show="expanded[entry.id] || j < VISIBLE_BULLETS"
+                :key="j"
+                class="experience__bullet"
+              >
+                {{ b }}
+              </li>
+            </ul>
+            <button
+              v-if="entry.bullets.length > VISIBLE_BULLETS"
+              type="button"
+              class="experience__more"
+              :aria-expanded="expanded[entry.id] ? 'true' : 'false'"
+              :aria-controls="`experience-bullets-${entry.id}`"
+              @click="expanded[entry.id] = !expanded[entry.id]"
+            >
+              {{ expanded[entry.id] ? 'Show fewer' : `Show all ${entry.bullets.length}` }}
+              <UiIcon name="chevDown" :size="16" :stroke="2" class="experience__more-icon" :class="{ 'is-open': expanded[entry.id] }" />
+            </button>
+          </div>
+
+          <div class="experience__stack">
+            <div class="experience__stack-label">Stack</div>
+            <div class="experience__stack-chips">
+              <UiSkillChip v-for="t in entry.stack" :key="t" :tech="t" variant="tonal" />
+            </div>
           </div>
         </UiReveal>
-      </div>
+      </ol>
 
       <div class="experience__edu">
         <h3 class="headline experience__edu-heading">Education</h3>
@@ -122,127 +121,135 @@ const data = useData()
 .experience
   position: relative
 
-.experience__timeline
-  position: relative
+// One newest-first column: dates in a narrow margin, each role at reading
+// width, its stack in the right-hand column, all joined by a single rule
+.experience__list
+  list-style: none
+  margin: 0
+  padding: 0
 
-.experience__rail
+.experience__item
+  position: relative
+  display: grid
+  grid-template-columns: 168px minmax(0, 68ch) minmax(200px, 1fr)
+  grid-template-areas: "when body stack"
+  gap: 0 52px
+  padding-bottom: 56px
+
+.experience__item:last-child
+  padding-bottom: 8px
+
+// The rule runs down the gap between the dates and the roles
+.experience__item::after
+  content: ''
   position: absolute
-  top: 18px
-  bottom: 18px
-  left: 50%
-  width: 2px
-  transform: translateX(-1px)
-  background: linear-gradient(to bottom, transparent, var(--outline-variant) 6%, var(--outline-variant) 94%, transparent)
+  top: 0
+  bottom: 0
+  left: 194px
+  width: 1px
+  background: var(--outline-variant)
 
-.experience__entry
-  position: relative
-
-.experience__row
-  display: grid
-  grid-template-columns: 1fr 40px 1fr
-  gap: 0
-  align-items: start
-
-.experience__cell--dot
-  grid-column: 2 / 3
-  display: flex
-  justify-content: center
-  position: relative
-
-.experience__row--left .experience__cell--entry
-  grid-column: 1 / 2
-  padding: 0 36px 56px 0
-  text-align: right
-
-.experience__row--left .experience__cell--empty
-  grid-column: 3 / 4
-
-.experience__row--right .experience__cell--entry
-  grid-column: 3 / 4
-  padding: 0 0 56px 36px
-  text-align: left
-
-.experience__row--right .experience__cell--empty
-  grid-column: 1 / 2
-
-.experience__dot
-  position: relative
+// Marker where each role meets the rule
+.experience__item::before
+  content: ''
+  position: absolute
   z-index: 1
-  margin-top: 18px
-  width: 18px
-  height: 18px
-  border-radius: 50%
-  background: var(--surface)
-  border: 2px solid var(--primary)
-  display: grid
-  place-items: center
-
-.experience__dot-inner
-  width: 8px
-  height: 8px
+  top: 12px
+  left: 190px
+  width: 9px
+  height: 9px
   border-radius: 50%
   background: var(--primary)
+  box-shadow: 0 0 0 4px var(--surface)
 
-.experience__card
-  padding: 28px
-  background: var(--surface-container)
-  border: 1px solid var(--outline-variant)
-  border-radius: 24px
-  text-align: left
-  display: inline-block
-  max-width: 520px
-  width: 100%
-  transition: transform var(--dur-med) var(--spring-fast), border-color var(--dur-short) var(--spring-gentle)
+.experience__when
+  grid-area: when
+  padding-top: 6px
+  text-align: right
 
-.experience__card:hover
-  transform: translateY(-4px)
-  border-color: var(--primary)
+.experience__period
+  font-size: 0.9375rem
+  font-weight: 600
+  color: var(--on-surface)
+  font-variant-numeric: tabular-nums
 
-.experience__card-meta
+.experience__type
+  margin-top: 2px
+  font-size: 0.875rem
   color: var(--on-surface-variant)
-  margin-bottom: 12px
 
-.experience__card-role
+.experience__body
+  grid-area: body
+
+.experience__stack
+  grid-area: stack
+  padding-top: 8px
+  max-width: 340px
+
+.experience__stack-label
+  font-size: 0.875rem
+  color: var(--on-surface-variant)
+  margin-bottom: 10px
+
+.experience__role
+  font-family: var(--font-display)
   font-size: 1.5rem
   font-weight: 700
   letter-spacing: -0.02em
-  margin-bottom: 4px
+  line-height: 1.25
+  margin: 0 0 4px
 
-.experience__card-org
+.experience__org
   font-size: 1rem
-  color: var(--primary-text)
   font-weight: 600
+  color: var(--primary-text)
   margin-bottom: 14px
 
-.experience__card-blurb
+.experience__location
+  font-weight: 400
   color: var(--on-surface-variant)
-  margin-bottom: 14px
 
-.experience__card-blurb--with-bullets
-  margin-bottom: 18px
+.experience__blurb
+  color: var(--on-surface-variant)
+  margin: 0 0 16px
 
-.experience__card-bullets
-  list-style: none
-  padding: 0
-  margin: 0 0 18px
+.experience__bullets
+  list-style: disc
+  margin: 0 0 12px
+  padding-left: 1.1em
   display: grid
-  gap: 10px
-
-.experience__card-bullet
-  display: grid
-  grid-template-columns: auto 1fr
-  gap: 12px
+  gap: 8px
   color: var(--on-surface-variant)
   font-size: 0.95rem
 
-.experience__card-bullet-dot
-  margin-top: 9px
-  width: 5px
-  height: 5px
-  border-radius: 50%
-  background: var(--primary)
+.experience__bullet::marker
+  color: var(--primary)
 
-.experience__card-stack
+.experience__more
+  display: inline-flex
+  align-items: center
+  gap: 4px
+  margin: 0 0 16px
+  padding: 4px 0
+  border: 0
+  background: none
+  font: inherit
+  font-size: 0.9375rem
+  font-weight: 600
+  color: var(--primary-text)
+  cursor: pointer
+
+.experience__more:hover
+  text-decoration: underline
+  text-underline-offset: 4px
+
+.experience__more-icon
+  transition: transform var(--dur-short) var(--spring-gentle)
+
+.experience__more-icon.is-open
+  transform: rotate(180deg)
+
+.experience__stack-chips
   display: flex
   flex-wrap: wrap
   gap: 6px
@@ -319,22 +326,41 @@ const data = useData()
   border-radius: 50%
   background: currentColor
 
-@media (max-width: 860px)
-  .experience__rail
-    left: 18px
+// Narrower screens: the stack drops under the role
+@media (max-width: 1100px)
+  .experience__item
+    grid-template-columns: 168px minmax(0, 1fr)
+    grid-template-areas: "when body" ". stack"
 
-  .experience__row
-    grid-template-columns: 36px 1fr
+  .experience__stack
+    padding-top: 4px
+    max-width: none
 
-  .experience__cell--dot
-    grid-column: 1 / 2
-
-  .experience__row--left .experience__cell--entry,
-  .experience__row--right .experience__cell--entry
-    grid-column: 2 / 3
-    padding: 0 0 40px 0
-    text-align: left
-
-  .experience__cell--empty
+  .experience__stack-label
     display: none
+
+// Phones: dates move above each role, the rule stays on the left
+@media (max-width: 720px)
+  .experience__item
+    grid-template-columns: minmax(0, 1fr)
+    grid-template-areas: "when" "body" "stack"
+    padding-left: 24px
+    padding-bottom: 40px
+
+  .experience__item::after
+    left: 0
+
+  .experience__item::before
+    top: 7px
+    left: -4px
+
+  .experience__when
+    display: flex
+    gap: 6px
+    align-items: baseline
+    text-align: left
+    padding: 0 0 6px
+
+  .experience__type::before
+    content: '· '
 </style>

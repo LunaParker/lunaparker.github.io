@@ -33,7 +33,7 @@ const archived = computed(() => props.project.status === 'archived')
       <div class="poster__vs-side-word">ASCEND</div>
       <div>
         <div class="poster__vs-name">{{ project.name }}</div>
-        <div class="poster__vs-tagline">{{ project.tagline }}</div>
+        <div class="poster__vs-tagline poster__foot">{{ project.tagline }}</div>
       </div>
     </div>
   </div>
@@ -47,13 +47,14 @@ const archived = computed(() => props.project.status === 'archived')
     <div class="poster__stacked-halo" />
     <div class="poster__stacked-content">
       <div class="poster__stacked-client" :class="ownWork ? 'mono poster__stack' : 'label'">{{ header }}<span v-if="archived" class="label poster__status">Archived</span></div>
-      <div class="poster__stacked-name">
+      <div class="poster__stacked-name poster__foot">
         <div
           v-for="(word, i) in project.name.split(' ')"
           :key="i"
           class="poster__stacked-word"
         >
-          {{ word }}
+          <!-- a domain-style word may break before its dot instead of running past the card -->
+          <template v-for="(part, j) in word.split(/(?=\.)/)" :key="j"><wbr v-if="j">{{ part }}</template>
         </div>
       </div>
     </div>
@@ -70,7 +71,7 @@ const archived = computed(() => props.project.status === 'archived')
       <div class="label poster__angle-meta">
         {{ project.year }} · {{ project.tagline }}<span v-if="archived" class="label poster__status">Archived</span>
       </div>
-      <div class="poster__angle-name">{{ project.name }}</div>
+      <div class="poster__angle-name poster__foot">{{ project.name }}</div>
     </div>
   </div>
 
@@ -83,7 +84,7 @@ const archived = computed(() => props.project.status === 'archived')
     <div class="poster__mc-grid" />
     <div class="poster__mc-content">
       <div class="mono poster__mc-comment">{{ header }}<span v-if="archived" class="label poster__status">Archived</span></div>
-      <div class="poster__mc-name">{{ project.name }}</div>
+      <div class="poster__mc-name poster__foot">{{ project.name }}</div>
     </div>
   </div>
 
@@ -104,7 +105,7 @@ const archived = computed(() => props.project.status === 'archived')
       </div>
       <div>
         <div class="poster__tr-name">{{ project.name }}</div>
-        <div class="poster__tr-tagline">{{ project.tagline }}</div>
+        <div class="poster__tr-tagline poster__foot">{{ project.tagline }}</div>
       </div>
     </div>
   </div>
@@ -135,6 +136,11 @@ const archived = computed(() => props.project.status === 'archived')
   font-size: inherit
   line-height: 1.3
   white-space: nowrap
+
+// The bottom line of text keeps clear of the host card's corner icon (0 when there is none).
+.poster__foot
+  padding-right: var(--poster-corner-clearance, 0px)
+  text-wrap: balance
 
 // ── vertical-split ──────────────────────────────────────────
 .poster--vertical-split

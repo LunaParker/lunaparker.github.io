@@ -51,6 +51,8 @@ const accessibleName = computed(() => `${props.project.name}${props.project.stat
 <style scoped lang="stylus">
 .project-card
   position: relative
+  // Room the poster's bottom text leaves for the icon bubble: its 56px corner plus a gap, less the poster padding
+  --poster-corner-clearance: 44px
   scroll-margin-top: 100px
   border-radius: 28px
   overflow: hidden

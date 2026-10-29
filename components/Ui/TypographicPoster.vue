@@ -14,6 +14,7 @@ const big = computed(() => props.size === 'big')
 // Own work has no client to name, so its header lists the stack instead
 const ownWork = computed(() => ['Open Source', 'Personal Project'].includes(props.project.client))
 const header = computed(() => ownWork.value ? props.project.stack.join(' · ') : props.project.client)
+const archived = computed(() => props.project.status === 'archived')
 </script>
 
 <template>
@@ -27,7 +28,7 @@ const header = computed(() => ownWork.value ? props.project.stack.join(' · ') :
     <div class="poster__vs-grid" />
     <div class="poster__vs-content">
       <div class="label poster__vs-meta">
-        {{ project.year }} · {{ project.client }}
+        {{ project.year }} · {{ project.client }}<span v-if="archived" class="label poster__status">Archived</span>
       </div>
       <div class="poster__vs-side-word">ASCEND</div>
       <div>
@@ -45,7 +46,7 @@ const header = computed(() => ownWork.value ? props.project.stack.join(' · ') :
   >
     <div class="poster__stacked-halo" />
     <div class="poster__stacked-content">
-      <div class="poster__stacked-client" :class="ownWork ? 'mono poster__stack' : 'label'">{{ header }}</div>
+      <div class="poster__stacked-client" :class="ownWork ? 'mono poster__stack' : 'label'">{{ header }}<span v-if="archived" class="label poster__status">Archived</span></div>
       <div class="poster__stacked-name">
         <div
           v-for="(word, i) in project.name.split(' ')"
@@ -67,7 +68,7 @@ const header = computed(() => ownWork.value ? props.project.stack.join(' · ') :
     <div class="poster__angle-sweep" />
     <div class="poster__angle-content">
       <div class="label poster__angle-meta">
-        {{ project.year }} · {{ project.tagline }}
+        {{ project.year }} · {{ project.tagline }}<span v-if="archived" class="label poster__status">Archived</span>
       </div>
       <div class="poster__angle-name">{{ project.name }}</div>
     </div>
@@ -81,7 +82,7 @@ const header = computed(() => ownWork.value ? props.project.stack.join(' · ') :
   >
     <div class="poster__mc-grid" />
     <div class="poster__mc-content">
-      <div class="mono poster__mc-comment">{{ header }}</div>
+      <div class="mono poster__mc-comment">{{ header }}<span v-if="archived" class="label poster__status">Archived</span></div>
       <div class="poster__mc-name">{{ project.name }}</div>
     </div>
   </div>
@@ -99,7 +100,7 @@ const header = computed(() => ownWork.value ? props.project.stack.join(' · ') :
     </div>
     <div class="poster__tr-content">
       <div class="label poster__tr-meta">
-        {{ project.year }}<template v-if="!ownWork"> · {{ project.client }}</template>
+        {{ project.year }}<template v-if="!ownWork"> · {{ project.client }}</template><span v-if="archived" class="label poster__status">Archived</span>
       </div>
       <div>
         <div class="poster__tr-name">{{ project.name }}</div>
@@ -118,6 +119,22 @@ const header = computed(() => ownWork.value ? props.project.stack.join(' · ') :
   border-radius: inherit
   display: flex
   align-items: flex-end
+
+// Status pill: tonal chip in the label face, sized by whichever meta line it sits in.
+// Its meta line wraps it flush left on narrow cards instead of indenting it.
+:has(> .poster__status)
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  gap: 0.4em 0.6em
+
+.poster__status
+  padding: 0.2em 0.6em
+  border-radius: var(--shape-sm)
+  background: unquote("color-mix(in oklch, currentColor 12%, transparent)")
+  font-size: inherit
+  line-height: 1.3
+  white-space: nowrap
 
 // ── vertical-split ──────────────────────────────────────────
 .poster--vertical-split

@@ -32,6 +32,9 @@ export type ProjectSize = 'featured' | 'large' | 'wide' | 'tall' | 'square'
 // - transit: tonal container crossed by a brand-gradient route line whose stops are the stack
 export type ProjectTreatment = 'vertical-split' | 'stacked' | 'angle' | 'mono-code' | 'transit'
 
+// Omitted for active work. Archived cards get a poster label; list them after the active ones.
+export type ProjectStatus = 'archived'
+
 export interface Project {
   id: string
   name: string
@@ -44,6 +47,7 @@ export interface Project {
   size: ProjectSize
   accent: AccentKey
   treatment: ProjectTreatment
+  status?: ProjectStatus
 }
 
 export interface BlogPost {
@@ -228,19 +232,6 @@ const DATA: PortfolioData = {
       treatment: 'angle',
     },
     {
-      id: 'brightspace-mcp',
-      name: 'Brightspace MCP Server',
-      tagline: 'AI integration for Brightspace / D2L',
-      client: 'Open Source',
-      role: 'Developer',
-      year: '2026',
-      url: 'https://github.com/lunaparker/brightspace-mcp-server',
-      stack: ['TypeScript', 'Node.js', 'MCP'],
-      size: 'square',
-      accent: 'tertiary',
-      treatment: 'mono-code',
-    },
-    {
       id: 'claude-menu-bar',
       name: 'Menu Bar Usage for Claude',
       tagline: 'Native macOS quota monitor for Claude Code',
@@ -291,6 +282,20 @@ const DATA: PortfolioData = {
       size: 'square',
       accent: 'primary',
       treatment: 'mono-code',
+    },
+    {
+      id: 'brightspace-mcp',
+      name: 'Brightspace MCP Server',
+      tagline: 'AI integration for Brightspace / D2L',
+      client: 'Open Source',
+      role: 'Developer',
+      year: '2026',
+      url: 'https://github.com/lunaparker/brightspace-mcp-server',
+      stack: ['TypeScript', 'Node.js', 'MCP'],
+      size: 'square',
+      accent: 'tertiary',
+      treatment: 'mono-code',
+      status: 'archived',
     },
   ],
 

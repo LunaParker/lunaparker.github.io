@@ -9,6 +9,8 @@ const displayUrl = computed(() => props.project.url.replace(/^https?:\/\//, ''))
 const iconName = computed<'github' | 'arrowUpRight'>(() => (isGithub.value ? 'github' : 'arrowUpRight'))
 const posterSize = computed<'big' | 'default'>(() => (['featured', 'large'].includes(props.project.size) ? 'big' : 'default'))
 const sizeClass = computed(() => `project-card--${props.project.size ?? 'square'}`)
+// The aria-label replaces the poster text, so the status has to be spoken here
+const accessibleName = computed(() => `${props.project.name}${props.project.status === 'archived' ? ' (archived)' : ''}`)
 </script>
 
 <template>
@@ -17,7 +19,7 @@ const sizeClass = computed(() => `project-card--${props.project.size ?? 'square'
     :href="project.url"
     target="_blank"
     rel="noreferrer"
-    :aria-label="`Open ${project.name}, ${displayUrl} (opens in new tab)`"
+    :aria-label="`Open ${accessibleName}, ${displayUrl} (opens in new tab)`"
     :class="['project-card', sizeClass]"
   >
     <UiTypographicPoster :project="project" :size="posterSize" />

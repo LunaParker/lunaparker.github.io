@@ -37,6 +37,3 @@ jobs:
 
       - name: Deploy shyowl-contact (lunaparker.dev/api/contact)
         run: npx wrangler deploy
-
-      - name: Deploy lunaparker-files (files.lunaparker.dev)
-        run: npx wrangler deploy -c wrangler.files.toml

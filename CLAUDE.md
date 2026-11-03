@@ -80,18 +80,11 @@ Local `wrangler dev` simulates the email: it logs the From/To/Subject and writes
 
 **Email Routing DNS:** routing is enabled only on the `forms.lunaparker.dev` subdomain (Cloudflare MX + SPF there, DKIM at `cf2024-1._domainkey.lunaparker.dev`). The apex MX records point at iCloud for `luna@lunaparker.dev`. The Email Routing settings page lists them as "Conflicting" and offers to add its own apex MX; **never accept that**, or iCloud mail breaks.
 
-## Analytics + cookie consent
+## Analytics
 
-Two analytics tools, with different consent posture:
+**Cloudflare Web Analytics** is the only analytics tool. The Cloudflare edge auto-injects its beacon for `lunaparker.dev` (configured in the WA dashboard, no code change). It's cookieless and unfingerprinted, so the site needs no consent banner.
 
-- **Cloudflare Web Analytics** is auto-injected by the Cloudflare edge for `lunaparker.dev` (configured in the WA dashboard, no code change). Cookieless and unfingerprinted, so it runs on every visit regardless of consent — it's the always-on baseline.
-- **Google Analytics 4** (`G-0M3HK86F42`) is gated behind explicit consent. The `nuxt-gtag` module is configured with `initMode: 'manual'` and Consent Mode v2 defaults (`analytics_storage: 'denied'`), so the gtag.js script tag does not load until the user clicks "Accept all" in the banner.
-
-The banner itself is `@dargmuesli/nuxt-cookie-control`. The bridge between consent state and gtag lives at `plugins/consent-bridge.client.ts`, which watches `useCookieControl().cookiesEnabledIds` and toggles `gtag('consent', 'update', …)` + `useGtag().initialize()` / `disableAnalytics()` accordingly.
-
-Theming: the library's `--cookie-control-*` CSS variables are remapped onto our M3 tokens in `assets/css/cookie-control.styl`. That file also patches the library's hard-coded Arial fallback and 0.25s linear transitions to use `--font-body` and `--spring-emphasized` so the banner reads as part of the site, not a third-party widget. Light/dark switching comes for free via tokens.styl.
-
-If the GA4 ID needs rotating, update it in `nuxt.config.ts` under `gtag.id`. It's public by design (baked into gtag.js), so no secret handling needed.
+Google Analytics 4 (`nuxt-gtag`) and the `@dargmuesli/nuxt-cookie-control` banner were removed in November 2026. The site sets no cookies of its own; the only browser storage is Cloudflare's bot-management cookies (Bot Fight Mode is on) and the `theme-preference` localStorage key, both disclosed in `pages/privacy.vue`. Anything that would add a non-essential cookie or a third-party tracker needs a consent mechanism and a privacy policy update first.
 
 ## Deployment topology
 

@@ -25,7 +25,7 @@ onMounted(() => {
   <article :style="{ minHeight: '100vh', padding: '120px 0 80px' }">
     <div class="container" :style="{ maxWidth: '760px' }">
       <div class="label section-kicker" :style="{ color: 'var(--on-surface-variant)', marginBottom: '20px' }">
-        <span>Last updated October 3, 2026</span>
+        <span>Last updated November 1, 2026</span>
       </div>
 
       <h1 class="title">
@@ -70,8 +70,7 @@ onMounted(() => {
           </li>
           <li>
             <b>Aggregate visit metadata:</b> collected by Cloudflare Web Analytics on every page load
-            (cookieless, no fingerprinting), and additionally by Google Analytics 4 only if you opt
-            in via the cookie banner. See "Service provider data collection" below.
+            (cookieless, no fingerprinting). See "Service provider data collection" below.
           </li>
         </ul>
         <p>
@@ -106,24 +105,11 @@ onMounted(() => {
 
         <h3>Cloudflare Web Analytics</h3>
         <p>
-          The site uses Cloudflare's privacy-focused Web Analytics product. It runs on every page load,
-          regardless of your cookie choice, because it does not set cookies, does not fingerprint your
-          device, and does not track you across sites. Cloudflare records aggregate metrics (page
-          views, referrers, country, and approximate device class) without any identifier that ties
-          requests back to you. This is the only always-on analytics tool on the site.
-        </p>
-
-        <h3>Google Analytics 4 (opt-in)</h3>
-        <p>
-          If you accept analytics cookies via the banner shown on your first visit, the site loads
-          Google Analytics 4 (gtag.js). GA4 sets cookies (<b>_ga</b>, <b>_ga_*</b>) and records page
-          views, session details, and approximate location to give us per-page traffic insight.
-          GA4 honours <a href="https://developers.google.com/tag-platform/security/guides/consent" target="_blank" rel="noreferrer">Google Consent Mode v2</a>:
-          before you accept, no analytics storage is used and no GA cookies are set; the gtag.js
-          script itself is not even loaded. You can revoke consent at any time via the small cookie
-          icon in the bottom corner; we honour the change immediately on the next page load. See
-          <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Google's privacy policy</a>
-          for the data Google may further process.
+          The site uses Cloudflare's privacy-focused Web Analytics product to count visits. It does not set
+          cookies, does not fingerprint your device, and does not track you across sites. Cloudflare records
+          aggregate metrics (page views, referrers, country, and approximate device class) without any
+          identifier that ties requests back to you. This is the only analytics tool on the site: we don't use
+          Google Analytics, advertising trackers, or any other third-party analytics.
         </p>
 
         <h3>Email delivery</h3>
@@ -137,6 +123,25 @@ onMounted(() => {
           and <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Google's Privacy Policy</a>
           for more information.
         </p>
+
+        <h2>Cookies and local storage</h2>
+        <p>
+          The site doesn't set any cookies of its own, which is why you won't see a cookie banner: there's
+          nothing optional to accept. Two things may still be stored in your browser while you visit:
+        </p>
+        <ul>
+          <li>
+            <b>Cloudflare security cookies</b> (such as <b>__cf_bm</b> and <b>cf_clearance</b>): set by
+            Cloudflare's bot protection to tell people apart from automated traffic, and to let the contact
+            form's Turnstile check run. They're strictly necessary for the site to work and aren't used for
+            analytics or advertising.
+          </li>
+          <li>
+            <b>Your theme choice:</b> if you use the light/dark toggle, a <b>theme-preference</b> entry is saved
+            in your browser's local storage so the site remembers it. It stays on your device and is never sent
+            to us.
+          </li>
+        </ul>
 
         <h2>Use of data</h2>
         <p>We use your collected personal information for various purposes:</p>

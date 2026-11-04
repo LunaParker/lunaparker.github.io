@@ -70,6 +70,9 @@ export default defineNuxtConfig({
           content: 'Full-stack web developer and designer in Ontario with 8+ years building WordPress, Laravel and Vue sites. Honours BCS (Security) student at Conestoga.',
         },
         { name: 'theme-color', content: '#8A2387' },
+        // The site ships a full dark theme, so say so up front. Safari's adaptive
+        // dark mode leaves pages that declare "light dark" alone.
+        { name: 'color-scheme', content: 'light dark' },
         // Open Graph
         { property: 'og:type', content: 'website' },
         { property: 'og:site_name', content: 'Luna Parker' },

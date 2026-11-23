@@ -38,6 +38,7 @@ The split is by shape, not by topic:
 
 - **`composables/useData.ts`** holds list-shaped data that grows over time: `experience`, `education`, `projects`, `blog`, `skills`. Section components consume it via `useData()`.
 - **Static identity copy lives directly in the component that renders it.** Bio, about paragraphs, email, LinkedIn, GitHub, location, the four "what I do" cards, the services grid in Skills.vue — all inline as local `const`s or template literals. Don't grep `useData.ts` looking for them; they're next to the JSX.
+- **Product policies live in `content/<product>/privacy.md`**, verbatim copies of the `PRIVACY.md` in each product's own repo. `pages/<product>/privacy.vue` parses the copy at generate time (`utils/policy.ts`, `marked`) and renders it with `components/ProductPolicy.vue`; its product icon lives in `public/products/`. To update a policy, copy the product's file over (`cp ../basic-auth-gateway/PRIVACY.md content/basic-auth-gateway/privacy.md`) and never edit the copy by hand. A new product also needs its route in `nitro.prerender.routes`, because nothing links to these pages.
 
 Rule of thumb: if you'd add a new entry to a list (another job, another project, another blog post), it belongs in `useData.ts`. If it's a one-off fact about Luna or a fixed bit of marketing copy, it belongs inline in the component.
 
@@ -102,7 +103,7 @@ These are real follow-ups, not pretend ones — flag them if relevant to the wor
 
 ## Conventions
 
-- Don't add new `*.md` files unless the user asks. CLAUDE.md and README.md are the only ones.
+- Don't add new `*.md` files unless the user asks. CLAUDE.md, README.md, Impeccable's design context (PRODUCT.md, DESIGN.md) and the policy copies under `content/` are the only ones.
 - List-shaped data → `useData.ts`. Static identity / one-off copy → inline in the consuming component.
 - Secrets never enter the repo. Use `wrangler secret put` for Worker secrets; Nuxt `runtimeConfig.public.*` is **public** by definition (baked into the static bundle).
 - The Worker's `.dev.vars` is gitignored (`worker/.gitignore`) — keep it that way.

@@ -142,8 +142,10 @@ function onNavClick(e: MouseEvent, id: string) {
   display: inline-flex
   align-items: center
   gap: 12px
+  flex-shrink: 0
 
 .nav__brand-text
+  white-space: nowrap
   font-family: var(--font-display)
   font-weight: 800
   font-size: 17px
@@ -188,6 +190,7 @@ function onNavClick(e: MouseEvent, id: string) {
   padding: 8px
   cursor: pointer
   color: var(--on-surface)
+  flex-shrink: 0
 
 .nav__mobile-panel
   position: absolute
@@ -218,4 +221,21 @@ function onNavClick(e: MouseEvent, id: string) {
     display: inline-flex
     align-items: center
     justify-content: center
+
+// Phones: the name, theme toggle, CTA and menu button must share one row
+@media (max-width: 480px)
+  .nav__container
+    gap: 12px
+
+  .nav__cta-row
+    gap: 4px
+
+@media (max-width: 400px)
+  .nav__cta :deep(svg)
+    display: none
+
+// Below 340px the CTA keeps its place and the theme follows the OS setting
+@media (max-width: 339px)
+  .nav__cta-row :deep(.theme-toggle)
+    display: none
 </style>

@@ -1,0 +1,413 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-23T00:02:40+00:00",
+  "title": "Design System: lunaparker.dev",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Signal Indigo",
+        "canonical": "oklch(0.50 var(--accent-c) var(--accent-h)) with h 265, c 0.19",
+        "tonalRamp": [
+          "oklch(0.22 0.09 265)",
+          "oklch(0.35 0.12 265)",
+          "oklch(0.50 0.19 265)",
+          "oklch(0.55 0.25 265)",
+          "oklch(0.70 0.15 265)",
+          "oklch(0.86 0.19 265)",
+          "oklch(0.92 0.05 265)",
+          "oklch(0.92 0.06 265)"
+        ]
+      },
+      "primary-text": {
+        "role": "primary",
+        "displayName": "Indigo Ink",
+        "canonical": "oklch(0.50 0.19 265); dark oklch(0.86 0.19 265)"
+      },
+      "primary-container": {
+        "role": "primary",
+        "displayName": "Indigo Mist"
+      },
+      "shy-owl-primary": {
+        "role": "primary",
+        "displayName": "Studio Magenta",
+        "canonical": "--accent-h 333, --accent-c 0.17 under [data-accent=\"shy-owl\"]",
+        "tonalRamp": [
+          "oklch(0.15 0.087 333)",
+          "oklch(0.25 0.111 333)",
+          "oklch(0.35 0.134 333)",
+          "oklch(0.45 0.158 333)",
+          "oklch(0.55 0.158 333)",
+          "oklch(0.70 0.122 333)",
+          "oklch(0.85 0.087 333)",
+          "oklch(0.95 0.063 333)"
+        ]
+      },
+      "secondary": {
+        "role": "secondary",
+        "displayName": "Muted Orchid",
+        "tonalRamp": [
+          "oklch(0.15 0.051 325)",
+          "oklch(0.25 0.065 325)",
+          "oklch(0.35 0.079 325)",
+          "oklch(0.45 0.093 325)",
+          "oklch(0.55 0.093 325)",
+          "oklch(0.70 0.072 325)",
+          "oklch(0.85 0.051 325)",
+          "oklch(0.95 0.037 325)"
+        ]
+      },
+      "tertiary": {
+        "role": "tertiary",
+        "displayName": "Lagoon",
+        "tonalRamp": [
+          "oklch(0.15 0.056 215)",
+          "oklch(0.25 0.072 215)",
+          "oklch(0.35 0.087 215)",
+          "oklch(0.45 0.102 215)",
+          "oklch(0.55 0.102 215)",
+          "oklch(0.70 0.079 215)",
+          "oklch(0.85 0.056 215)",
+          "oklch(0.95 0.041 215)"
+        ]
+      },
+      "error": {
+        "role": "error",
+        "displayName": "Error Red",
+        "tonalRamp": [
+          "oklch(0.15 0.097 27)",
+          "oklch(0.25 0.124 27)",
+          "oklch(0.35 0.150 27)",
+          "oklch(0.45 0.177 27)",
+          "oklch(0.55 0.177 27)",
+          "oklch(0.70 0.137 27)",
+          "oklch(0.85 0.097 27)",
+          "oklch(0.95 0.070 27)"
+        ]
+      },
+      "brand-plum": {
+        "role": "brand",
+        "displayName": "Brand Plum (gradient stop 0%)"
+      },
+      "brand-coral": {
+        "role": "brand",
+        "displayName": "Brand Coral (gradient stop 50%)"
+      },
+      "brand-tangerine": {
+        "role": "brand",
+        "displayName": "Brand Tangerine (gradient stop 100%)"
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "tonalRamp": [
+          "oklch(0.11 0 0)",
+          "oklch(0.16 0 0)",
+          "oklch(0.25 0 0)",
+          "oklch(0.40 0 0)",
+          "oklch(0.55 0 0)",
+          "oklch(0.88 0 0)",
+          "oklch(0.955 0 0)",
+          "oklch(1 0 0)"
+        ]
+      },
+      "surface-dark": {
+        "role": "neutral",
+        "displayName": "Ink Night",
+        "tonalRamp": [
+          "oklch(0.11 0 0)",
+          "oklch(0.16 0 0)",
+          "oklch(0.25 0 0)",
+          "oklch(0.40 0 0)",
+          "oklch(0.55 0 0)",
+          "oklch(0.88 0 0)",
+          "oklch(0.955 0 0)",
+          "oklch(1 0 0)"
+        ]
+      },
+      "on-surface": {
+        "role": "neutral",
+        "displayName": "Ink"
+      },
+      "on-surface-variant": {
+        "role": "neutral",
+        "displayName": "Graphite"
+      },
+      "outline": {
+        "role": "neutral",
+        "displayName": "Outline"
+      },
+      "outline-variant": {
+        "role": "neutral",
+        "displayName": "Hairline"
+      }
+    },
+    "typographyMeta": {
+      "display-xl": {
+        "displayName": "Display XL",
+        "purpose": "Hero and footer wordmarks."
+      },
+      "display-lg": {
+        "displayName": "Display Large",
+        "purpose": "Page titles at the largest scale."
+      },
+      "display-md": {
+        "displayName": "Display Medium",
+        "purpose": "Section titles (SectionHeader)."
+      },
+      "display-sm": {
+        "displayName": "Display Small",
+        "purpose": "Secondary page and block titles."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Sub-section heads."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card and item titles."
+      },
+      "body-lg": {
+        "displayName": "Body Large",
+        "purpose": "Section subtitles and ledes."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Mono uppercase metadata: dates, kinds, raised field labels, numerals."
+      }
+    },
+    "shadows": [
+      {
+        "name": "halo-ring",
+        "value": "0 0 0 4px color-mix(in oklch, var(--on-surface) 14%, transparent)",
+        "purpose": "Filled button hover."
+      },
+      {
+        "name": "accent-glow",
+        "value": "0 4px 22px -2px color-mix(in oklch, var(--primary) 40%, transparent)",
+        "purpose": "Brand button hover."
+      },
+      {
+        "name": "gradient-glow",
+        "value": "0 6px 26px -6px color-mix(in oklch, #E94057 55%, transparent)",
+        "purpose": "Shy Owl gradient button hover."
+      },
+      {
+        "name": "product-tint",
+        "value": "0 10px 26px -10px color-mix(in oklch, var(--product-accent, #000) 70%, transparent)",
+        "purpose": "Product icon tile in a policy header."
+      },
+      {
+        "name": "floating-panel",
+        "value": "0 1px 2px color-mix(in oklch, var(--on-surface) 8%, transparent), 0 12px 32px -10px color-mix(in oklch, var(--on-surface) 22%, transparent)",
+        "purpose": "Popovers such as the theme toggle."
+      }
+    ],
+    "motion": [
+      {
+        "name": "spring-fast",
+        "value": "linear(0, 0.009, 0.035 2.1%, ... 1)",
+        "purpose": "Press scale, card lift; quick overshoot. Full curve in assets/css/tokens.styl."
+      },
+      {
+        "name": "spring-standard",
+        "value": "linear(0, 0.006, 0.024, ... 1)",
+        "purpose": "Entrances and reveals; soft overshoot. Full curve in assets/css/tokens.styl."
+      },
+      {
+        "name": "spring-gentle",
+        "value": "cubic-bezier(0.2, 0, 0, 1)",
+        "purpose": "Color, background and border transitions."
+      },
+      {
+        "name": "spring-emphasized",
+        "value": "cubic-bezier(0.05, 0.7, 0.1, 1)",
+        "purpose": "View Transitions and studio tile lifts."
+      },
+      {
+        "name": "dur-short",
+        "value": "calc(180ms * var(--motion))",
+        "purpose": "Hover and press."
+      },
+      {
+        "name": "dur-med",
+        "value": "calc(360ms * var(--motion))",
+        "purpose": "Nav state, card lift, theme change."
+      },
+      {
+        "name": "dur-long",
+        "value": "calc(600ms * var(--motion))",
+        "purpose": "Stagger entrances and reveals."
+      },
+      {
+        "name": "dur-xl",
+        "value": "calc(900ms * var(--motion))",
+        "purpose": "Longest choreography."
+      },
+      {
+        "name": "motion",
+        "value": "1 (0.01 under prefers-reduced-motion)",
+        "purpose": "Global multiplier on every duration."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "policy-single-column",
+        "value": "960px"
+      },
+      {
+        "name": "nav-collapse",
+        "value": "860px"
+      },
+      {
+        "name": "hide-on-mobile",
+        "value": "720px"
+      },
+      {
+        "name": "policy-lede",
+        "value": "600px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Filled Button",
+      "kind": "button",
+      "refersTo": "button-filled",
+      "description": "Primary call to action, such as the nav's Get in touch.",
+      "html": "<button class=\"ds-btn-filled\">Get in touch</button>",
+      "css": ".ds-btn-filled{display:inline-flex;align-items:center;gap:0.6rem;white-space:nowrap;padding:0.85rem 1.5rem;border:0;border-radius:9999px;font:600 0.95rem/1.2 var(--font-body);letter-spacing:-0.005em;cursor:pointer;transition:transform 180ms cubic-bezier(0.2,0,0,1),background-color 180ms cubic-bezier(0.2,0,0,1),color 180ms cubic-bezier(0.2,0,0,1),box-shadow 180ms cubic-bezier(0.2,0,0,1);background:var(--primary);color:var(--on-primary);} .ds-btn-filled:hover{background:var(--on-surface);color:var(--surface);box-shadow:0 0 0 4px color-mix(in oklch, var(--on-surface) 14%, transparent);} .ds-btn-filled:active{transform:scale(0.96);} .ds-btn-filled:focus-visible{outline:2px solid var(--primary);outline-offset:3px;}"
+    },
+    {
+      "name": "Outlined Button",
+      "kind": "button",
+      "refersTo": "button-outlined",
+      "description": "The most used action; inverts to ink on hover.",
+      "html": "<a class=\"ds-btn-outlined\" href=\"#\">Back to portfolio</a>",
+      "css": ".ds-btn-outlined{display:inline-flex;align-items:center;gap:0.6rem;white-space:nowrap;padding:0.85rem 1.5rem;border:0;border-radius:9999px;font:600 0.95rem/1.2 var(--font-body);letter-spacing:-0.005em;cursor:pointer;transition:transform 180ms cubic-bezier(0.2,0,0,1),background-color 180ms cubic-bezier(0.2,0,0,1),color 180ms cubic-bezier(0.2,0,0,1),box-shadow 180ms cubic-bezier(0.2,0,0,1);text-decoration:none;background:transparent;border:1px solid var(--outline);color:var(--on-surface);} .ds-btn-outlined:hover{background:var(--on-surface);color:var(--surface);border-color:var(--on-surface);} .ds-btn-outlined:active{transform:scale(0.96);} .ds-btn-outlined:focus-visible{outline:2px solid var(--primary);outline-offset:3px;}"
+    },
+    {
+      "name": "Brand Button",
+      "kind": "button",
+      "refersTo": "button-brand",
+      "description": "Ink pill that turns to the accent with a glow.",
+      "html": "<button class=\"ds-btn-brand\">Send message</button>",
+      "css": ".ds-btn-brand{display:inline-flex;align-items:center;gap:0.6rem;white-space:nowrap;padding:0.85rem 1.5rem;border:0;border-radius:9999px;font:600 0.95rem/1.2 var(--font-body);letter-spacing:-0.005em;cursor:pointer;transition:transform 180ms cubic-bezier(0.2,0,0,1),background-color 180ms cubic-bezier(0.2,0,0,1),color 180ms cubic-bezier(0.2,0,0,1),box-shadow 180ms cubic-bezier(0.2,0,0,1);background:var(--on-surface);color:var(--surface);} .ds-btn-brand:hover{background:var(--primary);color:var(--on-primary);box-shadow:0 4px 22px -2px color-mix(in oklch, var(--primary) 40%, transparent);} .ds-btn-brand:active{transform:scale(0.96);} .ds-btn-brand:focus-visible{outline:2px solid var(--primary);outline-offset:3px;}"
+    },
+    {
+      "name": "Shy Owl Gradient Button",
+      "kind": "button",
+      "refersTo": "button-brand",
+      "description": "Studio page action: ink pill that cross-fades to the brand gradient on hover.",
+      "html": "<button class=\"ds-btn-gradient\"><span>Start a project</span></button>",
+      "css": ".ds-btn-gradient{display:inline-flex;align-items:center;gap:0.6rem;white-space:nowrap;padding:0.85rem 1.5rem;border:0;border-radius:9999px;font:600 0.95rem/1.2 var(--font-body);letter-spacing:-0.005em;cursor:pointer;transition:transform 180ms cubic-bezier(0.2,0,0,1),background-color 180ms cubic-bezier(0.2,0,0,1),color 180ms cubic-bezier(0.2,0,0,1),box-shadow 180ms cubic-bezier(0.2,0,0,1);position:relative;isolation:isolate;overflow:hidden;background:var(--on-surface);color:var(--surface);} .ds-btn-gradient::before{content:\"\";position:absolute;inset:0;z-index:-1;background:linear-gradient(135deg,#8A2387 0%,#E94057 50%,#F27121 100%);opacity:0;transition:opacity 180ms cubic-bezier(0.2,0,0,1);} .ds-btn-gradient:hover{color:#fff;box-shadow:0 6px 26px -6px color-mix(in oklch, #E94057 55%, transparent);} .ds-btn-gradient:hover::before{opacity:1;} .ds-btn-gradient:focus-visible{outline:2px solid var(--primary);outline-offset:3px;}"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Tag for skills and metadata; tonal and primary variants.",
+      "html": "<span class=\"ds-chip\">Nuxt</span> <span class=\"ds-chip ds-chip-primary\">Laravel</span>",
+      "css": ".ds-chip{display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.75rem;background:var(--surface-container-high);border:1px solid var(--outline-variant);border-radius:8px;font:500 0.8rem/1.4 var(--font-body);color:var(--on-surface-variant);} .ds-chip-primary{background:var(--primary-container);color:var(--on-primary-container);border-color:transparent;}"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Tonal container with 28px corners.",
+      "html": "<div class=\"ds-card\"><h3>Project</h3><p>A short description of the work.</p></div>",
+      "css": ".ds-card{background:var(--surface-container);border:1px solid var(--outline-variant);border-radius:28px;padding:1.75rem;color:var(--on-surface);transition:transform 360ms cubic-bezier(0.05,0.7,0.1,1),border-color 180ms cubic-bezier(0.2,0,0,1);} .ds-card h3{margin:0 0 0.5rem;font:600 1.25rem/1.3 var(--font-display);letter-spacing:-0.01em;} .ds-card p{margin:0;color:var(--on-surface-variant);} .ds-card:hover{transform:translateY(-6px);border-color:var(--primary);}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "M3 filled field whose label floats into a mono label on focus.",
+      "html": "<label class=\"ds-field\"><input placeholder=\" \" /><span>Your email</span></label>",
+      "css": ".ds-field{position:relative;display:block;background:var(--surface-container-high);border:1px solid var(--outline-variant);border-radius:16px;padding-top:24px;transition:border-color 180ms cubic-bezier(0.2,0,0,1);} .ds-field input{width:100%;box-sizing:border-box;padding:6px 18px 14px;background:transparent;border:0;outline:none;font:400 1rem var(--font-body);color:var(--on-surface);} .ds-field span{position:absolute;left:18px;top:22px;pointer-events:none;font:400 15px var(--font-body);color:var(--on-surface-variant);transition:all 180ms cubic-bezier(0.2,0,0,1);} .ds-field:focus-within{border-color:var(--primary);} .ds-field:focus-within span,.ds-field input:not(:placeholder-shown)+span{top:10px;font:600 11px var(--font-mono);letter-spacing:0.06em;text-transform:uppercase;} .ds-field:focus-within span{color:var(--primary-text);}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Wordmark, pill links and one filled call to action.",
+      "html": "<nav class=\"ds-nav\"><strong>Luna Parker</strong><span><a href=\"#\">About</a><a href=\"#\">Projects</a><a href=\"#\">Contact</a></span><a class=\"ds-nav-cta\" href=\"#\">Get in touch</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:10px 16px;background:color-mix(in oklch, var(--surface) 78%, transparent);backdrop-filter:saturate(1.3) blur(14px);border-bottom:1px solid var(--outline-variant);} .ds-nav strong{font:800 17px var(--font-display);letter-spacing:-0.02em;color:var(--on-surface);} .ds-nav span{display:flex;gap:4px;} .ds-nav span a{padding:8px 14px;border-radius:999px;font:500 14px var(--font-body);color:var(--on-surface-variant);text-decoration:none;transition:background-color 180ms cubic-bezier(0.2,0,0,1),color 180ms cubic-bezier(0.2,0,0,1);} .ds-nav span a:hover{background:var(--surface-container-high);color:var(--on-surface);} .ds-nav-cta{padding:8px 16px;border-radius:9999px;background:var(--primary);color:var(--on-primary);font:600 14px var(--font-body);text-decoration:none;} .ds-nav-cta:hover{background:var(--on-surface);color:var(--surface);} .ds-nav a:focus-visible{outline:2px solid var(--primary);outline-offset:3px;}"
+    },
+    {
+      "name": "Policy Margin Head",
+      "kind": "custom",
+      "refersTo": "inline-code",
+      "description": "Product policy section: hairline, mono numeral and heading in the margin beside a 40rem body column with word-safe inline code.",
+      "html": "<section class=\"ds-policy\"><div class=\"ds-policy-head\"><span>01</span><h2>What is stored, and where</h2></div><div class=\"ds-policy-body\"><p>Profiles stay in the extension's local storage. Run <code><span>basic-auth-gateway</span> <span>--install</span></code> to set up the helper.</p><ul><li>No analytics</li><li>No sync</li></ul></div></section>",
+      "css": ".ds-policy{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);column-gap:3rem;align-items:first baseline;padding:1.75rem 0 1.25rem;border-top:1px solid color-mix(in oklch, var(--on-surface) 12%, transparent);} .ds-policy-head{display:grid;grid-template-columns:2.75rem minmax(0,1fr);align-items:baseline;} .ds-policy-head span{font:500 0.8125rem var(--font-mono);letter-spacing:0.08em;color:var(--primary-text);} .ds-policy-head h2{margin:0;font:700 1.5rem/1.15 var(--font-display);letter-spacing:-0.025em;color:var(--on-surface);} .ds-policy-body{font:400 1.0625rem/1.7 var(--font-body);color:var(--on-surface-variant);} .ds-policy-body p,.ds-policy-body ul{max-width:40rem;margin:0 0 1.125rem;} .ds-policy-body ul{list-style:none;padding:0;display:grid;gap:0.75rem;} .ds-policy-body li{position:relative;padding-left:1.25rem;} .ds-policy-body li::before{content:\"\";position:absolute;left:0;top:0.72em;width:5px;height:5px;border-radius:50%;background:var(--primary);} .ds-policy-body code{font-family:var(--font-mono);font-size:0.875em;padding:0.12em 0.4em;border-radius:4px;background:var(--surface-container-high);color:var(--on-surface);box-decoration-break:clone;-webkit-box-decoration-break:clone;} .ds-policy-body code span{white-space:nowrap;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Living Work Sample",
+    "overview": "The site is the proof of the work it describes, so the system is built from a small set of confident moves rather than decoration. A pure achromatic ground (white in light, near-black in dark) carries two faint radial washes in the accent and tertiary hues; on top of it sit oversized, tightly tracked Plus Jakarta Sans headlines, a calm Roboto Flex reading voice, and JetBrains Mono for anything that is metadata. Color is rationed: one derived accent family for interaction, and the magenta-to-orange brand gradient as a signature on display type and small marks.\n\nStructure follows Material 3's vocabulary (tonal surface containers, a shape scale, filled, outlined and text buttons) but is tuned to feel expressive rather than stock: pill buttons that invert to ink on hover, spring easings with a slight overshoot, staggered entrances, and scroll-linked heading growth. Density is generous; sections breathe with viewport-relative padding, and reading surfaces hold a single measure.\n\nEvery route inherits one accent derived from two numbers. `/shy-owl/` changes those two numbers and nothing else, and product pages such as `/<product>/privacy/` stay in the portfolio's world while showing the product's own icon and name as their mark.",
+    "keyCharacteristics": [
+      "Achromatic surfaces; color comes only from the derived accent family and the brand gradient.",
+      "Display type at weight 700 to 800 with negative tracking that tightens as size grows.",
+      "Mono uppercase labels for metadata, numerals and field labels.",
+      "Pill-shaped actions that invert to ink, with spring motion scaled by one multiplier.",
+      "Light and dark from one token set, following the OS with a manual override."
+    ],
+    "rules": [
+      {
+        "name": "The Neutral Ground Rule",
+        "body": "Surfaces carry zero chroma in both themes. Emphasis comes from the accent family and the brand gradient, never from tinting a surface.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Numbers Rule",
+        "body": "Every accent role derives from `--accent-h` and `--accent-c`. Re-theming a route means overriding those two custom properties on the root element, never redefining individual roles.",
+        "section": "colors"
+      },
+      {
+        "name": "The Signature Rule",
+        "body": "The brand gradient is a mark: display headlines, a button's hover, a line, a blur, a dot. It is not a page ground or a surface under body text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tight Display Rule",
+        "body": "Display tracking tightens as size grows, from -0.01em at title size to -0.05em at the largest display. Never set large display type at default tracking.",
+        "section": "typography"
+      },
+      {
+        "name": "The Mono Means Data Rule",
+        "body": "JetBrains Mono is for metadata, numerals, field labels and inline code. Prose never sets in mono.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Measure Rule",
+        "body": "A reading surface sets one maximum line length for every block of prose on it (40rem on product policies), so the right edge never jumps.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat-at-Rest Rule",
+        "body": "Content surfaces sit flat. A shadow appears for state, for floating chrome, or to give a product's own icon its color.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** reference color through the role tokens (`--primary`, `--primary-text`, `--on-surface-variant`) so light, dark and the `/shy-owl/` accent all follow automatically.",
+      "**Do** use `--primary-text`, not `--primary`, for accent-colored text.",
+      "**Do** re-theme a route by setting `--accent-h` and `--accent-c` on the root element, the way `data-accent=\"shy-owl\"` does.",
+      "**Do** scale every duration by `--motion` and use the spring easings for transitions.",
+      "**Do** give each reading page one shared measure (40rem on product policies) and give a product page its own icon and name as its mark, with the product's accent only on the icon's shadow.",
+      "**Do** author styles in indented Stylus, and wrap CSS `min()`, `max()`, `color-mix()` and space-separated `rgb()` in `unquote()`, because Stylus otherwise evaluates them at compile time. Write container queries that Stylus cannot parse inside an `@css` block."
+    ],
+    "donts": [
+      "**Don't** tint surfaces with the accent hue; the ground stays achromatic in both themes.",
+      "**Don't** fill a page ground or a body-text surface with the brand gradient.",
+      "**Don't** set prose in JetBrains Mono, or set large display type at default tracking.",
+      "**Don't** bring a product's accent into the page's own palette; it belongs to the product's icon tile only.",
+      "**Don't** use hard, offset or ungraded shadows; depth is tonal, and shadows are soft and state-driven."
+    ]
+  }
+}

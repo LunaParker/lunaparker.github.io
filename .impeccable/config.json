@@ -1,0 +1,16 @@
+{
+  "detector": {
+    "ignoreRules": [
+      "gradient-text"
+    ],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "plus jakarta sans",
+        "createdAt": "2026-11-22T23:10:31.880Z",
+        "reason": "Incumbent world: assets/css/tokens.styl sets --font-display to Plus Jakarta Sans site-wide; this page extends that system"
+      }
+    ]
+  }
+}

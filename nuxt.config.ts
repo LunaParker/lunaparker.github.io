@@ -134,7 +134,7 @@ export default defineNuxtConfig({
       ignore: process.env.NUXT_PUBLIC_WRITING_ENABLED === 'true' ? [] : ['/writing'],
       // /404: unmatched, so error.vue renders into 404.html below.
       // Product pages: nothing links to them, so the crawler can't find them.
-      routes: ['/404', '/basic-auth-gateway/privacy/'],
+      routes: ['/404', '/basic-auth-gateway/', '/basic-auth-gateway/privacy/'],
     },
     hooks: {
       // Nuxt's own 404.html is an empty SPA shell; swap in the rendered error page

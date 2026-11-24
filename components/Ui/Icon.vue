@@ -6,7 +6,7 @@ type IconName =
   | 'github' | 'linkedin' | 'sun' | 'moon' | 'close' | 'sparkles'
   | 'chev' | 'chevDown' | 'heart' | 'maple' | 'dot' | 'menu' | 'tweaks'
   | 'webDesign' | 'webDev' | 'custom' | 'consult' | 'wordpress' | 'database'
-  | 'monitor' | 'check' | 'a11y' | 'shield'
+  | 'monitor' | 'check' | 'a11y' | 'shield' | 'copy' | 'webStore'
 
 const props = withDefaults(defineProps<{
   name: IconName
@@ -154,5 +154,18 @@ const common = computed(() => ({
   <svg v-else-if="name === 'shield'" v-bind="common" :style="style" aria-hidden="true">
     <path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3Z" />
     <path d="m9 11.5 2 2 4-4" />
+  </svg>
+  <svg v-else-if="name === 'copy'" v-bind="common" :style="style" aria-hidden="true">
+    <rect x="9" y="9" width="12" height="12" rx="2.5" />
+    <path d="M15 5.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h.5" />
+  </svg>
+  <svg v-else-if="name === 'webStore'" v-bind="common" :style="style" aria-hidden="true">
+    <path d="M6.5 7a5.5 4.25 0 0 1 11 0" />
+    <rect x="2.75" y="7" width="18.5" height="14.5" rx="2.75" />
+    <g stroke-width="1.4">
+      <circle cx="12" cy="14.25" r="5" />
+      <circle cx="12" cy="14.25" r="2.1" />
+      <path d="M12 12.15h4.54M13.82 15.3l-2.27 3.93M10.18 15.3 7.91 11.37" />
+    </g>
   </svg>
 </template>

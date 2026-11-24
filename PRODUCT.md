@@ -15,7 +15,7 @@ web
 
 lunaparker.dev is Luna's portfolio and the home of Shy Owl Studios. It shows her experience, projects, skills and education, and its one action is getting in touch, through the contact form or by email.
 
-It also hosts the public pages her own software needs, such as a browser extension's privacy policy that a store listing links to.
+It also hosts the public pages her own software needs, such as a browser extension's download page and the privacy policy its store listing links to.
 
 ## Positioning
 
@@ -31,7 +31,7 @@ The site is itself the work sample. Its look and feel is part of what it proves,
 ## Capabilities and Constraints
 
 - Routes: `/` (portfolio), `/shy-owl/` (studio page), `/privacy/` (the site's own privacy policy), `/writing/` (built but switched off until real posts exist).
-- Product pages follow a pattern: `/<product>/privacy/` (and later other per-product pages). The first is `/basic-auth-gateway/privacy/`, the privacy policy for the Basic Auth Gateway browser extension's Chrome Web Store listing. More products may follow, so the layout must work for any product.
+- Product pages follow a pattern: `/<product>/` (a landing page with the product's downloads) and `/<product>/privacy/`. The first product is Basic Auth Gateway: `/basic-auth-gateway/` offers its native host for Windows and macOS and links to its Chrome Web Store listing, and `/basic-auth-gateway/privacy/` is the privacy policy that listing links to. More products may follow, so the layouts must work for any product.
 - A product's policy text is written in that product's own repository; the site publishes it and must not reword it.
 - List-shaped content lives in `composables/useData.ts`; one-off copy lives inline in the component that renders it.
 - Personal details on the site stay to professional facts. Adding any new personal detail is Luna's decision, not a design default.
